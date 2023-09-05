@@ -11,9 +11,9 @@ import {
 	Link,
 	Routes
 } from "react-router-dom";
-import Home from './page.js';
-// import Write from 'write.js';
-// import Game from 'game.js';
+import Home from '../pages/page.js';
+import Write from '../pages/write/page.js';
+import Game from '../pages/game/page.js';
 
 export default function App() {
 	return (
@@ -23,12 +23,12 @@ export default function App() {
 					<li>
 						<Link to="/">Home</Link>
 					</li>
-					{/* <li>
+					<li>
 						<Link to="/game">Game</Link>
 					</li>
 					<li>
 						<Link to="/write">Write</Link>
-					</li> */}
+					</li>
 				</ul>
 
 
@@ -40,8 +40,9 @@ export default function App() {
 			of them to render at a time
 		  */}
 				<Switch>
-
-					<Route exact path="/" Component={Home} />
+					<Route exact path="/game" Component={Game} />
+					<Route exact path="/write" Component={Write} />
+					<Route exact path="/" Component={Test} />
 
 				</Switch>
 			</div>

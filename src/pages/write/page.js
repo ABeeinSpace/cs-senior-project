@@ -7,9 +7,9 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './app/page.module.css';
+import 'src/app/page.module.css';
 
-export default function Game() {
+export default function Write() {
 
 	return (
 		<div>
@@ -27,14 +27,14 @@ export default function Game() {
 				</Container>
 			</Navbar>
 			<br />
-			<div className="container">
-				<h1>Game Page</h1>
+			<Container className="container">
+				<h1>Write Page</h1>
 				<p />
 				<p>
 					This page is under construction. Please come back later for a super cool
 					AI-related project!
 				</p>
-			</div>
+			</Container>
 		</div>
 
 	)
