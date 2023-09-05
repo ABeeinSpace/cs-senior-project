@@ -23,11 +23,11 @@ export default function Home() {
       <title>Turing Test-Inator!</title>
       <Navbar bg="dark" data-bs-theme="dark">
         <Container>
-          <Navbar.Brand href="#home">ChatGPTuring</Navbar.Brand>
+          <Navbar.Brand as={Link} to="/">ChatGPTuring</Navbar.Brand>
           <Nav className="me-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#game">Game</Nav.Link>
-            <Nav.Link href="#write">Write</Nav.Link>
+            <Nav.Link as={Link} to="/">Home</Nav.Link>
+            <Nav.Link as={Link} to="/game">Game</Nav.Link>
+            <Nav.Link as={Link} to="/write">Write</Nav.Link>
           </Nav>
           <Nav>
             <Nav.Link href="#login">Login</Nav.Link>
