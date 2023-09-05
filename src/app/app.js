@@ -11,18 +11,17 @@ import {
 	Link,
 	Routes
 } from "react-router-dom";
-// import Home from 'page.js';
+import Home from './page.js';
 // import Write from 'write.js';
 // import Game from 'game.js';
 
 export default function App() {
-
 	return (
 		<>
 			<div>
 				<ul>
 					<li>
-						<Link to="/">Test</Link>
+						<Link to="/">Home</Link>
 					</li>
 					{/* <li>
 						<Link to="/game">Game</Link>
@@ -42,15 +41,8 @@ export default function App() {
 		  */}
 				<Switch>
 
-					<Route exact path="/" >
-						<Test />
-					</Route>
-					{/* <Route path="/game">
-						<Game />
-					</Route>
-					<Route path="/write">
-						<Write />
-					</Route> */}
+					<Route exact path="/" Component={Home} />
+
 				</Switch>
 			</div>
 		</>
