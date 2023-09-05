@@ -9,7 +9,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'src/app/page.module.css';
 
-export default function Game() {
+export default function Write() {
 
 	return (
 		<div>
@@ -18,23 +18,23 @@ export default function Game() {
 			<title>Turing Test-Inator!</title>
 			<Navbar bg="dark" data-bs-theme="dark">
 				<Container>
-					<Navbar.Brand href="#home">ChatGPTuring</Navbar.Brand>
+					<Navbar.Brand href="/">ChatGPTuring</Navbar.Brand>
 					<Nav className="me-auto">
-						<Nav.Link href="#home">Home</Nav.Link>
-						<Nav.Link href="#features">Game</Nav.Link>
-						<Nav.Link href="#pricing">Write</Nav.Link>
+						<Nav.Link href="/">Home</Nav.Link>
+						<Nav.Link href="./game">Game</Nav.Link>
+						<Nav.Link href="./write">Write</Nav.Link>
 					</Nav>
 				</Container>
 			</Navbar>
 			<br />
-			<div className="container">
-				<h1>Game Page</h1>
+			<Container className="container">
+				<h1>Write Page</h1>
 				<p />
 				<p>
 					This page is under construction. Please come back later for a super cool
 					AI-related project!
 				</p>
-			</div>
+			</Container>
 		</div>
 
 	)

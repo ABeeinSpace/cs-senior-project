@@ -11,9 +11,9 @@ import {
 	Link,
 	Routes
 } from "react-router-dom";
-import Home from '../pages/page.js';
-import Write from '../pages/write/page.js';
-import Game from '../pages/game/page.js';
+import Home from './page.js';
+import Write from './write/page.js';
+import Game from './game/page.js';
 
 export default function App() {
 	return (
