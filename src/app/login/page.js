@@ -1,10 +1,11 @@
 'use client'
 
-import React from "react";
+import React, { useEffect } from "react";
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { initializeApp } from "firebase/app";
+import FirebaseUIReact from './FirebaseUIReact';
 
 // import {
 // 	BrowserRouter as Router,
@@ -12,15 +13,13 @@ import { initializeApp } from "firebase/app";
 // 	Route,
 // 	Link
 // } from "react-router-dom";
-// import firebase from 'firebase/compat/app';
+import firebase from 'firebase/compat/app';
 // import * as firebaseui from 'firebaseui'
 import 'firebaseui/dist/firebaseui.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'src/app/page.module.css';
 
 export default function Login() {
-
-	var app = initialiseFirebase();
 	return (
 		<div>
 			<meta charSet="UTF-8" />
@@ -41,7 +40,7 @@ export default function Login() {
 				<h1>Login</h1>
 				<p />
 				<Container className="firebaseui-auth-container">
-					{FirebaseUI()}
+					<FirebaseUIReact />
 				</Container>
 			</div>
 		</div>
@@ -50,8 +49,7 @@ export default function Login() {
 }
 
 
-
-// function FirebaseUI(app) {
+// function instantiateFirebaseUI(app) {
 // 	var uiConfig = {
 // 		signInSuccessUrl: '<url-to-redirect-to-on-success>',
 // 		signInOptions: [
@@ -73,9 +71,11 @@ export default function Login() {
 
 // 	};
 // 	// Initialize the FirebaseUI Widget using Firebase.
+
 // 	var ui = new firebaseui.auth.AuthUI(firebase.auth());
-// 	// The start method will wait until the DOM is loaded.
 // 	ui.start('#firebaseui-auth-container', uiConfig);
+
+// 	// The start method will wait until the DOM is loaded.
 
 // }
 
