@@ -1,25 +1,24 @@
 import React, { useEffect }  from 'react';
-import firebase from 'firebase/compat/app';
+import firebase from "firebase/compat/app";
+import "firebase/compat/auth";
+
 import * as firebaseui from 'firebaseui'
 import 'firebaseui/dist/firebaseui.css'
 
 export default function FirebaseUIReact(params) {
-	useEffect(function mount() {
+	useEffect(() => {
 		const app = initialiseFirebase();
+		const auth = firebase.auth(app);
+		instantiateFirebaseUI(app);
 	});
-
 }
 
 function instantiateFirebaseUI(app) {
 	var uiConfig = {
-		signInSuccessUrl: '<url-to-redirect-to-on-success>',
+		signInSuccessUrl: '/',
 		signInOptions: [
 			// Leave the lines as is for the providers you want to offer your users.
 			firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-			firebase.auth.FacebookAuthProvider.PROVIDER_ID,
-			firebase.auth.TwitterAuthProvider.PROVIDER_ID,
-			firebase.auth.GithubAuthProvider.PROVIDER_ID,
-			firebase.auth.EmailAuthProvider.PROVIDER_ID,
 			firebase.auth.PhoneAuthProvider.PROVIDER_ID,
 			firebaseui.auth.AnonymousAuthProvider.PROVIDER_ID
 		],
@@ -53,5 +52,6 @@ function initialiseFirebase() {
 	};
 
 	// Initialize Firebase
-	const app = initializeApp(firebaseConfig);
+	const app = firebase.initializeApp(firebaseConfig);
+	return app;
 }

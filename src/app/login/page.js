@@ -4,7 +4,6 @@ import React, { useEffect } from "react";
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import { initializeApp } from "firebase/app";
 import FirebaseUIReact from './FirebaseUIReact';
 
 // import {
@@ -13,7 +12,7 @@ import FirebaseUIReact from './FirebaseUIReact';
 // 	Route,
 // 	Link
 // } from "react-router-dom";
-import firebase from 'firebase/compat/app';
+// import firebase from 'firebase/compat/app';
 // import * as firebaseui from 'firebaseui'
 import 'firebaseui/dist/firebaseui.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -39,7 +38,7 @@ export default function Login() {
 			<div className="container">
 				<h1>Login</h1>
 				<p />
-				<Container className="firebaseui-auth-container">
+				<Container id="firebaseui-auth-container">
 					<FirebaseUIReact />
 				</Container>
 			</div>
