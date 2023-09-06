@@ -24,6 +24,10 @@ export default function Write() {
 						<Nav.Link href="./game">Game</Nav.Link>
 						<Nav.Link href="./write">Write</Nav.Link>
 					</Nav>
+					<Nav>
+						<Nav.Link href="./login">Login</Nav.Link>
+						<Nav.Link href="#signup">Sign Up</Nav.Link>
+					</Nav>
 				</Container>
 			</Navbar>
 			<br />

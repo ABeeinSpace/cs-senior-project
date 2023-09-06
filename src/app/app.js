@@ -4,13 +4,13 @@ import React from "react";
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import {
-	BrowserRouter as Router,
-	Switch,
-	Route,
-	Link,
-	Routes
-} from "react-router-dom";
+// import {
+// 	BrowserRouter as Router,
+// 	Switch,
+// 	Route,
+// 	Link,
+// 	Routes
+// } from "react-router-dom";
 import Home from './page.js';
 import Write from './write/page.js';
 import Game from './game/page.js';

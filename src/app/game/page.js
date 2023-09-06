@@ -18,11 +18,15 @@ export default function Game() {
 			<title>Turing Test-Inator!</title>
 			<Navbar bg="dark" data-bs-theme="dark">
 				<Container>
-				<Navbar.Brand href="/">ChatGPTuring</Navbar.Brand>
+					<Navbar.Brand href="/">ChatGPTuring</Navbar.Brand>
 					<Nav className="me-auto">
 						<Nav.Link href="/">Home</Nav.Link>
 						<Nav.Link href="./game">Game</Nav.Link>
 						<Nav.Link href="./write">Write</Nav.Link>
+					</Nav>
+					<Nav>
+						<Nav.Link href="./login">Login</Nav.Link>
+						<Nav.Link href="#signup">Sign Up</Nav.Link>
 					</Nav>
 				</Container>
 			</Navbar>
