@@ -26,11 +26,11 @@ export default function Login() {
 			<title>Turing Test-Inator!</title>
 			<Navbar bg="dark" data-bs-theme="dark">
 				<Container>
-					<Navbar.Brand href="#home">ChatGPTuring</Navbar.Brand>
+					<Navbar.Brand href="/">ChatGPTuring</Navbar.Brand>
 					<Nav className="me-auto">
-						<Nav.Link href="#home">Home</Nav.Link>
-						<Nav.Link href="#features">Game</Nav.Link>
-						<Nav.Link href="#pricing">Write</Nav.Link>
+						<Nav.Link href="/">Home</Nav.Link>
+						<Nav.Link href="/game">Game</Nav.Link>
+						<Nav.Link href="/writing">Write</Nav.Link>
 					</Nav>
 				</Container>
 			</Navbar>

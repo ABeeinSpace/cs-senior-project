@@ -11,7 +11,7 @@ import Navbar from 'react-bootstrap/Navbar';
 // 	Link,
 // 	Routes
 // } from "react-router-dom";
-import Home from './page.js';
+import Home from './page.jsx';
 import Write from './write/page.js';
 import Game from './game/page.js';
 
