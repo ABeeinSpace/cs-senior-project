@@ -5,6 +5,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import Button from './button'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'src/app/page.module.css';
@@ -34,6 +35,8 @@ export default function Game() {
 			<div className="container">
 				<h1>Game Page</h1>
 				<p />
+
+				<Button />
 				<p>
 					This page is under construction. Please come back later for a super cool
 					AI-related project!

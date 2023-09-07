@@ -4,6 +4,8 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 
+// import Textbox from './Textbox'
+
 // import {
 //   BrowserRouter as Router,
 //   Switch,
@@ -39,6 +41,11 @@ export default function Home() {
       <div className="container">
         <h1>Home Page</h1>
         <p />
+      
+      {/* <Textbox /> */}
+
+      
+        
         <p>
           This page is under construction. Please come back later for a super cool
           AI-related project!
