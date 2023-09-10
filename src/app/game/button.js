@@ -7,13 +7,15 @@ export default function ButtonGrouping() {
   return (
     <>
       <ButtonGroup aria-label="Basic example">
-        <Button variant="info">
+        <Button className = "rounded-circle me-5" variant="secondary">
             Written by a Human
         </Button>
-        <Button variant="danger">
+        <Button className = "rounded-circle" variant="secondary">
             Written by AI
         </Button>
       </ButtonGroup>
+
+       
     </>
   );
 }
