@@ -69,7 +69,7 @@ function initialiseFirebase() {
 
   // Initialize Firebase
   const app = firebase.initializeApp(firebaseConfig);
-  return app.firestore;
+  return app;
 }
 
 function renderLoginUI(app) {

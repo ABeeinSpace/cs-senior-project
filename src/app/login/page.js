@@ -14,7 +14,7 @@ import FirebaseUIReact from './FirebaseUIReact';
 // } from "react-router-dom";
 // import firebase from 'firebase/compat/app';
 // import * as firebaseui from 'firebaseui'
-import 'firebaseui/dist/firebaseui.css'
+// import 'firebaseui/dist/firebaseui.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'src/app/page.module.css';
 
