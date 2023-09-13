@@ -41,16 +41,16 @@ export default function Game() {
 			}}className="container">
 				<h1>Game Page</h1>
 				<p />
-				<Cards />
-				<Cards />
-				<Cards />
-				<Cards />
-				<Cards />
-				<Cards />
-				<Cards />
-				<Cards />
-				<Cards />
-				<Cards />
+				<Cards id = 'cardOne' prompt = 'Prompt One' code = 'Code One'> </Cards>
+				<Cards id = 'cardTwo' prompt = 'Prompt Two' code = 'Code Two'> </Cards>
+				<Cards id = 'cardThree' prompt = 'Prompt Three'code = 'Code Three'> </Cards>
+				<Cards id = 'cardFour' prompt = 'Prompt Four'code = 'Code Four'> </Cards>
+				<Cards id = 'cardFive' prompt = 'Prompt Five'code = 'Code Five'> </Cards>
+				<Cards id = 'cardSix' prompt = 'Prompt Six'code = 'Code Six'> </Cards>
+				<Cards id = 'cardSeven' prompt = 'Prompt Seven'code = 'Code Seven'> </Cards>
+				<Cards id = 'cardEight' prompt = 'Prompt Eight'code = 'Code Eight'> </Cards>
+				<Cards id = 'cardNine' prompt = 'Prompt Nine'code = 'Code Nine'> </Cards>
+				<Cards id = 'cardTen' prompt = 'Prompt Ten'code = 'Code Ten'> </Cards>
 				<p>
 					This page is under construction. Please come back later for a super cool
 					AI-related project!

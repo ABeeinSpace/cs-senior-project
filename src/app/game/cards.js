@@ -1,14 +1,15 @@
 import Button from './button';
 import Card from 'react-bootstrap/Card';
 
-function BasicExample() {
+function Cards(props) {
+
   return (
     <Card className="text-center" style={{ width: '100%' }}>
       {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
       <Card.Body>
-        <Card.Title>Prompt</Card.Title>
+        <Card.Title>{props.prompt}</Card.Title>
         <Card.Text>
-          Code will go here
+          {props.code}
         </Card.Text>
         <Button />
       </Card.Body>
@@ -16,4 +17,4 @@ function BasicExample() {
   );
 }
 
-export default BasicExample;
+export default Cards;
