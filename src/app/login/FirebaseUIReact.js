@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import React, { useEffect } from 'react';
 import firebase from "firebase/compat/app";
@@ -36,6 +36,7 @@ function initialiseFirebase() {
 
 function instantiateFirebaseUI(app) {
 	var uiConfig = {
+		
 		signInSuccessUrl: '/',
 		signInOptions: [
 				{
@@ -61,7 +62,7 @@ function instantiateFirebaseUI(app) {
 	};
 	// Initialize the FirebaseUI Widget using Firebase.
 
-	var ui = new firebaseui.auth.AuthUI(firebase.auth());
+	var ui = new firebaseui.auth.AuthUI(firebase.auth(app));
 	ui.start('#firebaseui-auth-container', uiConfig);
 
 	// The start method will wait until the DOM is loaded.

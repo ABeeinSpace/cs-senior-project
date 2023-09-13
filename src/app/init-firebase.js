@@ -20,3 +20,7 @@ export default function InitFirebase() {
 	const firebaseApp = initializeApp(firebaseConfig);
 	return firebaseApp;
 }
+
+function initAuth(firebaseApp) {
+	
+}
