@@ -30,7 +30,6 @@ export default function Game() {
 					</Nav>
 					<Nav>
 						<Nav.Link href="./login">Login</Nav.Link>
-						<Nav.Link href="#signup">Sign Up</Nav.Link>
 					</Nav>
 				</Container>
 			</Navbar>
