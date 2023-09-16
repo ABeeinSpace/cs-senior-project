@@ -1,24 +1,20 @@
 'use client'
 
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import firebase from "firebase/compat/app";
+import "firebase/compat/auth";
+import app from "src/app/Firebase.js";
+import 'firebaseui/dist/firebaseui.css'
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import FirebaseUIReact from './FirebaseUIReact';
-
-// import {
-// 	BrowserRouter as Router,
-// 	Switch,
-// 	Route,
-// 	Link
-// } from "react-router-dom";
-// import firebase from 'firebase/compat/app';
-// import * as firebaseui from 'firebaseui'
-// import 'firebaseui/dist/firebaseui.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'src/app/page.module.css';
+import * as firebaseui from 'firebaseui'
+
 
 export default function Login() {
+
 	return (
 		<div>
 			<meta charSet="UTF-8" />
@@ -39,7 +35,9 @@ export default function Login() {
 				<h1>Login</h1>
 				<p />
 				<Container id="firebaseui-auth-container">
-					<FirebaseUIReact />
+
+					< FirebaseUI />
+
 				</Container>
 			</div>
 		</div>
@@ -48,48 +46,53 @@ export default function Login() {
 }
 
 
-// function instantiateFirebaseUI(app) {
-// 	var uiConfig = {
-// 		signInSuccessUrl: '<url-to-redirect-to-on-success>',
-// 		signInOptions: [
-// 			// Leave the lines as is for the providers you want to offer your users.
-// 			firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-// 			firebase.auth.FacebookAuthProvider.PROVIDER_ID,
-// 			firebase.auth.TwitterAuthProvider.PROVIDER_ID,
-// 			firebase.auth.GithubAuthProvider.PROVIDER_ID,
-// 			firebase.auth.EmailAuthProvider.PROVIDER_ID,
-// 			firebase.auth.PhoneAuthProvider.PROVIDER_ID,
-// 			firebaseui.auth.AnonymousAuthProvider.PROVIDER_ID
-// 		],
-// 		// tosUrl and privacyPolicyUrl accept either url string or a callback
-// 		// function.
-// 		// Terms of service url/callback.
-// 		tosUrl: '<your-tos-url>',
-// 		// Privacy policy url/callback.
+function FirebaseUI() {
 
 
-// 	};
-// 	// Initialize the FirebaseUI Widget using Firebase.
+	var uiConfig = {
+		callbacks: {
+			signInSuccessWithAuthResult: function (authResult, redirectUrl) {
+				Firebase.auth(app).applyActionCode
+				var displayName = user.displayName;
+				var email = user.email;
+				var emailVerified = user.emailVerified;
+				var photoURL = user.photoURL;
+				var uid = user.uid;
+				var phoneNumber = user.phoneNumber;
+				var providerData = user.providerData;
+				return true;
+			},
+		},
 
-// 	var ui = new firebaseui.auth.AuthUI(firebase.auth());
-// 	ui.start('#firebaseui-auth-container', uiConfig);
+		signInSuccessUrl: '/',
+		signInOptions: [
+			{
+				provider: firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+				scopes: [
+					'https://www.googleapis.com/auth/contacts.readonly'
+				],
+				customParameters: {
+					// Forces account selection even when one account
+					// is available.
+					prompt: 'select_account'
+				}
+			}, firebase.auth.PhoneAuthProvider.PROVIDER_ID,
+			firebaseui.auth.AnonymousAuthProvider.PROVIDER_ID
+		],
+		// tosUrl and privacyPolicyUrl accept either url string or a callback
+		// function.
+		// Terms of service url/callback.
+		tosUrl: '<your-tos-url>',
+		// Privacy policy url/callback.
 
-// 	// The start method will wait until the DOM is loaded.
 
-// }
+	};
+	// Initialize the FirebaseUI Widget using Firebase.
 
-// function initialiseFirebase() {
+	useEffect(() => {
+		var ui = new firebaseui.auth.AuthUI(firebase.auth(app));
+		ui.start('#firebaseui-auth-container', uiConfig);
+	}, []);
+	// The start method will wait until the DOM is loaded.
 
-// 	// Your web app's Firebase configuration
-// 	const firebaseConfig = {
-// 		apiKey: "AIzaSyAThWUht-tNf-REso6KxH1tKQ3PXfeCifw",
-// 		authDomain: "cs-senior-project-9c0e0.firebaseapp.com",
-// 		projectId: "cs-senior-project-9c0e0",
-// 		storageBucket: "cs-senior-project-9c0e0.appspot.com",
-// 		messagingSenderId: "1054365365385",
-// 		appId: "1:1054365365385:web:fdd0bf6ce2f08ee09dc258"
-// 	};
-
-// 	// Initialize Firebase
-// 	const app = initializeApp(firebaseConfig);
-// }
+}

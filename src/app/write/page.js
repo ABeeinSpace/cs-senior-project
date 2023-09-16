@@ -1,11 +1,12 @@
 'use client'
 
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-
+import { AuthContext } from "src/app/FirebaseContext.js";
+import "firebase/compat/auth";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'src/app/page.module.css';
 
@@ -25,7 +26,7 @@ export default function Write() {
 						<Nav.Link href="./write">Write</Nav.Link>
 					</Nav>
 					<Nav>
-						<Nav.Link href="./login">Login</Nav.Link>
+						<RenderLoginUI />
 					</Nav>
 				</Container>
 			</Navbar>
@@ -41,4 +42,33 @@ export default function Write() {
 		</div>
 
 	)
+}
+
+function RenderLoginUI(app) {
+
+	const { user } = useContext(AuthContext);
+
+	if (user != null) {
+		// User is signed in, see docs for a list of available properties
+		// https://firebase.google.com/docs/reference/js/firebase.User
+		// ...
+		return (
+			<NavDropdown title={user.displayName}>
+				<NavDropdown.Item>Account Settings</NavDropdown.Item>
+				<NavDropdown.Divider />
+				<NavDropdown.Item onClick={() => handleSignOut()}>Sign Out</NavDropdown.Item>
+			</NavDropdown>
+		)
+	} else {
+		return (
+			<Nav.Link href="./login">Login</Nav.Link>)
+	};
+}
+
+function handleSignOut() {
+	firebase.auth().signOut().then(function () {
+		console.log('Signed Out');
+	}, function (error) {
+		console.error('Sign Out Error', error);
+	});
 }
