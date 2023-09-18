@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState, useEffect } from "react";
+import dynamic from "next/dynamic";
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 import app from "src/app/Firebase.js";
@@ -10,10 +11,16 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'src/app/page.module.css';
-import * as firebaseui from 'firebaseui'
+
+// import * as firebaseui from 'firebaseui'
 
 
 export default function Login() {
+
+	const FirebaseUI = dynamic(
+		() => import('./FirebaseUI'),
+		{ ssr: false }
+	)
 
 	return (
 		<div>
@@ -35,64 +42,13 @@ export default function Login() {
 				<h1>Login</h1>
 				<p />
 				<Container id="firebaseui-auth-container">
-
-					< FirebaseUI />
+					<React.StrictMode>
+						< FirebaseUI />
+					</React.StrictMode>
 
 				</Container>
 			</div>
 		</div>
 
 	)
-}
-
-
-function FirebaseUI() {
-
-
-	var uiConfig = {
-		callbacks: {
-			signInSuccessWithAuthResult: function (authResult, redirectUrl) {
-				Firebase.auth(app).applyActionCode
-				var displayName = user.displayName;
-				var email = user.email;
-				var emailVerified = user.emailVerified;
-				var photoURL = user.photoURL;
-				var uid = user.uid;
-				var phoneNumber = user.phoneNumber;
-				var providerData = user.providerData;
-				return true;
-			},
-		},
-
-		signInSuccessUrl: '/',
-		signInOptions: [
-			{
-				provider: firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-				scopes: [
-					'https://www.googleapis.com/auth/contacts.readonly'
-				],
-				customParameters: {
-					// Forces account selection even when one account
-					// is available.
-					prompt: 'select_account'
-				}
-			}, firebase.auth.PhoneAuthProvider.PROVIDER_ID,
-			firebaseui.auth.AnonymousAuthProvider.PROVIDER_ID
-		],
-		// tosUrl and privacyPolicyUrl accept either url string or a callback
-		// function.
-		// Terms of service url/callback.
-		tosUrl: '<your-tos-url>',
-		// Privacy policy url/callback.
-
-
-	};
-	// Initialize the FirebaseUI Widget using Firebase.
-
-	useEffect(() => {
-		var ui = new firebaseui.auth.AuthUI(firebase.auth(app));
-		ui.start('#firebaseui-auth-container', uiConfig);
-	}, []);
-	// The start method will wait until the DOM is loaded.
-
 }
