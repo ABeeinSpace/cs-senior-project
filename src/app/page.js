@@ -4,7 +4,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import firebase from "firebase/compat/app";
-import { AuthContext } from "src/app/FirebaseContext.js";
+import { FirebaseContext, AuthContext } from "src/app/FirebaseContext.js";
 import "firebase/compat/auth";
 import React, { useContext, useEffect } from "react";
 import app from "./Firebase";

@@ -4,6 +4,18 @@ import React, { useEffect, useState } from "react";
 import firebase from "firebase/compat/app";
 import app from "./Firebase";
 
+export const FirebaseContext = React.createContext();
+
+export const useFirebase = () => {
+	const firebaseContext = useContext(FirebaseContext);
+	if (firebaseContext === undefined) {
+		throw new Error(
+			"useFirebase must be used within a FirebaseContext.Provider"
+		);
+	}
+	return firebaseContext;
+};
+
 //2.
 export const AuthContext = React.createContext();
 
