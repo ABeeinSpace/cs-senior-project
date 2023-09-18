@@ -42,9 +42,7 @@ export default function Login() {
 				<h1>Login</h1>
 				<p />
 				<Container id="firebaseui-auth-container">
-					<React.StrictMode>
-						< FirebaseUI />
-					</React.StrictMode>
+					< FirebaseUI />
 
 				</Container>
 			</div>

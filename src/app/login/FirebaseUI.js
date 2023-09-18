@@ -13,17 +13,17 @@ export default function FirebaseUI() {
 
 	var uiConfig = {
 		callbacks: {
-			signInSuccessWithAuthResult: function (authResult, redirectUrl) {
-				Firebase.auth(app).applyActionCode
-				var displayName = user.displayName;
-				var email = user.email;
-				var emailVerified = user.emailVerified;
-				var photoURL = user.photoURL;
-				var uid = user.uid;
-				var phoneNumber = user.phoneNumber;
-				var providerData = user.providerData;
-				return true;
-			},
+			// signInSuccessWithAuthResult: function (authResult, redirectUrl) {
+			// 	Firebase.auth(app).applyActionCode
+			// 	var displayName = user.displayName;
+			// 	var email = user.email;
+			// 	var emailVerified = user.emailVerified;
+			// 	var photoURL = user.photoURL;
+			// 	var uid = user.uid;
+			// 	var phoneNumber = user.phoneNumber;
+			// 	var providerData = user.providerData;
+			// 	return true;
+			// },
 		},
 
 		signInSuccessUrl: '/',
