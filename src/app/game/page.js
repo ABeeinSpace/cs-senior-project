@@ -23,7 +23,7 @@ export default function Game() {
 			<Navbar bg="dark" data-bs-theme="dark">
 				<Container>
 					<Navbar.Brand href="/">ChatGPTuring</Navbar.Brand>
-					<Nav className="me-auto">
+					<Nav className="me-auto" activeKey="./game">
 						<Nav.Link href="/">Home</Nav.Link>
 						<Nav.Link href="./game">Game</Nav.Link>
 						<Nav.Link href="./write">Write</Nav.Link>
