@@ -4,6 +4,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import firebase from "firebase/compat/app";
+import SignedOutToast from 'src/app/SignedOutToast.js';
 import { FirebaseContext, AuthContext } from "src/app/FirebaseContext.js";
 import "firebase/compat/auth";
 import React, { useContext, useEffect } from "react";
@@ -90,7 +91,7 @@ function RenderLoginUI(app) {
 
 function handleSignOut() {
   firebase.auth().signOut().then(function () {
-    console.log('Signed Out');
+    <SignedOutToast />
   }, function (error) {
     console.error('Sign Out Error', error);
   });

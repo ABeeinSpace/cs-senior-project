@@ -4,6 +4,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 import Cards from './cards';
 import { AuthContext } from "src/app/FirebaseContext.js";

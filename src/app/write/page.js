@@ -6,6 +6,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { AuthContext } from "src/app/FirebaseContext.js";
+import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'src/app/page.module.css';
