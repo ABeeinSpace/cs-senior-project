@@ -1,8 +1,6 @@
 'use client'
 
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
+import { NavDropdown, Nav, Navbar, Container } from 'react-bootstrap';
 import firebase from "firebase/compat/app";
 import SignedOutToast from 'src/app/SignedOutToast.js';
 import { FirebaseContext, AuthContext } from "src/app/FirebaseContext.js";
@@ -11,7 +9,6 @@ import React, { useState, useContext } from "react";
 import app from "./Firebase";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'src/app/page.module.css';
-import { NavDropdown } from 'react-bootstrap';
 // import App from 'next/app';
 // import { auth } from 'firebaseui';
 

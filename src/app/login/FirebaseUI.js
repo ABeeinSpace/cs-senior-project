@@ -51,7 +51,7 @@ export default function FirebaseUI() {
 	};
 	// Initialize the FirebaseUI Widget using Firebase.
 
-	const ui = firebaseui.auth.AuthUI.getInstance() || new firebaseui.auth.AuthUI(firebase.auth())
+	const ui = firebaseui.auth.AuthUI.getInstance() || new firebaseui.auth.AuthUI(firebase.auth());
 	ui.start('#firebaseui-auth-container', uiConfig);
 	// The start method will wait until the DOM is loaded.
 
