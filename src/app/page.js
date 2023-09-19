@@ -7,7 +7,7 @@ import firebase from "firebase/compat/app";
 import SignedOutToast from 'src/app/SignedOutToast.js';
 import { FirebaseContext, AuthContext } from "src/app/FirebaseContext.js";
 import "firebase/compat/auth";
-import React, { useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import app from "./Firebase";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'src/app/page.module.css';
@@ -68,8 +68,7 @@ export default function Home() {
 }
 
 function RenderLoginUI(app) {
-
-
+  var [setShow] = useState(false);
   const { user } = useContext(AuthContext);
 
   if (user != null) {
@@ -80,7 +79,14 @@ function RenderLoginUI(app) {
       <NavDropdown title={user.displayName}>
         <NavDropdown.Item>Account Settings</NavDropdown.Item>
         <NavDropdown.Divider />
-        <NavDropdown.Item onClick= {() => handleSignOut()}>Sign Out</NavDropdown.Item>
+        <NavDropdown.Item onClick={() => {
+          firebase.auth().signOut().then(() => {
+            setShow = true;
+            <SignedOutToast />
+          }, function (error) {
+            console.error('Sign Out Error', error);
+          });
+        }}>Sign Out</NavDropdown.Item>
       </NavDropdown>
     )
   } else {
@@ -89,10 +95,12 @@ function RenderLoginUI(app) {
   };
 }
 
-function handleSignOut() {
-  firebase.auth().signOut().then(function () {
-    <SignedOutToast />
-  }, function (error) {
-    console.error('Sign Out Error', error);
-  });
-}
+// function handleSignOut(setShow) {
+
+//   firebase.auth().signOut().then(() => {
+//     setShow true;
+//     <SignedOutToast />
+//   }, function (error) {
+//     console.error('Sign Out Error', error);
+//   });
+// }
