@@ -12,8 +12,52 @@ import React, { useContext, useEffect } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'src/app/page.module.css';
 import app from '../Firebase';
+import { useState } from 'react';
+import {
+	getFirestore, collection, getDocs
+}from 'firebase/firestore'
+
+require('dotenv').config()
+
+const db = getFirestore()
+
+const colRef = collection(db, 'prompts')
+let prompts = []
+
+const colRefCode = collection(db, 'code')
+let code = []
+
+
+
+
+
+
+
+// import { collection, getDocs } from "firebase/firestore";
+// import {db} from '../Firebase';
+// import { useState } from ‘React’;
+ 
+//    const [todos, setTodos] = useState([]);
+ 
+//     const fetchPost = async () => {
+       
+//         await getDocs(collection(db, "todos"))
+//             .then((querySnapshot)=>{               
+//                 const newData = querySnapshot.docs
+//                     .map((doc) => ({...doc.data(), id:doc.id }));
+//                 setTodos(newData);                
+//                 console.log(todos, newData);
+//             })
+       
+//     }
+   
+//     useEffect(()=>{
+//         fetchPost();
+//     }, [])
 
 export default function Game() {
+	
+	
 
 	return (
 
@@ -52,16 +96,62 @@ export default function Game() {
 }
 
 
+
+
 function RenderCards() {
+	const [promptOne, setPromptOne] = useState([]);
+	const [promptTwo, setPromptTwo] = useState([]);
+	const [codeOne, setCodeOne] = useState([]);
+	// const [promptTwo, setPromptTwo] = useState([]);
 	const { user } = useContext(AuthContext);
+	
+
+	getDocs(colRef)
+	.then((snapshot) => {
+		prompts = []
+		snapshot.docs.forEach((doc) =>{
+			prompts.push({...doc.data(), id: doc.id})
+		})
+		
+		// prompt = prompts[0].prompt
+		setPromptOne(prompts[0].prompt)
+		setPromptTwo(prompts[1].prompt)
+		
+	
+	})
+	.catch(err =>{
+		console.log(err.message)
+	})
+
+
+	getDocs(colRefCode)
+	.then((snapshot) => {
+		code = []
+		snapshot.docs.forEach((doc) =>{
+			code.push({...doc.data(), id: doc.id})
+		})
+		
+		setCodeOne(code[0].EP001HU01)
+	
+	})
+	.catch(err =>{
+		console.log(err.message)
+	})
+
+	
 
 	if (user) {
 		// User is signed in, see docs for a list of available properties
 		// https://firebase.google.com/docs/reference/js/firebase.User
+		
+		
+		
+		
 		return (
 			<>
-				<Cards id='cardOne' prompt='Prompt One' code='Code One'> </Cards>
-				<Cards id='cardTwo' prompt='Prompt Two' code='Code Two'> </Cards>
+						
+				<Cards id='cardOne' prompt= {promptOne} code={codeOne}> </Cards>
+				<Cards id='cardTwo' prompt= {promptTwo} code='Code Two'> </Cards>
 				<Cards id='cardThree' prompt='Prompt Three' code='Code Three'> </Cards>
 				<Cards id='cardFour' prompt='Prompt Four' code='Code Four'> </Cards>
 				<Cards id='cardFive' prompt='Prompt Five' code='Code Five'> </Cards>
