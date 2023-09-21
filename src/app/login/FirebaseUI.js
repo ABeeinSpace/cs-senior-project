@@ -13,17 +13,12 @@ export default function FirebaseUI() {
 
 	var uiConfig = {
 		callbacks: {
-			// signInSuccessWithAuthResult: function (authResult, redirectUrl) {
-			// 	Firebase.auth(app).applyActionCode
-			// 	var displayName = user.displayName;
-			// 	var email = user.email;
-			// 	var emailVerified = user.emailVerified;
-			// 	var photoURL = user.photoURL;
-			// 	var uid = user.uid;
-			// 	var phoneNumber = user.phoneNumber;
-			// 	var providerData = user.providerData;
-			// 	return true;
-			// },
+			signInSuccessWithAuthResult: function (authResult, redirectUrl) {
+				if (authResult.additionalUserInfo.isNewUser) {
+
+				}
+				return true;
+			},
 		},
 
 		signInSuccessUrl: '/',
@@ -55,4 +50,11 @@ export default function FirebaseUI() {
 	ui.start('#firebaseui-auth-container', uiConfig);
 	// The start method will wait until the DOM is loaded.
 
+}
+
+function getAdditionalUserData(authResult) {
+	const db = getFirestore(); //Get a reference to the Firestore instance, using the Firebase reference we got previously.
+	const usersCollection = collection(db, 'users'); //Get a reference to the users collection in Firestore
+
+	
 }
