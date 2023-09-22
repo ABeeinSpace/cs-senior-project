@@ -7,9 +7,9 @@ import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'src/app/page.module.css';
-import {
-	getFirestore, collection, getDocs
-} from 'firebase/firestore'
+// import {
+// 	getFirestore, collection, getDocs
+// } from 'firebase/firestore'
 import { FirebaseContext } from "../FirebaseContext";
 
 export default function Write() {
@@ -40,7 +40,7 @@ export default function Write() {
 					This page is under construction. Please come back later for a super cool
 					AI-related project!
 				</p>
-				<UserTest />
+				{/* <UserTest /> */}
 			</Container>
 		</div>
 
@@ -76,17 +76,17 @@ function handleSignOut() {
 	});
 }
 
-function UserTest() {
-	const user = useContext(AuthContext);
-	if (user != null) {
+// function UserTest() {
+// 	const user = useContext(AuthContext);
+// 	if (user != null) {
 
-		const db = getFirestore(); //Get a reference to the Firestore instance, using the Firebase reference we got previously.
+// 		const db = getFirestore(); //Get a reference to the Firestore instance, using the Firebase reference we got previously.
 
-		const usersCollection = collection(db, 'users'); //Get a reference to the users collection in Firestore
-		getDocs(usersCollection).then((dbSnapshot) => {
-			console.log(dbSnapshot.docs[1].data())
-		})
-	}
+// 		const usersCollection = collection(db, 'users'); //Get a reference to the users collection in Firestore
+// 		getDocs(usersCollection).then((dbSnapshot) => {
+// 			console.log(dbSnapshot.docs[1].data())
+// 		})
+// 	}
 
 
-}
+// }
