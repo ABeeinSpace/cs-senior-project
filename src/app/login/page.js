@@ -49,7 +49,3 @@ export default function Login() {
 
 	)
 }
-
-function FirestoreTest(app) {
-
-}
