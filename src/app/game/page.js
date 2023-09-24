@@ -148,14 +148,23 @@ function RenderCards() {
 			<>
 						
 				<Cards id='cardOne' prompt= {promptOne} code={codeOne}> </Cards>
+				<br />
 				<Cards id='cardTwo' prompt= {promptTwo} code='Code Two'> </Cards>
+				<br />
 				<Cards id='cardThree' prompt='Prompt Three' code='Code Three'> </Cards>
+				<br />
 				<Cards id='cardFour' prompt='Prompt Four' code='Code Four'> </Cards>
+				<br />
 				<Cards id='cardFive' prompt='Prompt Five' code='Code Five'> </Cards>
+				<br />
 				<Cards id='cardSix' prompt='Prompt Six' code='Code Six'> </Cards>
+				<br />
 				<Cards id='cardSeven' prompt='Prompt Seven' code='Code Seven'> </Cards>
+				<br />
 				<Cards id='cardEight' prompt='Prompt Eight' code='Code Eight'> </Cards>
+				<br />
 				<Cards id='cardNine' prompt='Prompt Nine' code='Code Nine'> </Cards>
+				<br />
 				<Cards id='cardTen' prompt='Prompt Ten' code='Code Ten'> </Cards>
 			</>
 		)
