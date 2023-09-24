@@ -45,6 +45,11 @@
     color: whitesmoke;
     background-color: rgb(44, 47, 51);
   }
+
+  .card {
+    background-color: rgb(44, 47, 51) !important;
+    color: whitesmoke !important;
+  }
   :root {
     --foreground-rgb: 255, 255, 255;
     /* --background-end-rgb: 0, 0, 0; */
