@@ -1,11 +1,11 @@
 'use client'
 
-import { NavDropdown, Nav, Navbar, Container } from 'react-bootstrap';
+import { NavDropdown, Nav, Navbar, Container, Toast, ToastContainer, Spinner } from 'react-bootstrap';
 import firebase from "firebase/compat/app";
 import SignedOutToast from 'src/app/SignedOutToast.js';
 import { FirebaseContext, AuthContext } from "src/app/FirebaseContext.js";
 import "firebase/compat/auth";
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import app from "./Firebase";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'src/app/page.module.css';
@@ -13,6 +13,14 @@ import 'src/app/page.module.css';
 // import { auth } from 'firebaseui';
 
 export default function Home() {
+  const [show, setShow] = useState(false);
+
+  const [isLoading, setIsLoading] = useState(true)
+  useEffect(() => {
+    setTimeout(() => { // after some fake time, component will stop with render
+      setIsLoading(false);
+    }, 550);
+  }, []);
 
   // useEffect(() => {
   //   onAuthStateChanged(auth, (user) => {
@@ -34,7 +42,7 @@ export default function Home() {
 
   return (
     <div>
-      <Navbar bg="dark" data-bs-theme="dark">
+      <Navbar bg="dark" data-bs-theme="dark" expand="lg">
         <Container>
           <Navbar.Brand href="/">ChatGPTuring</Navbar.Brand>
           <Nav className="me-auto" activeKey="/">
@@ -43,11 +51,15 @@ export default function Home() {
             <Nav.Link href="./write">Write</Nav.Link>
           </Nav>
           <Nav>
-            <RenderLoginUI />
+            {isLoading && <Spinner animation="grow" role="status" variant='light' size='sm'>
+              <span className="visually-hidden">Loading...</span>
+            </Spinner>}
+            {!isLoading && <RenderLoginUI />}
           </Nav>
         </Container>
       </Navbar>
       <br />
+      <SignedOutToast />
       <div className="container">
         <h1>Home Page</h1>
         <p />
@@ -61,9 +73,10 @@ export default function Home() {
   )
 }
 
-function RenderLoginUI(app) {
-  var [setShow] = useState(false);
+function RenderLoginUI() {
+  const [show, setShow] = useState(false);
   const { user } = useContext(AuthContext);
+
 
   if (user != null) {
     // User is signed in, see docs for a list of available properties
@@ -75,8 +88,7 @@ function RenderLoginUI(app) {
         <NavDropdown.Divider />
         <NavDropdown.Item onClick={() => {
           firebase.auth().signOut().then(() => {
-            setShow = true;
-            <SignedOutToast />
+            setShow(true)
           }, function (error) {
             console.error('Sign Out Error', error);
           });

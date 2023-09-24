@@ -1,6 +1,7 @@
 'use client'
 
 import Container from 'react-bootstrap/Container';
+import { Spinner } from 'react-bootstrap';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
@@ -15,7 +16,7 @@ import app from '../Firebase';
 import { useState } from 'react';
 import {
 	getFirestore, collection, getDocs
-}from 'firebase/firestore'
+} from 'firebase/firestore'
 
 require('dotenv').config()
 
@@ -36,11 +37,11 @@ let code = []
 // import { collection, getDocs } from "firebase/firestore";
 // import {db} from '../Firebase';
 // import { useState } from ‘React’;
- 
+
 //    const [todos, setTodos] = useState([]);
- 
+
 //     const fetchPost = async () => {
-       
+
 //         await getDocs(collection(db, "todos"))
 //             .then((querySnapshot)=>{               
 //                 const newData = querySnapshot.docs
@@ -48,16 +49,21 @@ let code = []
 //                 setTodos(newData);                
 //                 console.log(todos, newData);
 //             })
-       
+
 //     }
-   
+
 //     useEffect(()=>{
 //         fetchPost();
 //     }, [])
 
 export default function Game() {
-	
-	
+
+	const [isLoading, setIsLoading] = useState(true)
+	useEffect(() => {
+		setTimeout(() => { // after some fake time, component will stop with render
+			setIsLoading(false);
+		}, 550);
+	}, []);
 
 	return (
 
@@ -71,7 +77,10 @@ export default function Game() {
 						<Nav.Link href="./write">Write</Nav.Link>
 					</Nav>
 					<Nav>
-						<RenderLoginUI />
+						{isLoading && <Spinner animation="grow" role="status" variant='light' size='sm'>
+							<span className="visually-hidden">Loading...</span>
+						</Spinner>}
+						{!isLoading && <RenderLoginUI />}
 					</Nav>
 				</Container>
 			</Navbar>
@@ -82,7 +91,10 @@ export default function Game() {
 			}} className="container">
 				<h1>Game Page</h1>
 				<p />
-				<RenderCards />
+				{isLoading && <Spinner animation="grow" role="status" variant='dark' size='sm'>
+					<span className="visually-hidden">Loading...</span>
+				</Spinner>}
+				{!isLoading && <RenderCards />}
 				<p>
 					This page is under construction. Please come back later for a super cool
 					AI-related project!
@@ -101,55 +113,55 @@ function RenderCards() {
 	const [codeOne, setCodeOne] = useState([]);
 	// const [promptTwo, setPromptTwo] = useState([]);
 	const { user } = useContext(AuthContext);
-	
+
 
 	getDocs(colRef)
-	.then((snapshot) => {
-		prompts = []
-		snapshot.docs.forEach((doc) =>{
-			prompts.push({...doc.data(), id: doc.id})
+		.then((snapshot) => {
+			prompts = []
+			snapshot.docs.forEach((doc) => {
+				prompts.push({ ...doc.data(), id: doc.id })
+			})
+
+			// prompt = prompts[0].prompt
+			setPromptOne(prompts[0].prompt)
+			setPromptTwo(prompts[1].prompt)
+
+
 		})
-		
-		// prompt = prompts[0].prompt
-		setPromptOne(prompts[0].prompt)
-		setPromptTwo(prompts[1].prompt)
-		
-	
-	})
-	.catch(err =>{
-		console.log(err.message)
-	})
+		.catch(err => {
+			console.log(err.message)
+		})
 
 
 	getDocs(colRefCode)
-	.then((snapshot) => {
-		code = []
-		snapshot.docs.forEach((doc) =>{
-			code.push({...doc.data(), id: doc.id})
-		})
-		
-		setCodeOne(code[0].EP001HU01)
-	
-	})
-	.catch(err =>{
-		console.log(err.message)
-	})
+		.then((snapshot) => {
+			code = []
+			snapshot.docs.forEach((doc) => {
+				code.push({ ...doc.data(), id: doc.id })
+			})
 
-	
+			setCodeOne(code[0].EP001HU01)
+
+		})
+		.catch(err => {
+			console.log(err.message)
+		})
+
+
 
 	if (user) {
 		// User is signed in, see docs for a list of available properties
 		// https://firebase.google.com/docs/reference/js/firebase.User
-		
-		
-		
-		
+
+
+
+
 		return (
 			<>
-						
-				<Cards id='cardOne' prompt= {promptOne} code={codeOne}> </Cards>
+
+				<Cards id='cardOne' prompt={promptOne} code={codeOne}> </Cards>
 				<br />
-				<Cards id='cardTwo' prompt= {promptTwo} code='Code Two'> </Cards>
+				<Cards id='cardTwo' prompt={promptTwo} code='Code Two'> </Cards>
 				<br />
 				<Cards id='cardThree' prompt='Prompt Three' code='Code Three'> </Cards>
 				<br />

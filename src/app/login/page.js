@@ -40,7 +40,7 @@ export default function Login() {
 					Please disable Firefox's Enhanced Tracking Protection or Safari's "Prevent cross-site tracking" to login
 				</Alert>
 				<Container id="firebaseui-auth-container">
-					<FirestoreTest />
+					{/* <FirestoreTest /> */}
 					<FirebaseUI />
 
 				</Container>
