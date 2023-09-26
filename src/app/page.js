@@ -42,20 +42,23 @@ export default function Home() {
 
   return (
     <div>
-      <Navbar bg="dark" data-bs-theme="dark" expand="lg">
+      <Navbar collapseOnSelect bg="dark" data-bs-theme="dark" expand="lg">
         <Container>
           <Navbar.Brand href="/">ChatGPTuring</Navbar.Brand>
-          <Nav className="me-auto" activeKey="/">
-            <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="./game">Game</Nav.Link>
-            <Nav.Link href="./write">Write</Nav.Link>
-          </Nav>
-          <Nav>
-            {isLoading && <Spinner animation="grow" role="status" variant='light' size='sm'>
-              <span className="visually-hidden">Loading...</span>
-            </Spinner>}
-            {!isLoading && <RenderLoginUI />}
-          </Nav>
+          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+          <Navbar.Collapse>
+            <Nav className="me-auto" activeKey="/">
+              <Nav.Link href="/">Home</Nav.Link>
+              <Nav.Link href="./game">Game</Nav.Link>
+              <Nav.Link href="./write">Write</Nav.Link>
+            </Nav>
+            <Nav>
+              {isLoading && <Spinner animation="grow" role="status" variant='light' size='sm'>
+                <span className="visually-hidden">Loading...</span>
+              </Spinner>}
+              {!isLoading && <RenderLoginUI />}
+            </Nav>
+          </Navbar.Collapse>
         </Container>
       </Navbar>
       <br />

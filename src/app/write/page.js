@@ -1,7 +1,7 @@
 'use client'
 
-import React, { useContext, useEffect } from "react";
-import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
+import React, { useContext, useEffect, useState } from "react";
+import { Container, Nav, Navbar, NavDropdown, Spinner } from 'react-bootstrap';
 import { AuthContext } from "src/app/FirebaseContext.js";
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
@@ -14,19 +14,33 @@ import { FirebaseContext } from "../FirebaseContext";
 
 export default function Write() {
 
+	const [isLoading, setIsLoading] = useState(true)
+	useEffect(() => {
+		setTimeout(() => { // after some fake time, component will stop with render
+			setIsLoading(false);
+		}, 550);
+	}, []);
+
+
 	return (
 		<div>
-			<Navbar bg="dark" data-bs-theme="dark">
+			<Navbar collapseOnSelect expand="lg" bg="dark" data-bs-theme="dark">
 				<Container>
 					<Navbar.Brand href="/">ChatGPTuring</Navbar.Brand>
-					<Nav className="me-auto" activeKey="./write">
-						<Nav.Link href="/">Home</Nav.Link>
-						<Nav.Link href="./game">Game</Nav.Link>
-						<Nav.Link href="./write">Write</Nav.Link>
-					</Nav>
-					<Nav>
-						<RenderLoginUI />
-					</Nav>
+					<Navbar.Toggle aria-controls="responsive-navbar-nav" />
+					<Navbar.Collapse>
+						<Nav className="me-auto" activeKey="./write">
+							<Nav.Link href="/">Home</Nav.Link>
+							<Nav.Link href="./game">Game</Nav.Link>
+							<Nav.Link href="./write">Write</Nav.Link>
+						</Nav>
+						<Nav>
+							{isLoading && <Spinner animation="grow" role="status" variant='light' size='sm'>
+								<span className="visually-hidden">Loading...</span>
+							</Spinner>}
+							{!isLoading && <RenderLoginUI />}
+						</Nav>
+					</Navbar.Collapse>
 				</Container>
 			</Navbar>
 			<br />
