@@ -6,6 +6,9 @@ import app from "src/app/Firebase.js";
 import 'firebaseui/dist/firebaseui.css'
 import * as firebaseui from 'firebaseui'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import {
+	getFirestore, collection, getDocs, doc, setDoc, getDoc
+} from 'firebase/firestore'
 import 'src/app/page.module.css';
 
 
@@ -13,17 +16,30 @@ export default function FirebaseUI() {
 
 	var uiConfig = {
 		callbacks: {
-			// signInSuccessWithAuthResult: function (authResult, redirectUrl) {
-			// 	Firebase.auth(app).applyActionCode
-			// 	var displayName = user.displayName;
-			// 	var email = user.email;
-			// 	var emailVerified = user.emailVerified;
-			// 	var photoURL = user.photoURL;
-			// 	var uid = user.uid;
-			// 	var phoneNumber = user.phoneNumber;
-			// 	var providerData = user.providerData;
-			// 	return true;
-			// },
+			signInSuccessWithAuthResult: function (authResult, redirectUrl) {
+				// if (!authResult.additionalUserInfo.isNewUser) {
+				const db = getFirestore(); //Get a reference to the Firestore instance, using the Firebase reference we got previously.
+
+				// const docReference = doc(db, "users", authResult.user.uid)
+				// const docSnap = await getDoc(docReference)
+
+
+				// if (!docSnap.exists()) {
+				// 	console.log("Doc does not exist!")
+				// }
+
+				setDoc(doc(db, "users", authResult.user.uid), {
+					hasGuessed: false,
+					isStudent: false,
+					userID: authResult.user.uid
+				}).then(() => {
+					location.assign("http://localhost:3000")
+				});
+				// }
+
+
+				return false;
+			},
 		},
 
 		signInSuccessUrl: '/',
@@ -55,4 +71,16 @@ export default function FirebaseUI() {
 	ui.start('#firebaseui-auth-container', uiConfig);
 	// The start method will wait until the DOM is loaded.
 
+}
+
+async function createAdditionalUserInfo(authResult) {
+	const db = getFirestore(); //Get a reference to the Firestore instance, using the Firebase reference we got previously.
+
+	const docReference = doc(db, "users", authResult.user.uid)
+	const docSnap = await getDoc(docReference)
+
+
+	if (docSnap.exists() == false) {
+		console.log("Doc does not exist!")
+	}
 }
