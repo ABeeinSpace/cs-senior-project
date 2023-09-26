@@ -2,16 +2,13 @@
 
 import React, { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
+import { Alert, Container, Nav, Navbar } from "react-bootstrap";
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 import app from "src/app/Firebase.js";
 import 'firebaseui/dist/firebaseui.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'src/app/page.module.css';
-import { Alert, Container, Nav, Navbar } from "react-bootstrap";
-
-// import * as firebaseui from 'firebaseui'
-
 
 export default function Login() {
 
@@ -39,11 +36,12 @@ export default function Login() {
 			<div className="container">
 				<h1>Login</h1>
 				<p />
-				<Alert variant="primary">
+				<Alert id="loginAlert" variant="primary">
 					Please disable Firefox's Enhanced Tracking Protection or Safari's "Prevent cross-site tracking" to login
 				</Alert>
 				<Container id="firebaseui-auth-container">
-					< FirebaseUI />
+					{/* <FirestoreTest /> */}
+					<FirebaseUI />
 
 				</Container>
 			</div>

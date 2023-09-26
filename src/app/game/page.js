@@ -1,6 +1,7 @@
 'use client'
 
 import Container from 'react-bootstrap/Container';
+import { Spinner } from 'react-bootstrap';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
@@ -15,7 +16,7 @@ import app from '../Firebase';
 import { useState, useRef} from 'react';
 import {
 	getFirestore, collection, getDocs
-}from 'firebase/firestore'
+} from 'firebase/firestore'
 
 require('dotenv').config()
 
@@ -35,11 +36,11 @@ let humanOrArtificial = []
 // import { collection, getDocs } from "firebase/firestore";
 // import {db} from '../Firebase';
 // import { useState } from ‘React’;
- 
+
 //    const [todos, setTodos] = useState([]);
- 
+
 //     const fetchPost = async () => {
-       
+
 //         await getDocs(collection(db, "todos"))
 //             .then((querySnapshot)=>{               
 //                 const newData = querySnapshot.docs
@@ -47,34 +48,42 @@ let humanOrArtificial = []
 //                 setTodos(newData);                
 //                 console.log(todos, newData);
 //             })
-       
+
 //     }
-   
+
 //     useEffect(()=>{
 //         fetchPost();
 //     }, [])
 
 export default function Game() {
-	
-	
+
+	const [isLoading, setIsLoading] = useState(true)
+	useEffect(() => {
+		setTimeout(() => { // after some fake time, component will stop with render
+			setIsLoading(false);
+		}, 550);
+	}, []);
 
 	return (
 
 		<div>
-			<meta charSet="UTF-8" />
-			<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-			<title>Turing Test-Inator!</title>
-			<Navbar bg="dark" data-bs-theme="dark">
+			<Navbar collapseOnSelect expand="lg" bg="dark" data-bs-theme="dark">
 				<Container>
 					<Navbar.Brand href="/">ChatGPTuring</Navbar.Brand>
-					<Nav className="me-auto" activeKey="./game">
-						<Nav.Link href="/">Home</Nav.Link>
-						<Nav.Link href="./game">Game</Nav.Link>
-						<Nav.Link href="./write">Write</Nav.Link>
-					</Nav>
-					<Nav>
-						<RenderLoginUI />
-					</Nav>
+					<Navbar.Toggle aria-controls="responsive-navbar-nav" />
+					<Navbar.Collapse>
+						<Nav className="me-auto" activeKey="./game">
+							<Nav.Link href="/">Home</Nav.Link>
+							<Nav.Link href="./game">Game</Nav.Link>
+							<Nav.Link href="./write">Write</Nav.Link>
+						</Nav>
+						<Nav>
+							{isLoading && <Spinner animation="grow" role="status" variant='light' size='sm'>
+								<span className="visually-hidden">Loading...</span>
+							</Spinner>}
+							{!isLoading && <RenderLoginUI />}
+						</Nav>
+					</Navbar.Collapse>
 				</Container>
 			</Navbar>
 			<br />
@@ -84,8 +93,10 @@ export default function Game() {
 			}} className="container">
 				<h1>Game Page</h1>
 				<p />
-				
-				<RenderCards />
+				{isLoading && <Spinner animation="grow" role="status" size='sm'>
+					<span className="visually-hidden">Loading...</span>
+				</Spinner>}
+				{!isLoading && <RenderCards />}
 				<p>
 					This page is under construction. Please come back later for a super cool
 					AI-related project!
@@ -352,18 +363,17 @@ function RenderCards() {
 }
 		return (
 			<>
-			
-			
-				<Cards id='cardOne' prompt= {ref.current} code={refCode.current}> </Cards>
-				<Cards id='cardTwo' prompt= {ref2.current} code= {ref2Code.current}> </Cards>
-				<Cards id='cardThree' prompt={ref3.current} code={ref3Code.current}> </Cards>
-				<Cards id='cardFour' prompt={ref4.current} code= {ref4Code.current}> </Cards>
-				<Cards id='cardFive' prompt={ref5.current} code={ref5Code.current}> </Cards>
-				<Cards id='cardSix' prompt={ref6.current} code= {ref6Code.current}> </Cards>
-				<Cards id='cardSeven' prompt={ref7.current} code={ref7Code.current}> </Cards>
-				<Cards id='cardEight' prompt={ref8.current} code={ref8Code.current}> </Cards>
-				<Cards id='cardNine' prompt={ref9.current} code={ref9Code.current}> </Cards>
-				<Cards id='cardTen' prompt={ref10.current} code={ref10Code.current}> </Cards>
+						
+				<Cards id='cardOne' prompt= {promptOne} code={codeOne}> </Cards>
+				<Cards id='cardTwo' prompt= {promptTwo} code='Code Two'> </Cards>
+				<Cards id='cardThree' prompt='Prompt Three' code='Code Three'> </Cards>
+				<Cards id='cardFour' prompt='Prompt Four' code='Code Four'> </Cards>
+				<Cards id='cardFive' prompt='Prompt Five' code='Code Five'> </Cards>
+				<Cards id='cardSix' prompt='Prompt Six' code='Code Six'> </Cards>
+				<Cards id='cardSeven' prompt='Prompt Seven' code='Code Seven'> </Cards>
+				<Cards id='cardEight' prompt='Prompt Eight' code='Code Eight'> </Cards>
+				<Cards id='cardNine' prompt='Prompt Nine' code='Code Nine'> </Cards>
+				<Cards id='cardTen' prompt='Prompt Ten' code='Code Ten'> </Cards>
 			</>
 		)
 			

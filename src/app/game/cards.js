@@ -1,5 +1,6 @@
 import Button from './button';
 import Card from 'react-bootstrap/Card';
+import 'src/app/page.module.css'
 
 function Cards(props) {
 
