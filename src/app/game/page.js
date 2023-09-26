@@ -364,16 +364,16 @@ function RenderCards() {
 		return (
 			<>
 						
-				<Cards id='cardOne' prompt= {promptOne} code={codeOne}> </Cards>
-				<Cards id='cardTwo' prompt= {promptTwo} code='Code Two'> </Cards>
-				<Cards id='cardThree' prompt='Prompt Three' code='Code Three'> </Cards>
-				<Cards id='cardFour' prompt='Prompt Four' code='Code Four'> </Cards>
-				<Cards id='cardFive' prompt='Prompt Five' code='Code Five'> </Cards>
-				<Cards id='cardSix' prompt='Prompt Six' code='Code Six'> </Cards>
-				<Cards id='cardSeven' prompt='Prompt Seven' code='Code Seven'> </Cards>
-				<Cards id='cardEight' prompt='Prompt Eight' code='Code Eight'> </Cards>
-				<Cards id='cardNine' prompt='Prompt Nine' code='Code Nine'> </Cards>
-				<Cards id='cardTen' prompt='Prompt Ten' code='Code Ten'> </Cards>
+				<Cards id='cardOne' prompt= {ref.current} code={refCode.current}> </Cards>
+				<Cards id='cardTwo' prompt= {ref2.current} code= {ref2Code.current}> </Cards>
+				<Cards id='cardThree' prompt={ref3.current} code={ref3Code.current}> </Cards>
+				<Cards id='cardFour' prompt={ref4.current} code= {ref4Code.current}> </Cards>
+				<Cards id='cardFive' prompt={ref5.current} code={ref5Code.current}> </Cards>
+				<Cards id='cardSix' prompt={ref6.current} code= {ref6Code.current}> </Cards>
+				<Cards id='cardSeven' prompt={ref7.current} code={ref7Code.current}> </Cards>
+				<Cards id='cardEight' prompt={ref8.current} code={ref8Code.current}> </Cards>
+				<Cards id='cardNine' prompt={ref9.current} code={ref9Code.current}> </Cards>
+				<Cards id='cardTen' prompt={ref10.current} code={ref10Code.current}> </Cards>
 			</>
 		)
 			
