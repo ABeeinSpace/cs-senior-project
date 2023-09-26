@@ -91,7 +91,7 @@ export default function Game() {
 			}} className="container">
 				<h1>Game Page</h1>
 				<p />
-				{isLoading && <Spinner animation="grow" role="status" variant='dark' size='sm'>
+				{isLoading && <Spinner animation="grow" role="status" size='sm'>
 					<span className="visually-hidden">Loading...</span>
 				</Spinner>}
 				{!isLoading && <RenderCards />}
