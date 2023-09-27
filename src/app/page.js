@@ -19,7 +19,7 @@ export default function Home() {
   useEffect(() => {
     setTimeout(() => { // after some fake time, component will stop with render
       setIsLoading(false);
-    }, 550);
+    }, 750);
   }, []);
 
   // useEffect(() => {
