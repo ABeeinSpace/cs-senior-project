@@ -54,8 +54,7 @@ export default function FirebaseUI() {
 					// is available.
 					prompt: 'select_account'
 				}
-			}, firebase.auth.PhoneAuthProvider.PROVIDER_ID,
-			firebaseui.auth.AnonymousAuthProvider.PROVIDER_ID
+			}, firebase.auth.EmailAuthProvider.PROVIDER_ID,
 		],
 		// tosUrl and privacyPolicyUrl accept either url string or a callback
 		// function.
