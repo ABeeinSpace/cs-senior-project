@@ -1,6 +1,6 @@
 'use client'
 
-import { NavDropdown, Nav, Navbar, Container, Toast, ToastContainer, Spinner, Form } from 'react-bootstrap';
+import { NavDropdown, Nav, Navbar, Container, Toast, ToastContainer, Spinner, Form, Button } from 'react-bootstrap';
 import firebase from "firebase/compat/app";
 import SignedOutToast from 'src/app/SignedOutToast.js';
 import { FirebaseContext, AuthContext } from "src/app/FirebaseContext.js";
@@ -9,6 +9,9 @@ import React, { useState, useContext, useEffect } from "react";
 import app from '../Firebase';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'src/app/page.module.css';
+import {
+	getFirestore, collection, getDocs
+} from 'firebase/firestore'
 // import App from 'next/app';
 // import { auth } from 'firebaseui';
 
@@ -50,26 +53,33 @@ export default function SingedIn() {
 					Enter additional information to complete sign-up:
 				</p>
 				<Form>
-					{['radio'].map((type) => (
+					{['checkbox'].map((type) => (
 						<div key={`default-${type}`} className="mb-3">
 
 							<Form.Check
 								type={type}
-								label={`Student`}
+								label={`I am a faculty member`}
 								id={`default-${type}-1`}
 							/>
 							<Form.Check
 								type={type}
-								label={`Faculty`}
-								id={`default-${type}-2`}
+								label={`I have read and agree to the terms `}
+								id={`default-${type}-1`}
 							/>
 						</div>
 					))}
+					<Button variant='primary' onClick={() =>{submitForm()} }>Submit</Button>
 				</Form>
 			</div>
 
 		</>
 	)
+}
+
+function submitForm() {
+	const db = getFirestore()
+	
+
 }
 
 function RenderLoginUI() {
