@@ -10,7 +10,7 @@ import app from '../Firebase';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'src/app/page.module.css';
 import {
-	getFirestore, collection, getDocs
+	getFirestore, collection, getDocs, doc, getDoc
 } from 'firebase/firestore'
 // import App from 'next/app';
 // import { auth } from 'firebaseui';
@@ -23,6 +23,17 @@ export default function SingedIn() {
 			setIsLoading(false);
 		}, 750);
 	}, []);
+
+	const { user } = useContext(AuthContext);
+
+	const onFormSubmit = e => {
+		e.preventDefault()
+		const formData = new FormData(e.target),
+			formDataObj = Object.fromEntries(formData.entries())
+		console.log(formDataObj)
+	}
+
+	const { } = useState();
 
 	return (
 		<>
@@ -52,7 +63,7 @@ export default function SingedIn() {
 				<p>
 					Enter additional information to complete sign-up:
 				</p>
-				<Form>
+				<Form onSubmit={ onFormSubmit }>
 					{['checkbox'].map((type) => (
 						<div key={`default-${type}`} className="mb-3">
 
@@ -60,6 +71,7 @@ export default function SingedIn() {
 								type={type}
 								label={`I am a faculty member`}
 								id={`default-${type}-1`}
+								
 							/>
 							<Form.Check
 								type={type}
@@ -68,7 +80,7 @@ export default function SingedIn() {
 							/>
 						</div>
 					))}
-					<Button variant='primary' onClick={() =>{submitForm()} }>Submit</Button>
+					<Button variant='primary' type='submit'>Submit</Button>
 				</Form>
 			</div>
 
@@ -76,9 +88,14 @@ export default function SingedIn() {
 	)
 }
 
-function submitForm() {
-	const db = getFirestore()
-	
+async function submitForm(user) {
+
+	const db = getFirestore(app);
+	// var doc = collection(db, "users").doc()
+	var docReference = doc(db, "users", user.uid)
+	var docSnapshot = await getDoc(docReference);
+	console.log(docSnapshot.data())
+
 
 }
 
