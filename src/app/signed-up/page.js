@@ -10,7 +10,7 @@ import app from '../Firebase';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'src/app/page.module.css';
 import {
-	getFirestore, collection, getDocs, doc, getDoc
+	getFirestore, collection, getDocs, doc, getDoc, updateDoc
 } from 'firebase/firestore'
 // import App from 'next/app';
 // import { auth } from 'firebaseui';
@@ -34,6 +34,12 @@ export default function SingedIn() {
 	}
 
 	const { } = useState();
+
+	var isFaculty = React.createRef();
+
+	const updateIsFaculty = () => {
+		isFaculty = isFaculty.current;
+	};
 
 	return (
 		<>
@@ -63,24 +69,27 @@ export default function SingedIn() {
 				<p>
 					Enter additional information to complete sign-up:
 				</p>
-				<Form onSubmit={ onFormSubmit }>
+				<Form onSubmit={() => { onFormSubmit }}>
 					{['checkbox'].map((type) => (
 						<div key={`default-${type}`} className="mb-3">
 
 							<Form.Check
+								ref={isFaculty}
 								type={type}
 								label={`I am a faculty member`}
 								id={`default-${type}-1`}
-								
+								checked={isFaculty.current.value}
+								onChange={updateIsFaculty}
 							/>
 							<Form.Check
 								type={type}
 								label={`I have read and agree to the terms `}
 								id={`default-${type}-1`}
+
 							/>
 						</div>
 					))}
-					<Button variant='primary' type='submit'>Submit</Button>
+					<Button variant='primary' onClick={() => { submitForm(user, isFaculty) }}>Submit</Button>
 				</Form>
 			</div>
 
@@ -88,13 +97,16 @@ export default function SingedIn() {
 	)
 }
 
-async function submitForm(user) {
+async function submitForm(user, isFaculty) {
 
 	const db = getFirestore(app);
 	// var doc = collection(db, "users").doc()
 	var docReference = doc(db, "users", user.uid)
-	var docSnapshot = await getDoc(docReference);
-	console.log(docSnapshot.data())
+	// var docSnapshot = await getDoc(docReference);
+	console.log(!isFaculty.current.value)
+	// await updateDoc(docReference, {
+	// 	isStudent: !isFaculty.current.value
+	// })
 
 
 }
