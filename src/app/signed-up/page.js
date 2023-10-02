@@ -2,7 +2,7 @@
 
 import { NavDropdown, Nav, Navbar, Container, Toast, ToastContainer, Spinner, Form, Button } from 'react-bootstrap';
 import firebase from "firebase/compat/app";
-import SignedOutToast from 'src/app/SignedOutToast.js';
+// import SignedOutToast from 'src/app/SignedOutToast.js';
 import { FirebaseContext, AuthContext } from "src/app/FirebaseContext.js";
 import "firebase/compat/auth";
 import React, { useState, useContext, useEffect } from "react";
@@ -26,20 +26,8 @@ export default function SingedIn() {
 
 	const { user } = useContext(AuthContext);
 
-	const onFormSubmit = e => {
-		e.preventDefault()
-		const formData = new FormData(e.target),
-			formDataObj = Object.fromEntries(formData.entries())
-		console.log(formDataObj)
-	}
-
-	const { } = useState();
-
-	var isFaculty = React.createRef();
-
-	const updateIsFaculty = () => {
-		isFaculty = isFaculty.current;
-	};
+	const { isFaculty, setisFaculty} = useState(false);
+	const { termsAgreedTo, setTermsAgreedTo} = useState(false);
 
 	return (
 		<>
@@ -48,7 +36,7 @@ export default function SingedIn() {
 					<Navbar.Brand href="/">ChatGPTuring</Navbar.Brand>
 					<Navbar.Toggle aria-controls="responsive-navbar-nav" />
 					<Navbar.Collapse>
-						<Nav className="me-auto" activeKey="/">
+						<Nav className="me-auto">
 							<Nav.Link href="/">Home</Nav.Link>
 							<Nav.Link href="./game">Game</Nav.Link>
 							<Nav.Link href="./write">Write</Nav.Link>
@@ -69,22 +57,24 @@ export default function SingedIn() {
 				<p>
 					Enter additional information to complete sign-up:
 				</p>
-				<Form onSubmit={() => { onFormSubmit }}>
+				<Form>
 					{['checkbox'].map((type) => (
 						<div key={`default-${type}`} className="mb-3">
 
 							<Form.Check
 								ref={isFaculty}
 								type={type}
-								label={`I am a faculty member`}
+								label={`I am a student`}
 								id={`default-${type}-1`}
-								checked={isFaculty.current.value}
-								onChange={updateIsFaculty}
+								checked={isFaculty}
+								onChange={setisFaculty}
 							/>
 							<Form.Check
 								type={type}
 								label={`I have read and agree to the terms `}
-								id={`default-${type}-1`}
+								id={`default-${type}-2`}
+								checked={termsAgreedTo}
+								onChange={setTermsAgreedTo}
 
 							/>
 						</div>
@@ -103,11 +93,13 @@ async function submitForm(user, isFaculty) {
 	// var doc = collection(db, "users").doc()
 	var docReference = doc(db, "users", user.uid)
 	// var docSnapshot = await getDoc(docReference);
-	console.log(!isFaculty.current.value)
-	// await updateDoc(docReference, {
-	// 	isStudent: !isFaculty.current.value
-	// })
+	// var isFaculty = isFaculty.current
+	// console.log(isFaculty.current.checked)
+	await updateDoc(docReference, {
+		isStudent: isFaculty
+	})
 
+	location.assign("/")
 
 }
 
