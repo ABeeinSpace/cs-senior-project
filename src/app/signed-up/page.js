@@ -26,7 +26,7 @@ export default function SingedIn() {
 
 	const { user } = useContext(AuthContext);
 
-	const { isFaculty, setisFaculty} = useState(false);
+	const { isFaculty, setisFaculty} = useState("false");
 	const { termsAgreedTo, setTermsAgreedTo} = useState(false);
 
 	return (
@@ -62,11 +62,11 @@ export default function SingedIn() {
 						<div key={`default-${type}`} className="mb-3">
 
 							<Form.Check
-								ref={isFaculty}
-								type={type}
+								// ref={isFaculty}
+								type={"checkbox"}
 								label={`I am a student`}
 								id={`default-${type}-1`}
-								checked={isFaculty}
+								// checked={isFaculty}
 								onChange={setisFaculty}
 							/>
 							<Form.Check
@@ -94,7 +94,7 @@ async function submitForm(user, isFaculty) {
 	var docReference = doc(db, "users", user.uid)
 	// var docSnapshot = await getDoc(docReference);
 	// var isFaculty = isFaculty.current
-	// console.log(isFaculty.current.checked)
+	// console.log(isFaculty)
 	await updateDoc(docReference, {
 		isStudent: isFaculty
 	})
