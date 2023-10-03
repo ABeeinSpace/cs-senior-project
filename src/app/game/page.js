@@ -15,7 +15,7 @@ import 'src/app/page.module.css';
 import app from '../Firebase';
 import { useState, useRef} from 'react';
 import {
-	getFirestore, collection, getDocs
+	getFirestore, collection, getDocs, updateDoc, doc
 } from 'firebase/firestore'
 
 require('dotenv').config()
@@ -114,9 +114,7 @@ const randomNumberInRange = (min, max) => {
 };
 
 
-function RenderCards() {
-	console.log('rendering')
-	
+function RenderCards() {	
 	const ref = useRef('First Prompt');
 	const ref2 = useRef('Second Prompt');
 	const ref3= useRef('Third Prompt');
@@ -139,6 +137,28 @@ function RenderCards() {
 	const ref9Code = useRef('Ninth Code');
 	const ref10Code = useRef('Tenth Code');
 
+	const refObjectOne = useRef()
+	const refObjectTwo = useRef()
+	const refObjectThree = useRef()
+	const refObjectFour = useRef()
+	const refObjectFive = useRef()
+	const refObjectSix = useRef()
+	const refObjectSeven = useRef()
+	const refObjectEight = useRef()
+	const refObjectNine = useRef()
+	const refObjectTen = useRef()
+
+	const refCodeSelectorOne = useRef(0)
+	const refCodeSelectorTwo = useRef(0)
+	const refCodeSelectorThree = useRef(0)
+	const refCodeSelectorFour = useRef(0)
+	const refCodeSelectorFive = useRef(0)
+	const refCodeSelectorSix = useRef(0)
+	const refCodeSelectorSeven = useRef(0)
+	const refCodeSelectorEight = useRef(0)
+	const refCodeSelectorNine = useRef(0)
+	const refCodeSelectorTen = useRef(0)
+
 	const [toggled, setToggled] = useState(false);
 	const { user } = useContext(AuthContext);
 	
@@ -149,21 +169,16 @@ function RenderCards() {
 		
 
 		if(!toggled){
-		console.log('calling database')
 	 getDocs(colRef)
 	.then((snapshot) => {
-		console.log('set prompts')
 		
 		snapshot.docs.forEach((doc) =>{
 			prompts.push({...doc.data(), id: doc.id})
 		})
-		console.log(prompts);
-		console.log(prompts.length)
-		
+
 		var selectPrompt1 = randomNumberInRange(0, prompts.length-1)
 		ref.current = prompts[selectPrompt1].prompt
-		console.log(ref)
-		console.log(ref2)
+		refObjectOne.current = prompts[selectPrompt1];         
 		
 		let selectPrompt2 = randomNumberInRange(0, prompts.length-1)
 		while(true){
@@ -240,111 +255,140 @@ function RenderCards() {
 		}
 
 		ref2.current = prompts[selectPrompt2].prompt
+		refObjectTwo.current = prompts[selectPrompt2];
 		ref3.current = prompts[selectPrompt3].prompt
+		refObjectThree.current = prompts[selectPrompt3];
 		ref4.current = prompts[selectPrompt4].prompt
+		refObjectFour.current = prompts[selectPrompt4];
 		ref5.current = prompts[selectPrompt5].prompt
+		refObjectFive.current = prompts[selectPrompt5];
 		ref6.current = prompts[selectPrompt6].prompt
+		refObjectSix.current = prompts[selectPrompt6];
 		ref7.current = prompts[selectPrompt7].prompt
+		refObjectSeven.current = prompts[selectPrompt7];
 		ref8.current = prompts[selectPrompt8].prompt
+		refObjectEight.current = prompts[selectPrompt8];
 		ref9.current = prompts[selectPrompt9].prompt
+		refObjectNine.current = prompts[selectPrompt9];
 		ref10.current = prompts[selectPrompt10].prompt
+		refObjectTen.current = prompts[selectPrompt10];
 
 		let selectIndex =0
 		let selectArray = randomNumberInRange(0,1)
 		if(selectArray == 0){
 			selectIndex = randomNumberInRange(0, prompts[selectPrompt1].AIResponses.length-1)
 			refCode.current =  prompts[selectPrompt1].AIResponses[selectIndex]
+			refCodeSelectorOne.current = 0
 		}else{
 			selectIndex = randomNumberInRange(0, prompts[selectPrompt1].HumanResponses.length-1) 
 			refCode.current =  prompts[selectPrompt1].HumanResponses[selectIndex]
+			refCodeSelectorOne.current = 1
 		}
 
 		selectArray = randomNumberInRange(0,1)
 		if(selectArray == 0){
 			selectIndex = randomNumberInRange(0, prompts[selectPrompt2].AIResponses.length-1)
 			ref2Code.current =  prompts[selectPrompt2].AIResponses[selectIndex]
+			refCodeSelectorTwo.current = 0
 		}else{
 			selectIndex = randomNumberInRange(0, prompts[selectPrompt2].HumanResponses.length-1) 
 			ref2Code.current =  prompts[selectPrompt2].HumanResponses[selectIndex]
+			refCodeSelectorTwo.current = 1
 		}
 
 		selectArray = randomNumberInRange(0,1)
 		if(selectArray == 0){
 			selectIndex = randomNumberInRange(0, prompts[selectPrompt3].AIResponses.length-1)
 			ref3Code.current =  prompts[selectPrompt3].AIResponses[selectIndex]
+			refCodeSelectorThree.current = 0
 		}else{
 			selectIndex = randomNumberInRange(0, prompts[selectPrompt3].HumanResponses.length-1) 
 			ref3Code.current =  prompts[selectPrompt3].HumanResponses[selectIndex]
+			refCodeSelectorThree.current = 1
 		}
 
 		selectArray = randomNumberInRange(0,1)
 		if(selectArray == 0){
 			selectIndex = randomNumberInRange(0, prompts[selectPrompt4].AIResponses.length-1)
 			ref4Code.current =  prompts[selectPrompt4].AIResponses[selectIndex]
+			refCodeSelectorFour.current = 0
 		}else{
 			selectIndex = randomNumberInRange(0, prompts[selectPrompt4].HumanResponses.length-1) 
 			ref4Code.current =  prompts[selectPrompt4].HumanResponses[selectIndex]
+			refCodeSelectorFour.current = 1
 		}
 
 		selectArray = randomNumberInRange(0,1)
 		if(selectArray == 0){
 			selectIndex = randomNumberInRange(0, prompts[selectPrompt5].AIResponses.length-1)
 			ref5Code.current =  prompts[selectPrompt5].AIResponses[selectIndex]
+			refCodeSelectorFive.current = 0
 		}else{
 			selectIndex = randomNumberInRange(0, prompts[selectPrompt5].HumanResponses.length-1) 
 			ref5Code.current =  prompts[selectPrompt5].HumanResponses[selectIndex]
+			refCodeSelectorFive.current = 1
 		}
 
 		selectArray = randomNumberInRange(0,1)
 		if(selectArray == 0){
 			selectIndex = randomNumberInRange(0, prompts[selectPrompt6].AIResponses.length-1)
 			ref6Code.current =  prompts[selectPrompt6].AIResponses[selectIndex]
+			refCodeSelectorSix.current = 0
 		}else{
 			selectIndex = randomNumberInRange(0, prompts[selectPrompt6].HumanResponses.length-1) 
 			ref6Code.current =  prompts[selectPrompt6].HumanResponses[selectIndex]
+			refCodeSelectorSix.current = 1
 		}
 		
 		selectArray = randomNumberInRange(0,1)
 		if(selectArray == 0){
 			selectIndex = randomNumberInRange(0, prompts[selectPrompt7].AIResponses.length-1)
 			ref7Code.current =  prompts[selectPrompt7].AIResponses[selectIndex]
+			refCodeSelectorSeven.current = 0
 		}else{
 			selectIndex = randomNumberInRange(0, prompts[selectPrompt7].HumanResponses.length-1) 
 			ref7Code.current =  prompts[selectPrompt7].HumanResponses[selectIndex]
+			refCodeSelectorSeven.current = 1
 		}
 
 		selectArray = randomNumberInRange(0,1)
 		if(selectArray == 0){
 			selectIndex = randomNumberInRange(0, prompts[selectPrompt8].AIResponses.length-1)
 			ref8Code.current =  prompts[selectPrompt8].AIResponses[selectIndex]
+			refCodeSelectorEight.current = 0
 		}else{
 			selectIndex = randomNumberInRange(0, prompts[selectPrompt8].HumanResponses.length-1) 
 			ref8Code.current =  prompts[selectPrompt8].HumanResponses[selectIndex]
+			refCodeSelectorEight.current = 1
 		}
 
 		selectArray = randomNumberInRange(0,1)
 		if(selectArray == 0){
 			selectIndex = randomNumberInRange(0, prompts[selectPrompt9].AIResponses.length-1)
 			ref9Code.current =  prompts[selectPrompt9].AIResponses[selectIndex]
+			refCodeSelectorNine.current = 0
 		}else{
 			selectIndex = randomNumberInRange(0, prompts[selectPrompt9].HumanResponses.length-1) 
 			ref9Code.current =  prompts[selectPrompt9].HumanResponses[selectIndex]
+			refCodeSelectorNine.current = 1
 		}
 
 		selectArray = randomNumberInRange(0,1)
 		if(selectArray == 0){
 			selectIndex = randomNumberInRange(0, prompts[selectPrompt10].AIResponses.length-1)
 			ref10Code.current =  prompts[selectPrompt10].AIResponses[selectIndex]
+			refCodeSelectorTen.current = 0
 		}else{
 			selectIndex = randomNumberInRange(0, prompts[selectPrompt10].HumanResponses.length-1) 
 			ref10Code.current =  prompts[selectPrompt10].HumanResponses[selectIndex]
+			refCodeSelectorTen.current = 1
 		}
 
 
 
 		setToggled(true)
 
-		console.log(prompts[selectPrompt1].prompt);
+	
 
 	
 		
@@ -364,16 +408,16 @@ function RenderCards() {
 		return (
 			<>
 						
-				<Cards id='cardOne' prompt= {ref.current} code={refCode.current}> </Cards>
-				<Cards id='cardTwo' prompt= {ref2.current} code= {ref2Code.current}> </Cards>
-				<Cards id='cardThree' prompt={ref3.current} code={ref3Code.current}> </Cards>
-				<Cards id='cardFour' prompt={ref4.current} code= {ref4Code.current}> </Cards>
-				<Cards id='cardFive' prompt={ref5.current} code={ref5Code.current}> </Cards>
-				<Cards id='cardSix' prompt={ref6.current} code= {ref6Code.current}> </Cards>
-				<Cards id='cardSeven' prompt={ref7.current} code={ref7Code.current}> </Cards>
-				<Cards id='cardEight' prompt={ref8.current} code={ref8Code.current}> </Cards>
-				<Cards id='cardNine' prompt={ref9.current} code={ref9Code.current}> </Cards>
-				<Cards id='cardTen' prompt={ref10.current} code={ref10Code.current}> </Cards>
+				<Cards id='cardOne' prompt= {ref.current} code={refCode.current} object = {refObjectOne.current} codeSelector = {refCodeSelectorOne.current}> </Cards>
+				<Cards id='cardTwo' prompt= {ref2.current} code= {ref2Code.current} object = {refObjectTwo.current} codeSelector = {refCodeSelectorTwo.current}> </Cards>
+				<Cards id='cardThree' prompt={ref3.current} code={ref3Code.current} object = {refObjectThree.current} codeSelector = {refCodeSelectorThree.current}> </Cards>
+				<Cards id='cardFour' prompt={ref4.current} code= {ref4Code.current} object = {refObjectFour.current} codeSelector = {refCodeSelectorFour.current}> </Cards>
+				<Cards id='cardFive' prompt={ref5.current} code={ref5Code.current} object = {refObjectFive.current} codeSelector = {refCodeSelectorFive.current}> </Cards>
+				<Cards id='cardSix' prompt={ref6.current} code= {ref6Code.current} object = {refObjectSix.current} codeSelector = {refCodeSelectorSix.current}> </Cards>
+				<Cards id='cardSeven' prompt={ref7.current} code={ref7Code.current} object = {refObjectSeven.current} codeSelector = {refCodeSelectorSeven.current}> </Cards>
+				<Cards id='cardEight' prompt={ref8.current} code={ref8Code.current} object = {refObjectEight.current} codeSelector = {refCodeSelectorEight.current}> </Cards>
+				<Cards id='cardNine' prompt={ref9.current} code={ref9Code.current} object = {refObjectNine.current} codeSelector = {refCodeSelectorNine.current}> </Cards>
+				<Cards id='cardTen' prompt={ref10.current} code={ref10Code.current} object = {refObjectTen.current} codeSelector = {refCodeSelectorTen.current}> </Cards>
 			</>
 		)
 			
