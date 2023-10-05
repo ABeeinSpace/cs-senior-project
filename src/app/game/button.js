@@ -7,7 +7,7 @@ import firebase from "firebase/compat/app";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'src/app/page.module.css';
 import {
-	getFirestore, collection, getDocs, updateDoc, doc
+	getFirestore, collection, getDoc, updateDoc, doc, setDoc
 } from 'firebase/firestore'
 require('dotenv').config()
 
@@ -15,37 +15,89 @@ require('dotenv').config()
 export default function ButtonGrouping(props) {
  async function handleClickHuman() {
     const db = getFirestore();
-    const docRef = doc(db, "prompts", props.object.id);
-    const querySnapshot = doc(db, "users", firebase.auth().currentUser.uid);
-    console.log(querySnapshot)
+
+  const docRef = doc(db, "prompts", props.object.id);
+  let numCorrect = 0
+  let numGuessed = 0;
+    getDoc(docRef)
+    .then((doc)=>{
+      numCorrect = doc.data().correctness
+      numGuessed = doc.data().guessed
+    })
+
+    
+    const userRef = doc(db, "users", firebase.auth().currentUser.uid)
+    let numCorrectUser = 0
+  let numGuessedUser = 0;
+    getDoc(userRef)
+    .then((doc)=>{
+      numCorrectUser = doc.data().correctness
+      numGuessedUser = doc.data().guessed
+
+    
+
+    console.log(numGuessedUser)
 
     let correct = 0;
     if(props.codeSelector == 1){
       correct = 1
     }
-    console.log(querySnapshot.data().guessed)
-  const data = {
-    guessed: props.object.guessed +1,
-    correctness: props.object.correctness + correct
+  const promptData = {
+    guessed: numGuessed +1,
+    correctness: numCorrect + correct
   };
 
-  updateDoc(docRef, data)
-  updateDoc(querySnapshot, data)
+  const userData = {
+    guessed: numGuessedUser +1,
+    correctness: numCorrectUser + correct
+  };
+
+  updateDoc(docRef, promptData)
+  updateDoc(userRef, userData)
+})
   }
 
   function handleClickAI() {
     const db = getFirestore();
     const docRef = doc(db, "prompts", props.object.id);
+  let numCorrect = 0
+  let numGuessed = 0;
+    getDoc(docRef)
+    .then((doc)=>{
+      numCorrect = doc.data().correctness
+      numGuessed = doc.data().guessed
+    })
+
+    
+    const userRef = doc(db, "users", firebase.auth().currentUser.uid)
+    let numCorrectUser = 0
+  let numGuessedUser = 0;
+    getDoc(userRef)
+    .then((doc)=>{
+      numCorrectUser = doc.data().correctness
+      numGuessedUser = doc.data().guessed
+
+    
+
+    console.log(numGuessedUser)
+
     let correct = 0;
     if(props.codeSelector == 0){
       correct = 1
     }
-  const data = {
-    guessed: props.object.guessed +1,
-    correctness: props.object.correctness + correct
+  const promptData = {
+    guessed: numGuessed +1,
+    correctness: numCorrect + correct
   };
 
-  updateDoc(docRef, data)
+  const userData = {
+    guessed: numGuessedUser +1,
+    correctness: numCorrectUser + correct
+  };
+
+  updateDoc(docRef, promptData)
+  updateDoc(userRef, userData)
+})
   }
 
   
