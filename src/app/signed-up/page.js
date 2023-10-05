@@ -26,7 +26,12 @@ export default function SingedIn() {
 
 	const { user } = useContext(AuthContext);
 
-	const { isFaculty, setisFaculty} = useState("false");
+	var isStudent = React.createRef(false);
+
+	const updateIsStudent = (e) => {
+		isStudent = e.target;
+	};
+
 	const { termsAgreedTo, setTermsAgreedTo} = useState(false);
 
 	return (
@@ -62,14 +67,15 @@ export default function SingedIn() {
 						<div key={`default-${type}`} className="mb-3">
 
 							<Form.Check
-								// ref={isFaculty}
+								ref={isStudent}
 								type={"checkbox"}
 								label={`I am a student`}
 								id={`default-${type}-1`}
-								// checked={isFaculty}
-								onChange={setisFaculty}
+								// checked={isStudent.current.checked}
+								onChange={updateIsStudent}
 							/>
 							<Form.Check
+								// ref={}
 								type={type}
 								label={`I have read and agree to the terms `}
 								id={`default-${type}-2`}
@@ -79,7 +85,7 @@ export default function SingedIn() {
 							/>
 						</div>
 					))}
-					<Button variant='primary' onClick={() => { submitForm(user, isFaculty) }}>Submit</Button>
+					<Button variant='primary' onClick={() => { submitForm(user, isStudent) }}>Submit</Button>
 				</Form>
 			</div>
 
@@ -87,19 +93,19 @@ export default function SingedIn() {
 	)
 }
 
-async function submitForm(user, isFaculty) {
+async function submitForm(user, isStudent) {
 
 	const db = getFirestore(app);
 	// var doc = collection(db, "users").doc()
 	var docReference = doc(db, "users", user.uid)
 	// var docSnapshot = await getDoc(docReference);
 	// var isFaculty = isFaculty.current
-	// console.log(isFaculty)
+	// console.log(isStudent.checked)
 	await updateDoc(docReference, {
-		isStudent: isFaculty
+		isStudent: isStudent.checked
 	})
 
-	location.assign("/")
+	// location.assign("/")
 
 }
 
