@@ -103,9 +103,11 @@ async function submitForm(user, isStudent) {
 	// console.log(isStudent.checked)
 	await updateDoc(docReference, {
 		isStudent: isStudent.checked
-	})
+	}).then(
+		location.assign("/")
+	)
 
-	// location.assign("/")
+	
 
 }
 
