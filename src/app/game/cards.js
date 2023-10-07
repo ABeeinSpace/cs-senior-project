@@ -12,7 +12,7 @@ function Cards(props) {
         <Card.Text>
           {props.code}
         </Card.Text>
-        <Button id = {props.id} />
+        <Button id = {props.id} prompt = {props.prompt} object = {props.object} codeSelector = {props.codeSelector} />
       </Card.Body>
     </Card>
   );
