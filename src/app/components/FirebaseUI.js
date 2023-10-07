@@ -17,25 +17,19 @@ export default function FirebaseUI() {
 	var uiConfig = {
 		callbacks: {
 			signInSuccessWithAuthResult: function (authResult, redirectUrl) {
-				// if (!authResult.additionalUserInfo.isNewUser) {
-				const db = getFirestore(); //Get a reference to the Firestore instance, using the Firebase reference we got previously.
+				if (!authResult.additionalUserInfo.isNewUser) {
+					const db = getFirestore(); //Get a reference to the Firestore instance, using the Firebase reference we got previously.
 
-				// const docReference = doc(db, "users", authResult.user.uid)
-				// const docSnap = await getDoc(docReference)
-
-
-				// if (!docSnap.exists()) {
-				// 	console.log("Doc does not exist!")
-				// }
-
-				setDoc(doc(db, "users", authResult.user.uid), {
-					hasGuessed: false,
-					isStudent: false,
-					userID: authResult.user.uid
-				}).then(() => {
-					location.assign("http://localhost:3000")
-				});
-				// }
+					setDoc(doc(db, "users", authResult.user.uid), {
+						hasGuessed: false,
+						isStudent: false,
+						userID: authResult.user.uid
+					}).then(() => {
+						location.assign("http://localhost:3000")
+					});
+				} else {
+					location.assign("/")
+				}
 
 
 				return false;
@@ -54,7 +48,9 @@ export default function FirebaseUI() {
 					// is available.
 					prompt: 'select_account'
 				}
-			}, firebase.auth.EmailAuthProvider.PROVIDER_ID,
+			}, 
+			firebase.auth.EmailAuthProvider.PROVIDER_ID,
+
 		],
 		// tosUrl and privacyPolicyUrl accept either url string or a callback
 		// function.
