@@ -2,7 +2,7 @@
 
 import { NavDropdown, Nav, Navbar, Container, Spinner } from 'react-bootstrap';
 import firebase from "firebase/compat/app";
-import SignedOutToast from 'src/app/SignedOutToast.js';
+import SignedOutToast from 'src/app/components/SignedOutToast.js';
 import { FirebaseContext, AuthContext } from "src/app/FirebaseContext.js";
 import "firebase/compat/auth";
 import React, { useState, useContext, useEffect } from "react";

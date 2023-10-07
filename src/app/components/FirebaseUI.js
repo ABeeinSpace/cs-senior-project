@@ -2,7 +2,7 @@
 
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
-import app from "src/app/Firebase.js";
+// import app from "src/app/Firebase.js";
 import 'firebaseui/dist/firebaseui.css'
 import * as firebaseui from 'firebaseui'
 import 'bootstrap/dist/css/bootstrap.min.css';
