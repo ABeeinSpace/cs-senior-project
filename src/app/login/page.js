@@ -13,7 +13,7 @@ import 'src/app/page.module.css';
 export default function Login() {
 
 	const FirebaseUI = dynamic(
-		() => import('./FirebaseUI'),
+		() => import('src/app/components/FirebaseUI.js'),
 		{ ssr: false }
 	)
 
