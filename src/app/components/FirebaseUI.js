@@ -15,6 +15,7 @@ import 'src/app/page.module.css';
 export default function FirebaseUI() {
 
 	var uiConfig = {
+		signInFlow: 'popup',
 		callbacks: {
 			signInSuccessWithAuthResult: function (authResult, redirectUrl) {
 				if (!authResult.additionalUserInfo.isNewUser) {
@@ -40,6 +41,7 @@ export default function FirebaseUI() {
 		signInOptions: [
 			{
 				provider: firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+
 				scopes: [
 					'https://www.googleapis.com/auth/contacts.readonly'
 				],
@@ -55,14 +57,14 @@ export default function FirebaseUI() {
 		// tosUrl and privacyPolicyUrl accept either url string or a callback
 		// function.
 		// Terms of service url/callback.
-		tosUrl: '<your-tos-url>',
+		tosUrl: 'https://youtu.be/dQw4w9WgXcQ?si=7jzmBjue1mwk18zt',
 		// Privacy policy url/callback.
 
 
 	};
 	// Initialize the FirebaseUI Widget using Firebase.
 
-	const ui = firebaseui.auth.AuthUI.getInstance() || new firebaseui.auth.AuthUI(firebase.auth());
+	const ui = new firebaseui.auth.AuthUI(firebase.auth());
 	ui.start('#firebaseui-auth-container', uiConfig);
 	// The start method will wait until the DOM is loaded.
 
