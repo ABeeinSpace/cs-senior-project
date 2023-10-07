@@ -78,7 +78,7 @@ export default function Game() {
 							<Nav.Link href="./write">Write</Nav.Link>
 						</Nav>
 						<Nav>
-							{isLoading && <Spinner animation="grow" role="status" variant='light' size='sm'>
+							{isLoading && <Spinner animation="border" role="status" variant='light' size='sm'>
 								<span className="visually-hidden">Loading...</span>
 							</Spinner>}
 							{!isLoading && <RenderLoginUI />}
@@ -93,7 +93,7 @@ export default function Game() {
 			}} className="container">
 				<h1>Game Page</h1>
 				<p />
-				{isLoading && <Spinner animation="grow" role="status" size='sm'>
+				{isLoading && <Spinner animation="border" role="status" size='sm'>
 					<span className="visually-hidden">Loading...</span>
 				</Spinner>}
 				{!isLoading && <RenderCards />}
