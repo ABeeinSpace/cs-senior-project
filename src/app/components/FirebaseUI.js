@@ -24,6 +24,8 @@ export default function FirebaseUI() {
 					setDoc(doc(db, "users", authResult.user.uid), {
 						hasGuessed: false,
 						isStudent: false,
+						guessed: 0,
+						correctness: 0,
 						userID: authResult.user.uid
 					}).then(() => {
 						location.assign("http://localhost:3000")

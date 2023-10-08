@@ -169,7 +169,7 @@ function RenderCards() {
 		
 
 		if(!toggled){
-	 getDocs(colRef)
+	getDocs(colRef)
 	.then((snapshot) => {
 		
 		snapshot.docs.forEach((doc) =>{
