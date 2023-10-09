@@ -17,6 +17,7 @@ import { useState, useRef} from 'react';
 import {
 	getFirestore, collection, getDocs, updateDoc, doc
 } from 'firebase/firestore'
+import CGTNavbar from '../components/navbar';
 
 require('dotenv').config()
 
@@ -67,25 +68,7 @@ export default function Game() {
 	return (
 
 		<div>
-			<Navbar collapseOnSelect expand="lg" bg="dark" data-bs-theme="dark">
-				<Container>
-					<Navbar.Brand href="/">ChatGPTuring</Navbar.Brand>
-					<Navbar.Toggle aria-controls="responsive-navbar-nav" />
-					<Navbar.Collapse>
-						<Nav className="me-auto" activeKey="./game">
-							<Nav.Link href="/">Home</Nav.Link>
-							<Nav.Link href="./game">Game</Nav.Link>
-							<Nav.Link href="./write">Write</Nav.Link>
-						</Nav>
-						<Nav>
-							{isLoading && <Spinner animation="border" role="status" variant='light' size='sm'>
-								<span className="visually-hidden">Loading...</span>
-							</Spinner>}
-							{!isLoading && <RenderLoginUI />}
-						</Nav>
-					</Navbar.Collapse>
-				</Container>
-			</Navbar>
+			<CGTNavbar activePage={"./game"} />
 			<br />
 			<div style={{
 

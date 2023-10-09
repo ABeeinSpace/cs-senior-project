@@ -1,9 +1,9 @@
 'use client'
 
-import { NavDropdown, Nav, Navbar, Container, Spinner } from 'react-bootstrap';
+import { Container, Spinner } from 'react-bootstrap';
+import CGTNavbar from 'src/app/components/navbar.js';
 import firebase from "firebase/compat/app";
 import SignedOutToast from 'src/app/components/SignedOutToast.js';
-import { FirebaseContext, AuthContext } from "src/app/FirebaseContext.js";
 import "firebase/compat/auth";
 import React, { useState, useContext, useEffect } from "react";
 import app from "./Firebase";
@@ -42,25 +42,7 @@ export default function Home() {
 
   return (
     <div>
-      <Navbar collapseOnSelect bg="dark" data-bs-theme="dark" expand="lg">
-        <Container>
-          <Navbar.Brand href="/">ChatGPTuring</Navbar.Brand>
-          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-          <Navbar.Collapse>
-            <Nav className="me-auto" activeKey="/">
-              <Nav.Link href="/">Home</Nav.Link>
-              <Nav.Link href="./game">Game</Nav.Link>
-              <Nav.Link href="./write">Write</Nav.Link>
-            </Nav>
-            <Nav>
-              {isLoading && <Spinner animation="border" role="status" variant='light' size='sm'>
-                <span className="visually-hidden">Loading...</span>
-              </Spinner>}
-              {!isLoading && <RenderLoginUI />}
-            </Nav>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
+      <CGTNavbar />
       <br />
       <SignedOutToast />
       <div className="container">
@@ -76,33 +58,6 @@ export default function Home() {
   )
 }
 
-function RenderLoginUI() {
-  const [show, setShow] = useState(false);
-  const { user } = useContext(AuthContext);
-
-
-  if (user != null) {
-    // User is signed in, see docs for a list of available properties
-    // https://firebase.google.com/docs/reference/js/firebase.User
-    // ...
-    return (
-      <NavDropdown title={user.displayName}>
-        <NavDropdown.Item>Account Settings</NavDropdown.Item>
-        <NavDropdown.Divider />
-        <NavDropdown.Item onClick={() => {
-          firebase.auth().signOut().then(() => {
-            setShow(true)
-          }, function (error) {
-            console.error('Sign Out Error', error);
-          });
-        }}>Sign Out</NavDropdown.Item>
-      </NavDropdown>
-    )
-  } else {
-    return (
-      <Nav.Link href="./login">Login</Nav.Link>)
-  };
-}
 
 // function handleSignOut(setShow) {
 

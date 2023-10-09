@@ -12,6 +12,7 @@ import 'src/app/page.module.css';
 import {
 	getFirestore, collection, getDocs, doc, getDoc, updateDoc
 } from 'firebase/firestore'
+import CGTNavbar from '../components/navbar';
 // import App from 'next/app';
 // import { auth } from 'firebaseui';
 
@@ -41,25 +42,7 @@ export default function SingedIn() {
 
 	return (
 		<>
-			<Navbar collapseOnSelect bg="dark" data-bs-theme="dark" expand="lg">
-				<Container>
-					<Navbar.Brand href="/">ChatGPTuring</Navbar.Brand>
-					<Navbar.Toggle aria-controls="responsive-navbar-nav" />
-					<Navbar.Collapse>
-						<Nav className="me-auto">
-							<Nav.Link href="/">Home</Nav.Link>
-							<Nav.Link href="./game">Game</Nav.Link>
-							<Nav.Link href="./write">Write</Nav.Link>
-						</Nav>
-						<Nav>
-							{isLoading && <Spinner animation="grow" role="status" variant='light' size='sm'>
-								<span className="visually-hidden">Loading...</span>
-							</Spinner>}
-							{!isLoading && <RenderLoginUI />}
-						</Nav>
-					</Navbar.Collapse>
-				</Container>
-			</Navbar>
+			<CGTNavbar />
 			<br />
 			<div className="container">
 				<h1>Sign-Up</h1>
@@ -109,7 +92,7 @@ async function submitForm(user, isStudent) {
 	await updateDoc(docReference, {
 		isStudent: isStudent
 	}).then(
-		location.assign("/") // Go to the home page after the call to updateDoc returns
+		location.assign("/game") // Go to the home page after the call to updateDoc returns
 	)
 
 	

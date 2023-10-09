@@ -17,17 +17,10 @@ export default function FirebaseUI() {
 	var uiConfig = {
 		signInFlow: 'popup',
 		callbacks: {
-			signInSuccessWithAuthResult: authResult => {
-				const db = getFirestore(); //Get a reference to the Firestore instance, using the Firebase reference we got previously.
-				const docRef = doc(db, "users", authResult.user.uid);
-				var docExists = ""
-				const docSnap = ( getDoc(docRef));
-				docSnap.then((doc) => {
-					docExists = doc.exists()
-				})
-				console.log(docExists)
-				
-				if (docExists == false) {
+			signInSuccessWithAuthResult: function (authResult, redirectUrl) {
+				if (!authResult.additionalUserInfo.isNewUser) {
+					const db = getFirestore(); //Get a reference to the Firestore instance, using the Firebase reference we got previously.
+
 					setDoc(doc(db, "users", authResult.user.uid), {
 						hasGuessed: false,
 						isStudent: false,
@@ -35,13 +28,14 @@ export default function FirebaseUI() {
 						correctness: 0,
 						userID: authResult.user.uid
 					}).then(() => {
-						location.assign("/signed-up")
+						location.assign("http://localhost:3000/signed-up")
 					});
 				} else {
 					location.assign("/")
 				}
-				return false;
-			},
+
+				return false
+			}
 		},
 
 		signInSuccessUrl: '/',
@@ -53,7 +47,7 @@ export default function FirebaseUI() {
 					// is available.
 					prompt: 'select_account'
 				}
-			}, 
+			},
 			firebase.auth.EmailAuthProvider.PROVIDER_ID,
 
 		],
