@@ -32,7 +32,12 @@ export default function SingedIn() {
 		isStudent = e.target;
 	};
 
-	const { termsAgreedTo, setTermsAgreedTo} = useState(false);
+	var termsAgreedTo = React.createRef(false);
+
+	const setTermsAgreedTo = (e) => {
+		termsAgreedTo = e.target;
+	}
+	// const { termsAgreedTo, setTermsAgreedTo} = useState(false);
 
 	return (
 		<>
@@ -74,15 +79,15 @@ export default function SingedIn() {
 								// checked={isStudent.current.checked}
 								onChange={updateIsStudent}
 							/>
-							<Form.Check
-								// ref={}
+							{/* <Form.Check
+								ref={termsAgreedTo}
 								type={type}
 								label={`I have read and agree to the terms `}
 								id={`default-${type}-2`}
-								checked={termsAgreedTo}
+								// checked={termsAgreedTo}
 								onChange={setTermsAgreedTo}
 
-							/>
+							/> */}
 						</div>
 					))}
 					<Button variant='primary' onClick={() => { submitForm(user, isStudent) }}>Submit</Button>
