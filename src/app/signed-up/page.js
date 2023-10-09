@@ -90,7 +90,7 @@ export default function SingedIn() {
 							/> */}
 						</div>
 					))}
-					<Button variant='primary' onClick={() => { submitForm(user, isStudent) }}>Submit</Button>
+					<Button variant='primary' onClick={() => { submitForm(user, isStudent.checked) }}>Submit</Button>
 				</Form>
 			</div>
 
@@ -107,7 +107,7 @@ async function submitForm(user, isStudent) {
 	// var isFaculty = isFaculty.current
 	// console.log(isStudent.checked)
 	await updateDoc(docReference, {
-		isStudent: isStudent.checked
+		isStudent: isStudent
 	}).then(
 		location.assign("/") // Go to the home page after the call to updateDoc returns
 	)

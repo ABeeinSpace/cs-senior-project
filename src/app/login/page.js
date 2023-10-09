@@ -19,9 +19,6 @@ export default function Login() {
 
 	return (
 		<div>
-			<meta charSet="UTF-8" />
-			<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-			<title>Turing Test-Inator!</title>
 			<Navbar bg="dark" data-bs-theme="dark">
 				<Container>
 					<Navbar.Brand href="/">ChatGPTuring</Navbar.Brand>

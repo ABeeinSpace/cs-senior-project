@@ -17,10 +17,17 @@ export default function FirebaseUI() {
 	var uiConfig = {
 		signInFlow: 'popup',
 		callbacks: {
-			signInSuccessWithAuthResult: function (authResult, redirectUrl) {
-				if (authResult.additionalUserInfo.isNewUser) {
-					const db = getFirestore(); //Get a reference to the Firestore instance, using the Firebase reference we got previously.
-
+			signInSuccessWithAuthResult: authResult => {
+				const db = getFirestore(); //Get a reference to the Firestore instance, using the Firebase reference we got previously.
+				const docRef = doc(db, "users", authResult.user.uid);
+				var docExists = ""
+				const docSnap = ( getDoc(docRef));
+				docSnap.then((doc) => {
+					docExists = doc.exists()
+				})
+				console.log(docExists)
+				
+				if (docExists == false) {
 					setDoc(doc(db, "users", authResult.user.uid), {
 						hasGuessed: false,
 						isStudent: false,
@@ -28,13 +35,11 @@ export default function FirebaseUI() {
 						correctness: 0,
 						userID: authResult.user.uid
 					}).then(() => {
-						location.assign("http://localhost:3000")
+						location.assign("/signed-up")
 					});
 				} else {
 					location.assign("/")
 				}
-
-
 				return false;
 			},
 		},
