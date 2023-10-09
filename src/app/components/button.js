@@ -102,18 +102,16 @@ export default function ButtonGrouping(props) {
 
   
   return (
-    <>
-      <ButtonGroup aria-label="Basic example">
-        <Button id="test" variant="primary" onClick={handleClickHuman}>
+    <div className="align-items-center">
+        <Button id="test" className="me-5" variant="primary" onClick={handleClickHuman}>
           Written by a Human
         </Button>
         <Button variant="primary" onClick={handleClickAI}>
           Written by AI
         </Button>
-      </ButtonGroup>
 
 
-    </>
+    </div>
   );
   }
 

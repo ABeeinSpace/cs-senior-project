@@ -104,7 +104,7 @@ async function submitForm(user, isStudent) {
 	await updateDoc(docReference, {
 		isStudent: isStudent.checked
 	}).then(
-		location.assign("/")
+		location.assign("/") // Go to the home page after the call to updateDoc returns
 	)
 
 	

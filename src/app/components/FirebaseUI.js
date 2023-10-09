@@ -18,7 +18,7 @@ export default function FirebaseUI() {
 		signInFlow: 'popup',
 		callbacks: {
 			signInSuccessWithAuthResult: function (authResult, redirectUrl) {
-				if (!authResult.additionalUserInfo.isNewUser) {
+				if (authResult.additionalUserInfo.isNewUser) {
 					const db = getFirestore(); //Get a reference to the Firestore instance, using the Firebase reference we got previously.
 
 					setDoc(doc(db, "users", authResult.user.uid), {
