@@ -98,31 +98,3 @@ async function submitForm(user, isStudent) {
 	
 
 }
-
-function RenderLoginUI() {
-	const [show, setShow] = useState(false);
-	const { user } = useContext(AuthContext);
-
-
-	if (user != null) {
-		// User is signed in, see docs for a list of available properties
-		// https://firebase.google.com/docs/reference/js/firebase.User
-		// ...
-		return (
-			<NavDropdown title={user.displayName}>
-				<NavDropdown.Item>Account Settings</NavDropdown.Item>
-				<NavDropdown.Divider />
-				<NavDropdown.Item onClick={() => {
-					firebase.auth().signOut().then(() => {
-						setShow(true)
-					}, function (error) {
-						console.error('Sign Out Error', error);
-					});
-				}}>Sign Out</NavDropdown.Item>
-			</NavDropdown>
-		)
-	} else {
-		return (
-			<Nav.Link href="./login">Login</Nav.Link>)
-	};
-}

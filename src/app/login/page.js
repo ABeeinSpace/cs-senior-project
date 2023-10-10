@@ -33,9 +33,9 @@ export default function Login() {
 			<div className="container">
 				<h1>Login</h1>
 				<p />
-				<Alert id="loginAlert" variant="primary">
+				{/* <Alert id="loginAlert" variant="primary">
 					Please disable Firefox's Enhanced Tracking Protection or Safari's "Prevent cross-site tracking" to login
-				</Alert>
+				</Alert> */}
 				<Container id="firebaseui-auth-container">
 					{/* <FirestoreTest /> */}
 					<FirebaseUI />
