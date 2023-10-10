@@ -95,6 +95,4 @@ async function submitForm(user, isStudent) {
 		location.assign("/game") // Go to the home page after the call to updateDoc returns
 	)
 
-	
-
 }
