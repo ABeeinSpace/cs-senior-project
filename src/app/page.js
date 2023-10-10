@@ -53,7 +53,7 @@ export default function Home() {
               <Nav.Link href="./write">Write</Nav.Link>
             </Nav>
             <Nav>
-              {isLoading && <Spinner animation="grow" role="status" variant='light' size='sm'>
+              {isLoading && <Spinner animation="border" role="status" variant='light' size='sm'>
                 <span className="visually-hidden">Loading...</span>
               </Spinner>}
               {!isLoading && <RenderLoginUI />}
