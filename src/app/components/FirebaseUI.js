@@ -27,7 +27,7 @@ export default function FirebaseUI() {
 						guessed: 0,
 						correctness: 0,
 						userID: authResult.user.uid
-					}).then(() => {
+					}, { merge: true }).then(() => {
 						location.assign("http://localhost:3000/signed-up")
 					});
 				} else {
