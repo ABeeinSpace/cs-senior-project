@@ -160,8 +160,8 @@ function RenderCards() {
 		})
 
 		var selectPrompt1 = randomNumberInRange(0, prompts.length-1)
-		ref.current = prompts[selectPrompt1].prompt
-		refObjectOne.current = prompts[selectPrompt1];         
+		ref.current = prompts[0].prompt
+		refObjectOne.current = prompts[0];         
 		
 		let selectPrompt2 = randomNumberInRange(0, prompts.length-1)
 		while(true){
@@ -260,11 +260,14 @@ function RenderCards() {
 		let selectArray = randomNumberInRange(0,1)
 		if(selectArray == 0){
 			selectIndex = randomNumberInRange(0, prompts[selectPrompt1].AIResponses.length-1)
-			refCode.current =  prompts[selectPrompt1].AIResponses[selectIndex]
-			refCodeSelectorOne.current = 0
+			let filler = prompts[0].HumanResponses[0]
+			refCode.current = filler
+			refCodeSelectorOne.current = 1
 		}else{
 			selectIndex = randomNumberInRange(0, prompts[selectPrompt1].HumanResponses.length-1) 
-			refCode.current =  prompts[selectPrompt1].HumanResponses[selectIndex]
+			let filler = prompts[0].HumanResponses[0]
+			refCode.current = filler
+			
 			refCodeSelectorOne.current = 1
 		}
 
