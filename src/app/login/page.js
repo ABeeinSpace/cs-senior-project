@@ -24,8 +24,6 @@ export default function Login() {
 					<Navbar.Brand href="/">ChatGPTuring</Navbar.Brand>
 					<Nav className="me-auto">
 						<Nav.Link href="/">Home</Nav.Link>
-						<Nav.Link href="/game">Game</Nav.Link>
-						<Nav.Link href="/writing">Write</Nav.Link>
 					</Nav>
 				</Container>
 			</Navbar>

@@ -18,15 +18,17 @@ export default function FirebaseUI() {
 		signInFlow: 'popup',
 		callbacks: {
 			signInSuccessWithAuthResult: function (authResult, redirectUrl) {
+				const db = getFirestore(); //Get a reference to the Firestore instance, using the Firebase reference we got previously.
+				
 				if (!authResult.additionalUserInfo.isNewUser) {
-					const db = getFirestore(); //Get a reference to the Firestore instance, using the Firebase reference we got previously.
 
 					setDoc(doc(db, "users", authResult.user.uid), {
 						hasGuessed: false,
 						isStudent: false,
 						guessed: 0,
 						correctness: 0,
-						userID: authResult.user.uid
+						userID: authResult.user.uid,
+						gradeLevel: "test"
 					}, { merge: true }).then(() => {
 						location.assign("http://localhost:3000/signed-up")
 					});
