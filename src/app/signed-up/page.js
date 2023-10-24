@@ -33,6 +33,12 @@ export default function SingedIn() {
 		isStudent = e.target;
 	};
 
+	var gradeLevel = React.createRef('Senior');
+
+	const updateGradeLevel = (e) => {
+		gradeLevel = e.target.text;
+	};
+
 	var termsAgreedTo = React.createRef(false);
 
 	const setTermsAgreedTo = (e) => {
@@ -62,6 +68,40 @@ export default function SingedIn() {
 								// checked={isStudent.current.checked}
 								onChange={updateIsStudent}
 							/>
+
+							<div>
+							<Form.Check
+            					type={"radio"}
+            					id={'Senior'}
+            					label={'Senior'}
+								text = {'Senior'}
+								onChange={updateGradeLevel}
+          					/>
+
+							<Form.Check
+            					type={"radio"}
+            					id={'Junior'}
+            					label={'Junior'}
+								text = {'Junior'}
+								onChange={updateGradeLevel}
+          					/>
+
+							<Form.Check
+            					type={"radio"}
+            					id={'Sophmore'}
+            					label={'Sophmore'}
+								text = {'Sophmore'}
+								onChange={updateGradeLevel}
+          					/>
+
+							<Form.Check
+            					type={"radio"}
+            					id={'Freshman'}
+            					label={'Freshman'}
+								text = {'Freshman'}
+								onChange={updateGradeLevel}
+          					/>
+							</div>
 							{/* <Form.Check
 								ref={termsAgreedTo}
 								type={type}
@@ -73,7 +113,7 @@ export default function SingedIn() {
 							/> */}
 						</div>
 					))}
-					<Button variant='primary' onClick={() => { submitForm(user, isStudent.checked) }}>Submit</Button>
+					<Button variant='primary' onClick={() => { submitForm(user, isStudent.checked, gradeLevel) }}>Submit</Button>
 				</Form>
 			</div>
 

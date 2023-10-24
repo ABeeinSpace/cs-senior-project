@@ -393,7 +393,7 @@ function RenderCards() {
 }
 		return (
 			<>
-						
+				
 				<Cards id='cardOne' prompt= {ref.current} code={refCode.current} object = {refObjectOne.current} codeSelector = {refCodeSelectorOne.current}> </Cards>
 				<Cards id='cardTwo' prompt= {ref2.current} code= {ref2Code.current} object = {refObjectTwo.current} codeSelector = {refCodeSelectorTwo.current}> </Cards>
 				<Cards id='cardThree' prompt={ref3.current} code={ref3Code.current} object = {refObjectThree.current} codeSelector = {refCodeSelectorThree.current}> </Cards>
@@ -404,6 +404,7 @@ function RenderCards() {
 				<Cards id='cardEight' prompt={ref8.current} code={ref8Code.current} object = {refObjectEight.current} codeSelector = {refCodeSelectorEight.current}> </Cards>
 				<Cards id='cardNine' prompt={ref9.current} code={ref9Code.current} object = {refObjectNine.current} codeSelector = {refCodeSelectorNine.current}> </Cards>
 				<Cards id='cardTen' prompt={ref10.current} code={ref10Code.current} object = {refObjectTen.current} codeSelector = {refCodeSelectorTen.current}> </Cards>
+				
 			</>
 		)
 			
