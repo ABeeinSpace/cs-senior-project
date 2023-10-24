@@ -20,7 +20,9 @@ export default function FirebaseUI() {
 			signInSuccessWithAuthResult: function (authResult, redirectUrl) {
 				const db = getFirestore(); //Get a reference to the Firestore instance, using the Firebase reference we got previously.
 				
-				if (!authResult.additionalUserInfo.isNewUser) {
+				console.log(authResult.user.metadata)
+
+				if (authResult.user.metadata.createdAt == authResult.user.metadata.lastLoginAt || authResult.user.metadata.createdAt == (authResult.user.metadata.lastLoginAt + 1) || authResult.user.metadata.createdAt == (authResult.user.metadata.lastLoginAt + 2)) {
 
 					setDoc(doc(db, "users", authResult.user.uid), {
 						hasGuessed: false,
