@@ -21,8 +21,11 @@ export default function CGTNavbar({activePage}) {
 				<Navbar.Toggle aria-controls="responsive-navbar-nav" />
 				<Navbar.Collapse>
 					<Nav className="me-auto" activeKey={activePage}>
-						<Nav.Link href="./game">Game</Nav.Link>
+						<Nav.Link href="./game">Game One</Nav.Link>
+						<Nav.Link href="./gameTwo">Game Two</Nav.Link>
 					</Nav>
+
+
 					<Nav>
 						{isLoading && <Spinner animation="border" role="status" variant='light' size='sm'>
 							<span className="visually-hidden">Loading...</span>
