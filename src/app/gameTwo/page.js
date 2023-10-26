@@ -41,7 +41,7 @@ export default function Game() {
 	return (
 
 		<div>
-			<CGTNavbar activePage={"./game"} />
+			<CGTNavbar activePage={"./gameTwo"} />
 			<br />
 			<div style={{
 
