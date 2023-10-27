@@ -1,6 +1,6 @@
 'use client'
 
-import { NavDropdown, Nav, Navbar, Container, Toast, ToastContainer, Spinner, Form, Button } from 'react-bootstrap';
+import { NavDropdown, Nav, Navbar, Container, Toast, ToastContainer, Spinner, Form, Button, Dropdown, DropdownButton } from 'react-bootstrap';
 import firebase from "firebase/compat/app";
 // import SignedOutToast from 'src/app/SignedOutToast.js';
 import { FirebaseContext, AuthContext } from "src/app/FirebaseContext.js";
@@ -27,17 +27,18 @@ export default function SingedIn() {
 
 	const { user } = useContext(AuthContext);
 
-	var isStudent = React.createRef(false);
+	var isFaculty = React.createRef(false);
 
-	const updateIsStudent = (e) => {
-		isStudent = e.target;
+	const updateIsFaculty = (e) => {
+		isFaculty = e.target;
 	};
 
 	var gradeLevel = React.createRef('Senior');
 
 	const updateGradeLevel = (e) => {
-		gradeLevel = e.target.text;
-	};
+		gradeLevel = e;
+		console.log(gradeLevel)
+	}
 
 	var termsAgreedTo = React.createRef(false);
 
@@ -57,17 +58,25 @@ export default function SingedIn() {
 					Enter additional information to complete sign-up:
 				</p>
 				<Form>
-					{['checkbox'].map((type) => (
-						<div key={`default-${type}`} className="mb-3">
+					{/* {['checkbox'].map((type) => ( */}
+						<div key={`default-checkbox`} className="mb-3">
 
 							<Form.Check
-								ref={isStudent}
+								ref={isFaculty}
 								type={"checkbox"}
 								label={`I am a student`}
-								id={`default-${type}-1`}
+								id={`default-checkbox-1`}
 								// checked={isStudent.current.checked}
-								onChange={updateIsStudent}
+								onChange={updateIsFaculty}
 							/>
+
+							<DropdownButton ref={gradeLevel} id='grade-level-dropdown-button' title='Grade Level' onSelect={updateGradeLevel}>
+								<Dropdown.Item key="Senior">Senior</Dropdown.Item>
+								<Dropdown.Item key="Junior">Junior</Dropdown.Item>
+								<Dropdown.Item key="Sophomore">Sophomore</Dropdown.Item>
+								<Dropdown.Item key="Freshman">Freshman</Dropdown.Item>
+							</DropdownButton>
+
 							{/* <Form.Check
 								ref={termsAgreedTo}
 								type={type}
@@ -78,8 +87,8 @@ export default function SingedIn() {
 
 							/> */}
 						</div>
-					))}
-					<Button variant='primary' onClick={() => { submitForm(user, isStudent.checked, gradeLevel) }}>Submit</Button>
+					{/* ))} */}
+					<Button variant='primary' onClick={() => { submitForm(user, isFaculty.checked, gradeLevel) }}>Submit</Button>
 				</Form>
 			</div>
 
@@ -87,7 +96,7 @@ export default function SingedIn() {
 	)
 }
 
-async function submitForm(user, isStudent) {
+async function submitForm(user, isFaculty) {
 
 	const db = getFirestore(app);
 	// var doc = collection(db, "users").doc()
@@ -96,9 +105,9 @@ async function submitForm(user, isStudent) {
 	// var isFaculty = isFaculty.current
 	// console.log(isStudent.checked)
 	await updateDoc(docReference, {
-		isStudent: isStudent
+		isStudent: !isFaculty
 	}).then(
-		location.assign("/game") // Go to the home page after the call to updateDoc returns
+		location.assign("/game") // Go to the game page after the call to updateDoc returns. TODO: Make sure this stays up-to-date with Rowe's rename
 	)
 
 }
