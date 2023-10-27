@@ -68,40 +68,6 @@ export default function SingedIn() {
 								// checked={isStudent.current.checked}
 								onChange={updateIsStudent}
 							/>
-
-							<div>
-							<Form.Check
-            					type={"radio"}
-            					id={'Senior'}
-            					label={'Senior'}
-								text = {'Senior'}
-								onChange={updateGradeLevel}
-          					/>
-
-							<Form.Check
-            					type={"radio"}
-            					id={'Junior'}
-            					label={'Junior'}
-								text = {'Junior'}
-								onChange={updateGradeLevel}
-          					/>
-
-							<Form.Check
-            					type={"radio"}
-            					id={'Sophmore'}
-            					label={'Sophmore'}
-								text = {'Sophmore'}
-								onChange={updateGradeLevel}
-          					/>
-
-							<Form.Check
-            					type={"radio"}
-            					id={'Freshman'}
-            					label={'Freshman'}
-								text = {'Freshman'}
-								onChange={updateGradeLevel}
-          					/>
-							</div>
 							{/* <Form.Check
 								ref={termsAgreedTo}
 								type={type}
