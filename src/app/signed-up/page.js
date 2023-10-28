@@ -88,7 +88,7 @@ export default function SingedIn() {
 							/> */}
 						</div>
 					{/* ))} */}
-					<Button variant='primary' onClick={() => { submitForm(user, isFaculty.checked, gradeLevel) }}>Submit</Button>
+					<Button variant='primary' onClick={() => { submitForm(user, !isFaculty.checked, gradeLevel) }}>Submit</Button>
 				</Form>
 			</div>
 
@@ -103,9 +103,9 @@ async function submitForm(user, isFaculty, gradeLevel) {
 	var docReference = doc(db, "users", user.uid)
 	// var docSnapshot = await getDoc(docReference);
 	// var isFaculty = isFaculty.current
-	// console.log(isStudent.checked)
+	// console.log(isFaculty)
 	await updateDoc(docReference, {
-		isStudent: !isFaculty,
+		isStudent: isFaculty,
 		gradeLevel: gradeLevel
 	}).then(
 		location.assign("/game") // Go to the game page after the call to updateDoc returns. TODO: Make sure this stays up-to-date with Rowe's rename
