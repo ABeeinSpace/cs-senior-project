@@ -64,17 +64,17 @@ export default function SingedIn() {
 							<Form.Check
 								ref={isFaculty}
 								type={"checkbox"}
-								label={`I am a student`}
+								label={`I am a faculty member`}
 								id={`default-checkbox-1`}
 								// checked={isStudent.current.checked}
 								onChange={updateIsFaculty}
 							/>
 
 							<DropdownButton ref={gradeLevel} id='grade-level-dropdown-button' title='Grade Level' onSelect={updateGradeLevel}>
-								<Dropdown.Item key="Senior">Senior</Dropdown.Item>
-								<Dropdown.Item key="Junior">Junior</Dropdown.Item>
-								<Dropdown.Item key="Sophomore">Sophomore</Dropdown.Item>
-								<Dropdown.Item key="Freshman">Freshman</Dropdown.Item>
+								<Dropdown.Item eventKey="Senior">Senior</Dropdown.Item>
+								<Dropdown.Item eventKey="Junior">Junior</Dropdown.Item>
+								<Dropdown.Item eventKey="Sophomore">Sophomore</Dropdown.Item>
+								<Dropdown.Item eventKey="Freshman">Freshman</Dropdown.Item>
 							</DropdownButton>
 
 							{/* <Form.Check
@@ -96,7 +96,7 @@ export default function SingedIn() {
 	)
 }
 
-async function submitForm(user, isFaculty) {
+async function submitForm(user, isFaculty, gradeLevel) {
 
 	const db = getFirestore(app);
 	// var doc = collection(db, "users").doc()
@@ -105,7 +105,8 @@ async function submitForm(user, isFaculty) {
 	// var isFaculty = isFaculty.current
 	// console.log(isStudent.checked)
 	await updateDoc(docReference, {
-		isStudent: !isFaculty
+		isStudent: !isFaculty,
+		gradeLevel: gradeLevel
 	}).then(
 		location.assign("/game") // Go to the game page after the call to updateDoc returns. TODO: Make sure this stays up-to-date with Rowe's rename
 	)
