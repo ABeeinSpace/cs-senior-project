@@ -1,16 +1,15 @@
 'use client'
 
-import { NavDropdown, Nav, Navbar, Container, Toast, ToastContainer, Spinner, Form, Button, Dropdown, DropdownButton } from 'react-bootstrap';
-import firebase from "firebase/compat/app";
+import { Form, Button, Dropdown, DropdownButton } from 'react-bootstrap';
 // import SignedOutToast from 'src/app/SignedOutToast.js';
-import { FirebaseContext, AuthContext } from "src/app/FirebaseContext.js";
+import { AuthContext } from "src/app/FirebaseContext.js";
 import "firebase/compat/auth";
 import React, { useState, useContext, useEffect } from "react";
 import app from '../Firebase';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'src/app/page.module.css';
 import {
-	getFirestore, collection, getDocs, doc, getDoc, updateDoc
+	getFirestore, doc, updateDoc
 } from 'firebase/firestore'
 import CGTNavbar from '../components/navbar';
 // import App from 'next/app';
