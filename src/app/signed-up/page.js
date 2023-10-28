@@ -63,6 +63,7 @@ export default function SingedIn() {
 							<Form.Check
 								ref={isFaculty}
 								type={"checkbox"}
+								className='pb-2'
 								label={`I am a faculty member`}
 								id={`default-checkbox-1`}
 								// checked={isStudent.current.checked}
