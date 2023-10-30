@@ -74,16 +74,12 @@ export default function Game() {
 
 
 			}} className="container">
-				<h1>Game Page</h1>
+				<h1>Single Prompt Game Page</h1>
 				<p />
 				{isLoading && <Spinner animation="border" role="status" size='sm'>
 					<span className="visually-hidden">Loading...</span>
 				</Spinner>}
 				{!isLoading && <RenderCards />}
-				<p>
-					This page is under construction. Please come back later for a super cool
-					AI-related project!
-				</p>
 			</div>
 		</div>
 	)
