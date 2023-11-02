@@ -108,7 +108,7 @@ async function submitForm(user, isFaculty, gradeLevel) {
 		isStudent: isFaculty,
 		gradeLevel: gradeLevel
 	}).then(
-		location.assign("/game") // Go to the game page after the call to updateDoc returns. TODO: Make sure this stays up-to-date with Rowe's rename
+		location.assign("/single-prompt") // Go to single prompt page after the call to updateDoc returns
 	)
 
 }
