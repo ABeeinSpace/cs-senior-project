@@ -65,7 +65,7 @@ export default function FirebaseUI() {
 		// tosUrl and privacyPolicyUrl accept either url string or a callback
 		// function.
 		// Terms of service url/callback.
-		tosUrl: 'https://youtu.be/dQw4w9WgXcQ?si=7jzmBjue1mwk18zt',
+		tosUrl: '',
 		// Privacy policy url/callback.
 
 
