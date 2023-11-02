@@ -11,7 +11,7 @@ import 'src/app/page.module.css';
 // 	getFirestore, collection, getDocs
 // } from 'firebase/firestore'
 import { FirebaseContext } from "../FirebaseContext";
-import CGTNavbar from 'src/app/components/navbar.js';
+import CGTNavbar from 'src/components/navbar.js';
 
 
 export default function Write() {

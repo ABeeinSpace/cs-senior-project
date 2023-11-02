@@ -11,7 +11,7 @@ import 'src/app/page.module.css';
 import {
 	getFirestore, doc, updateDoc
 } from 'firebase/firestore'
-import CGTNavbar from '../components/navbar';
+import CGTNavbar from 'src/components/navbar';
 // import App from 'next/app';
 // import { auth } from 'firebaseui';
 
