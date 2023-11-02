@@ -2,7 +2,8 @@
 //1.
 import React, { useEffect, useState } from "react";
 import firebase from "firebase/compat/app";
-import app from "./Firebase";
+import "firebase/compat/auth";
+import app from "../lib/Firebase";
 
 export const FirebaseContext = React.createContext();
 
