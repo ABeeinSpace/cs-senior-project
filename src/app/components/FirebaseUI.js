@@ -30,7 +30,14 @@ export default function FirebaseUI() {
 						guessed: 0,
 						correctness: 0,
 						userID: authResult.user.uid,
-						gradeLevel: "test"
+						gradeLevel: "test",
+						correctAIGameOne: 0,
+						correctHumanGameOne: 0,
+						correctnessGameTwo: 0,
+						guessedAIGameOne: 0,
+						guessedAIGameOne: 0,
+						guessedGameTwo: 0,
+						guessedHumanGameOne: 0
 					}, { merge: true }).then(() => {
 						location.assign("http://localhost:3000/signed-up")
 					});
