@@ -51,11 +51,11 @@ export default function SingedIn() {
 			<CGTNavbar />
 			<br />
 			<div className="container">
-				<h1>Sign-Up</h1>
+				<h1>Account Settings</h1>
 				<p />
-				<p>
+				{/* <p>
 					Enter additional information to complete sign-up:
-				</p>
+				</p> */}
 				<Form>
 					{/* {['checkbox'].map((type) => ( */}
 						<div key={`default-checkbox`} className="mb-3">
