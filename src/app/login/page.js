@@ -5,7 +5,7 @@ import dynamic from "next/dynamic";
 import { Alert, Container, Nav, Navbar } from "react-bootstrap";
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
-import app from "src/app/Firebase.js";
+import app from "src/lib/Firebase.js";
 import 'firebaseui/dist/firebaseui.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'src/app/page.module.css';

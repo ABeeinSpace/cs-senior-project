@@ -6,7 +6,7 @@ import firebase from "firebase/compat/app";
 import SignedOutToast from 'src/components/SignedOutToast.js';
 import "firebase/compat/auth";
 import React, { useState, useContext, useEffect } from "react";
-import app from "./Firebase";
+import app from "../lib/Firebase";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'src/app/page.module.css';
 // import App from 'next/app';

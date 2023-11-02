@@ -12,7 +12,7 @@ import { AuthContext } from "src/app/FirebaseContext.js";
 import React, { useContext, useEffect } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'src/app/page.module.css';
-import app from '../Firebase';
+import app from '../../lib/Firebase';
 import { useState, useRef} from 'react';
 import {
 	getFirestore, collection, getDocs, updateDoc, doc
