@@ -2,7 +2,7 @@
 
 import { Form, Button, Dropdown, DropdownButton } from 'react-bootstrap';
 // import SignedOutToast from 'src/app/SignedOutToast.js';
-import { AuthContext } from "src/app/FirebaseContext.js";
+import { AuthContext } from "../../lib/FirebaseContext";
 import "firebase/compat/auth";
 import React, { useState, useContext, useEffect } from "react";
 import app from '../../lib/Firebase';

@@ -1,9 +1,9 @@
 'use client'
 
 import { Container, Spinner } from 'react-bootstrap';
-import CGTNavbar from 'src/components/navbar.js';
+import CGTNavbar from '../components/navbar';
 import firebase from "firebase/compat/app";
-import SignedOutToast from 'src/components/SignedOutToast.js';
+import SignedOutToast from '../components/SignedOutToast';
 import "firebase/compat/auth";
 import React, { useState, useContext, useEffect } from "react";
 import app from "../lib/Firebase";

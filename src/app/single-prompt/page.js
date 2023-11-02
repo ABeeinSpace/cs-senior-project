@@ -7,8 +7,8 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
-import Cards from 'src/components/cards.js';
-import { AuthContext } from "src/app/FirebaseContext.js";
+import Cards from '../../components/cards';
+import { AuthContext } from "../../lib/FirebaseContext";
 import React, { useContext, useEffect } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'src/app/page.module.css';
@@ -17,7 +17,7 @@ import { useState, useRef} from 'react';
 import {
 	getFirestore, collection, getDocs, updateDoc, doc
 } from 'firebase/firestore'
-import CGTNavbar from 'src/components/navbar';
+import CGTNavbar from '../../components/navbar';
 
 require('dotenv').config()
 
