@@ -9,16 +9,8 @@ function Cards(props) {
       {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
       <Card.Body>
         <Card.Title className="text-left">
-        <div class="container-fluid px-0">
-          <div class="row g-0">
-            <div class="col-lg-6">
               {props.prompt}  
-            </div>
-            <div class="col-lg-6">
-              {props.prompt2}
-            </div>
-          </div>
-        </div>
+            
           </Card.Title>
         <Card.Text className="text-left">
         <div class="container-fluid px-0">
@@ -88,8 +80,7 @@ function Cards(props) {
         </div>
 
         </Card.Text>
-        <Button id = {props.id} prompt = {props.prompt} object = {props.object} codeSelector = {props.codeSelector} 
-        id2 = {props.id2} prompt2 = {props.prompt2} object2 = {props.object2} codeSelector2 = {props.codeSelector2} />
+        <Button id = {props.id} prompt = {props.prompt} object = {props.object} codeSelector = {props.codeSelector}/>
       </Card.Body>
     </Card>
   );

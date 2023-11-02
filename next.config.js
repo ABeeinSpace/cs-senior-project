@@ -11,5 +11,7 @@ module.exports = {
 			},
 		];
 	},
+
+	distDir: 'build',
 };
 

@@ -396,7 +396,7 @@ function RenderCards() {
 		return (
 			<>
 				
-				<Cards id='cardOne' prompt= {ref.current} code={refCode.current} object = {refObjectOne.current} codeSelector = {refCodeSelectorOne.current}> </Cards>
+				<Cards disabledState = 'true' id='cardOne' prompt= {ref.current} code={refCode.current} object = {refObjectOne.current} codeSelector = {refCodeSelectorOne.current}> </Cards>
 				<Cards id='cardTwo' prompt= {ref2.current} code= {ref2Code.current} object = {refObjectTwo.current} codeSelector = {refCodeSelectorTwo.current}> </Cards>
 				<Cards id='cardThree' prompt={ref3.current} code={ref3Code.current} object = {refObjectThree.current} codeSelector = {refCodeSelectorThree.current}> </Cards>
 				<Cards id='cardFour' prompt={ref4.current} code= {ref4Code.current} object = {refObjectFour.current} codeSelector = {refCodeSelectorFour.current}> </Cards>

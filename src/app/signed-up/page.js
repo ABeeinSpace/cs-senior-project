@@ -1,16 +1,15 @@
 'use client'
 
-import { NavDropdown, Nav, Navbar, Container, Toast, ToastContainer, Spinner, Form, Button } from 'react-bootstrap';
-import firebase from "firebase/compat/app";
+import { Form, Button, Dropdown, DropdownButton } from 'react-bootstrap';
 // import SignedOutToast from 'src/app/SignedOutToast.js';
-import { FirebaseContext, AuthContext } from "src/app/FirebaseContext.js";
+import { AuthContext } from "src/app/FirebaseContext.js";
 import "firebase/compat/auth";
 import React, { useState, useContext, useEffect } from "react";
 import app from '../Firebase';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'src/app/page.module.css';
 import {
-	getFirestore, collection, getDocs, doc, getDoc, updateDoc
+	getFirestore, doc, updateDoc
 } from 'firebase/firestore'
 import CGTNavbar from '../components/navbar';
 // import App from 'next/app';
@@ -27,17 +26,18 @@ export default function SingedIn() {
 
 	const { user } = useContext(AuthContext);
 
-	var isStudent = React.createRef(false);
+	var isFaculty = React.createRef(false);
 
-	const updateIsStudent = (e) => {
-		isStudent = e.target;
+	const updateIsFaculty = (e) => {
+		isFaculty = e.target;
 	};
 
 	var gradeLevel = React.createRef('Senior');
 
 	const updateGradeLevel = (e) => {
-		gradeLevel = e.target.text;
-	};
+		gradeLevel = e;
+		console.log(gradeLevel)
+	}
 
 	var termsAgreedTo = React.createRef(false);
 
@@ -57,51 +57,26 @@ export default function SingedIn() {
 					Enter additional information to complete sign-up:
 				</p>
 				<Form>
-					{['checkbox'].map((type) => (
-						<div key={`default-${type}`} className="mb-3">
+					{/* {['checkbox'].map((type) => ( */}
+						<div key={`default-checkbox`} className="mb-3">
 
 							<Form.Check
-								ref={isStudent}
+								ref={isFaculty}
 								type={"checkbox"}
-								label={`I am a student`}
-								id={`default-${type}-1`}
+								className='pb-2'
+								label={`I am a faculty member`}
+								id={`default-checkbox-1`}
 								// checked={isStudent.current.checked}
-								onChange={updateIsStudent}
+								onChange={updateIsFaculty}
 							/>
 
-							<div>
-							<Form.Check
-            					type={"radio"}
-            					id={'Senior'}
-            					label={'Senior'}
-								text = {'Senior'}
-								onChange={updateGradeLevel}
-          					/>
+							<DropdownButton ref={gradeLevel} id='grade-level-dropdown-button' title='Grade Level' onSelect={updateGradeLevel}>
+								<Dropdown.Item eventKey="Senior">Senior</Dropdown.Item>
+								<Dropdown.Item eventKey="Junior">Junior</Dropdown.Item>
+								<Dropdown.Item eventKey="Sophomore">Sophomore</Dropdown.Item>
+								<Dropdown.Item eventKey="Freshman">Freshman</Dropdown.Item>
+							</DropdownButton>
 
-							<Form.Check
-            					type={"radio"}
-            					id={'Junior'}
-            					label={'Junior'}
-								text = {'Junior'}
-								onChange={updateGradeLevel}
-          					/>
-
-							<Form.Check
-            					type={"radio"}
-            					id={'Sophmore'}
-            					label={'Sophmore'}
-								text = {'Sophmore'}
-								onChange={updateGradeLevel}
-          					/>
-
-							<Form.Check
-            					type={"radio"}
-            					id={'Freshman'}
-            					label={'Freshman'}
-								text = {'Freshman'}
-								onChange={updateGradeLevel}
-          					/>
-							</div>
 							{/* <Form.Check
 								ref={termsAgreedTo}
 								type={type}
@@ -112,8 +87,8 @@ export default function SingedIn() {
 
 							/> */}
 						</div>
-					))}
-					<Button variant='primary' onClick={() => { submitForm(user, isStudent.checked, gradeLevel) }}>Submit</Button>
+					{/* ))} */}
+					<Button variant='primary' onClick={() => { submitForm(user, !isFaculty.checked, gradeLevel) }}>Submit</Button>
 				</Form>
 			</div>
 
@@ -121,18 +96,19 @@ export default function SingedIn() {
 	)
 }
 
-async function submitForm(user, isStudent) {
+async function submitForm(user, isFaculty, gradeLevel) {
 
 	const db = getFirestore(app);
 	// var doc = collection(db, "users").doc()
 	var docReference = doc(db, "users", user.uid)
 	// var docSnapshot = await getDoc(docReference);
 	// var isFaculty = isFaculty.current
-	// console.log(isStudent.checked)
+	// console.log(isFaculty)
 	await updateDoc(docReference, {
-		isStudent: isStudent
+		isStudent: isFaculty,
+		gradeLevel: gradeLevel
 	}).then(
-		location.assign("/game") // Go to the home page after the call to updateDoc returns
+		location.assign("/game") // Go to the game page after the call to updateDoc returns. TODO: Make sure this stays up-to-date with Rowe's rename
 	)
 
 }

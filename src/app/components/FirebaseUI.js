@@ -30,7 +30,14 @@ export default function FirebaseUI() {
 						guessed: 0,
 						correctness: 0,
 						userID: authResult.user.uid,
-						gradeLevel: "test"
+						gradeLevel: "test",
+						correctAIGameOne: 0,
+						correctHumanGameOne: 0,
+						correctnessGameTwo: 0,
+						guessedAIGameOne: 0,
+						guessedAIGameOne: 0,
+						guessedGameTwo: 0,
+						guessedHumanGameOne: 0
 					}, { merge: true }).then(() => {
 						location.assign("http://localhost:3000/signed-up")
 					});
@@ -58,14 +65,14 @@ export default function FirebaseUI() {
 		// tosUrl and privacyPolicyUrl accept either url string or a callback
 		// function.
 		// Terms of service url/callback.
-		tosUrl: 'https://youtu.be/dQw4w9WgXcQ?si=7jzmBjue1mwk18zt',
+		tosUrl: '',
 		// Privacy policy url/callback.
 
 
 	};
 	// Initialize the FirebaseUI Widget using Firebase.
 
-	const ui = new firebaseui.auth.AuthUI(firebase.auth());
+	const ui = firebaseui.auth.AuthUI.getInstance() || new firebaseui.auth.AuthUI(firebase.auth());
 	ui.start('#firebaseui-auth-container', uiConfig);
 	// The start method will wait until the DOM is loaded.
 
