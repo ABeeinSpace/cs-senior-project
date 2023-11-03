@@ -3,13 +3,7 @@ import React from "react";
 import { AuthProvider } from "src/lib/FirebaseContext.js";
 
 export const metadata = {
-  title: 'ChatGPTuring',
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    maximumScale: 1,
-  },
-  themeColor: "#222529",
+  title: 'ChatGPTuring'
 }
 
 export default function RootLayout({ children }) {
@@ -21,3 +15,10 @@ export default function RootLayout({ children }) {
     </html>
   )
 }
+
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  themeColor: "#222529"
+};
