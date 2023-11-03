@@ -2,7 +2,7 @@
 
 import React, { useContext, useEffect, useState } from "react";
 import { Container, Nav, Navbar, NavDropdown, Spinner } from 'react-bootstrap';
-import { AuthContext } from "src/app/FirebaseContext.js";
+import { AuthContext } from "../../lib/FirebaseContext";
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -10,8 +10,8 @@ import 'src/app/page.module.css';
 // import {
 // 	getFirestore, collection, getDocs
 // } from 'firebase/firestore'
-import { FirebaseContext } from "../FirebaseContext";
-import CGTNavbar from 'src/components/navbar.js';
+import { FirebaseContext } from "../../lib/FirebaseContext";
+import CGTNavbar from '../../components/navbar';
 
 
 export default function Write() {

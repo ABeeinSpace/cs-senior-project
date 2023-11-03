@@ -48,7 +48,7 @@ function RenderLoginUI() {
 		// https://firebase.google.com/docs/reference/js/firebase.User
 		// ...
 		return (
-			<NavDropdown title={user.displayName}>
+			<NavDropdown title={user.displayName} className='shadow'>
 				<NavDropdown.Item href='/account-settings'>Account Settings</NavDropdown.Item>
 				<NavDropdown.Divider />
 				<NavDropdown.Item onClick={() => {

@@ -59,7 +59,6 @@ export default function SingedIn() {
 				<Form>
 					{/* {['checkbox'].map((type) => ( */}
 						<div key={`default-checkbox`} className="mb-3">
-
 							<Form.Check
 								ref={isFaculty}
 								type={"checkbox"}
@@ -69,7 +68,7 @@ export default function SingedIn() {
 								// checked={isStudent.current.checked}
 								onChange={updateIsFaculty}
 							/>
-
+							<p/>
 							<DropdownButton ref={gradeLevel} id='grade-level-dropdown-button' title='Grade Level' onSelect={updateGradeLevel}>
 								<Dropdown.Item eventKey="Senior">Senior</Dropdown.Item>
 								<Dropdown.Item eventKey="Junior">Junior</Dropdown.Item>
