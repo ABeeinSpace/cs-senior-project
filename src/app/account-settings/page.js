@@ -50,7 +50,7 @@ export default function SingedIn() {
 		<>
 			<CGTNavbar />
 			<br />
-			<div className="container">
+			<div className="container" id='settings1'>
 				<h1>Account Settings</h1>
 				<p />
 				{/* <p>

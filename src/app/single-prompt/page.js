@@ -442,9 +442,7 @@ function RenderLoginUI(app) {
 }
 
 function handleSignOut() {
-	firebase.auth().signOut().then(function () {
-		console.log('Signed Out');
-	}, function (error) {
+	firebase.auth().signOut().then(function () {}, function (error) {
 		console.error('Sign Out Error', error);
 	});
 }
