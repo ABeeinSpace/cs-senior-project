@@ -46,6 +46,10 @@
     background-color: rgb(44, 47, 51);
   }
 
+  .notLoggedInLink {
+    text-decoration: none !important;
+  }
+
   .card {
     background-color: rgb(64, 67, 71) !important;
     color: whitesmoke !important;

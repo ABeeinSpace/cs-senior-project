@@ -1,9 +1,9 @@
 'use client'
 
-import Container from 'react-bootstrap/Container';
+// import Container from 'react-bootstrap/Container';
 import { Spinner } from 'react-bootstrap';
 import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
+// import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
@@ -12,12 +12,14 @@ import { AuthContext } from "../../lib/FirebaseContext.js";
 import React, { useContext, useEffect } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'src/app/page.module.css';
-import app from '../../lib/Firebase';
+// import app from '../../lib/Firebase';
 import { useState, useRef} from 'react';
 import {
 	getFirestore, collection, getDocs, updateDoc, doc
 } from 'firebase/firestore'
 import CGTNavbar from '../../components/navbar';
+import Link from 'next/link';
+
 
 require('dotenv').config()
 
@@ -344,7 +346,7 @@ function RenderCards() {
 			
 	} else {
 		return (
-			<p>Please log in to continue.</p>
+			<p>Please <Link className="notLoggedInLink" href={"/login"}>log in</Link> to continue.</p>
 		)
 	}
 }

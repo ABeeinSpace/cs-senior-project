@@ -1,12 +1,12 @@
 'use client'
 
-import { Container, Spinner } from 'react-bootstrap';
+// import { Container, Spinner } from 'react-bootstrap';
 import CGTNavbar from '../components/navbar';
-import firebase from "firebase/compat/app";
+// import firebase from "firebase/compat/app";
 import SignedOutToast from '../components/SignedOutToast';
 import "firebase/compat/auth";
 import React, { useState, useContext, useEffect } from "react";
-import app from "../lib/Firebase";
+// import app from "../lib/Firebase";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'src/app/page.module.css';
 // import App from 'next/app';
