@@ -2,12 +2,11 @@
 
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
-// import app from "src/app/Firebase.js";
 import 'firebaseui/dist/firebaseui.css'
 import * as firebaseui from 'firebaseui'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {
-	getFirestore, collection, getDocs, doc, setDoc, getDoc
+	getFirestore, doc, setDoc
 } from 'firebase/firestore'
 import 'src/app/page.module.css';
 
@@ -76,16 +75,4 @@ export default function FirebaseUI() {
 	ui.start('#firebaseui-auth-container', uiConfig);
 	// The start method will wait until the DOM is loaded.
 
-}
-
-async function createAdditionalUserInfo(authResult) {
-	const db = getFirestore(); //Get a reference to the Firestore instance, using the Firebase reference we got previously.
-
-	const docReference = doc(db, "users", authResult.user.uid)
-	const docSnap = await getDoc(docReference)
-
-
-	if (docSnap.exists() == false) {
-		console.log("Doc does not exist!")
-	}
 }

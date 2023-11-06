@@ -15,7 +15,7 @@ import 'src/app/page.module.css';
 // import app from '../../lib/Firebase';
 import { useState, useRef} from 'react';
 import {
-	getFirestore, collection, getDocs, updateDoc, doc
+	getFirestore, collection, getDocs
 } from 'firebase/firestore'
 import CGTNavbar from '../../components/navbar';
 import Link from 'next/link';

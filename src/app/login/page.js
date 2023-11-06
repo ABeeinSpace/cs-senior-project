@@ -1,8 +1,8 @@
 'use client'
 
-import React, { useState, useEffect } from "react";
+import React from "react";
 import dynamic from "next/dynamic";
-import { Alert, Container, Nav, Navbar } from "react-bootstrap";
+import { Container, Nav, Navbar } from "react-bootstrap";
 // import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 // import app from "../../lib/Firebase";
