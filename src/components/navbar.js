@@ -21,8 +21,8 @@ export default function CGTNavbar({activePage}) {
 				<Navbar.Toggle aria-controls="responsive-navbar-nav" />
 				<Navbar.Collapse>
 					<Nav className="me-auto" activeKey={activePage}>
-						<Nav.Link href="./single-prompt">Single Promp Game</Nav.Link>
-						<Nav.Link href="./dual-prompt">Dual Prompt Game</Nav.Link>
+						<Nav.Link href="./single-prompt">Single Prompt</Nav.Link>
+						<Nav.Link href="./dual-prompt">Dual Prompt</Nav.Link>
 					</Nav>
 
 

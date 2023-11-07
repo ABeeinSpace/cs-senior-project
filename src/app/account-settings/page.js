@@ -19,7 +19,7 @@ export default function SingedIn() {
 
 	const [isLoading, setIsLoading] = useState(true)
 	useEffect(() => {
-		setTimeout(() => { // after some fake time, component will stop with render
+		setTimeout(() => {
 			setIsLoading(false);
 		}, 750);
 	}, []);
