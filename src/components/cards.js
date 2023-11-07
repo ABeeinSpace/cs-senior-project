@@ -3,39 +3,21 @@ import Card from 'react-bootstrap/Card';
 import 'src/app/page.module.css'
 
 function Cards(props) {
-
+  let options = props.code.split('newLine')
   return (
-    <Card style={{ width: '100%' }}>
+    <Card className = "mb-5" style={{ width: '100%' }}>
       {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
       <Card.Body>
         <Card.Title   className="text-left">{props.prompt}</Card.Title>
         <Card.Text className="text-left">
           <pre>
-          {props.code.split('newLine')[0]}
-          <br />
-          {props.code.split('newLine')[1]}
-          <br />
-          {props.code.split('newLine')[2]}
-          <br />
-          {props.code.split('newLine')[3]}
-          <br />
-          {props.code.split('newLine')[4]}
-          <br />
-          {props.code.split('newLine')[5]}
-          <br />
-          {props.code.split('newLine')[6]}
-          <br />
-          {props.code.split('newLine')[7]}
-          <br />
-          {props.code.split('newLine')[8]}
-          <br />
-          {props.code.split('newLine')[9]}
-          <br />
-          {props.code.split('newLine')[10]}
-          <br />
-          {props.code.split('newLine')[11]}
-          <br />
-          {props.code.split('newLine')[12]}
+          <div className="options">
+            {options.map((option) => (
+            <>
+            {" " + option} <br />
+            </>
+            ))}
+          </div>
           </pre>
 
 

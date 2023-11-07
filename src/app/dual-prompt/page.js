@@ -41,7 +41,7 @@ export default function Game() {
 	return (
 
 		<div>
-			<CGTNavbar activePage={"./gameTwo"} />
+			<CGTNavbar activePage={"./dual-prompt"} />
 			<br />
 			<div style={{
 

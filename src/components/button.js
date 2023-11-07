@@ -174,11 +174,11 @@ export default function ButtonGrouping(props) {
   
   return (
     <div className="align-items-center">
-        <Button id="humanButton" disabled = {refButton} className="me-5" variant={humanColor} onClick= {handleClickHuman}>
+        <Button id="humanButton" disabled = {refButton} className="me-5 " variant={humanColor} onClick= {handleClickHuman}>
           Written by a Human
         </Button>
-        <Button id = "aiButton" disabled = {refButton} variant={aiColor} onClick={handleClickAI}>
-          Written by AI
+        <Button id = "aiButton" disabled = {refButton}  variant={aiColor} onClick={handleClickAI}>
+          Written by AI     
         </Button>
 
 
