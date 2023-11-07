@@ -1,16 +1,17 @@
 import './globals.css'
 import React from "react";
-import { AuthProvider } from "src/app/FirebaseContext.js";
+import { AuthProvider } from "src/lib/FirebaseContext.js";
 
 export const metadata = {
-  title: 'ChatGPTuring',
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    maximumScale: 1,
-  },
-  themeColor: "#222529",
+  title: 'ChatGPTuring'
 }
+
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  themeColor: "#222529"
+};
 
 export default function RootLayout({ children }) {
   return (
@@ -21,3 +22,4 @@ export default function RootLayout({ children }) {
     </html>
   )
 }
+

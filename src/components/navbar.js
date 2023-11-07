@@ -2,7 +2,7 @@ import { NavDropdown, Nav, Navbar, Container, Spinner } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'src/app/page.module.css';
 import firebase from "firebase/compat/app";
-import { AuthContext } from "src/app/FirebaseContext.js";
+import { AuthContext } from "../lib/FirebaseContext";
 import React, { useState, useContext, useEffect } from "react";
 
 
@@ -48,8 +48,8 @@ function RenderLoginUI() {
 		// https://firebase.google.com/docs/reference/js/firebase.User
 		// ...
 		return (
-			<NavDropdown title={user.displayName}>
-				<NavDropdown.Item>Account Settings</NavDropdown.Item>
+			<NavDropdown title={user.displayName} className='shadow'>
+				<NavDropdown.Item href='/account-settings'>Account Settings</NavDropdown.Item>
 				<NavDropdown.Divider />
 				<NavDropdown.Item onClick={() => {
 					firebase.auth().signOut().then(() => {

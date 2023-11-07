@@ -4,6 +4,7 @@
     "indexes": "firestore.indexes.json"
   },
   "hosting": {
+    "site": "chatgpturing",
     "source": ".",
     "ignore": [
       "firebase.json",
@@ -12,6 +13,7 @@
     ],
     "frameworksBackend": {
       "region": "us-east1"
-    }
+    },
+    "cleanUrls": true
   }
 }
