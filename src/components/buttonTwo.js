@@ -145,12 +145,18 @@ export default function ButtonGrouping(props) {
 
   return (
     <div className="align-items-center">
+      <div class="row g-0">
+      <div class="col-lg-6">
         <Button id="test" disabled = {refButton} className="me-3" variant={leftButton} onClick={handleRightHuman}>
           Left Written by AI
         </Button>
+        </div>
+        <div class="col-lg-6">
         <Button id="test" disabled = {refButton} className="me-3" variant={rightButton} onClick={handleLeftHuman}>
           Right Written by AI
         </Button>
+        </div>
+        </div>
         
         
 
