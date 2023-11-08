@@ -12,6 +12,14 @@ import 'src/app/page.module.css';
 // import App from 'next/app';
 // import { auth } from 'firebaseui';
 
+// #####                       #####  ######  #######                               
+// #     # #    #   ##   ##### #     # #     #    #    #    # #####  # #    #  ####  
+// #       #    #  #  #    #   #       #     #    #    #    # #    # # ##   # #    # 
+// #       ###### #    #   #   #  #### ######     #    #    # #    # # # #  # #      
+// #       #    # ######   #   #     # #          #    #    # #####  # #  # # #  ### 
+// #     # #    # #    #   #   #     # #          #    #    # #   #  # #   ## #    # 
+//  #####  #    # #    #   #    #####  #          #     ####  #    # # #    #  ####  
+
 export default function Home() {
   const [show, setShow] = useState(false);
 
