@@ -4,9 +4,10 @@ import 'src/app/page.module.css';
 import firebase from "firebase/compat/app";
 import { AuthContext } from "../lib/FirebaseContext";
 import React, { useState, useContext, useEffect } from "react";
+// import Logo from "";
 
 
-export default function CGTNavbar({activePage}) {
+export default function CGTNavbar({ activePage }) {
 	const [isLoading, setIsLoading] = useState(true)
 	useEffect(() => {
 		setTimeout(() => { // after some fake time, component will stop with render
@@ -17,7 +18,15 @@ export default function CGTNavbar({activePage}) {
 	return (
 		<Navbar collapseOnSelect bg="dark" data-bs-theme="dark" expand="lg">
 			<Container>
-				<Navbar.Brand href="/">ChatGPTuring</Navbar.Brand>
+				<Navbar.Brand href="/">
+					<img
+						src="./SeniorProjectLogo.png"
+						width="30"
+						height="30"
+						className="d-inline-block align-top"
+						alt="Logo"
+					/>
+				</Navbar.Brand>
 				<Navbar.Toggle aria-controls="responsive-navbar-nav" />
 				<Navbar.Collapse>
 					<Nav className="me-auto" activeKey={activePage}>
