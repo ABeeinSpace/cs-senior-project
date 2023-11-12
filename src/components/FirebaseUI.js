@@ -38,7 +38,7 @@ export default function FirebaseUI() {
 						guessedGameTwo: 0,
 						guessedHumanGameOne: 0
 					}, { merge: true }).then(() => {
-						location.assign("http://localhost:3000/account-settings")
+						location.assign("/account-settings")
 					});
 				} else {
 					location.assign("/")
