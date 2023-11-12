@@ -18,15 +18,7 @@ export default function CGTNavbar({ activePage }) {
 	return (
 		<Navbar collapseOnSelect bg="dark" data-bs-theme="dark" expand="lg">
 			<Container>
-				<Navbar.Brand href="/">
-					<img
-						src="./SeniorProjectLogo.png"
-						width="30"
-						height="30"
-						className="d-inline-block align-top"
-						alt="Logo"
-					/>
-				</Navbar.Brand>
+				<Navbar.Brand href="/">ChatGPTuring</Navbar.Brand>
 				<Navbar.Toggle aria-controls="responsive-navbar-nav" />
 				<Navbar.Collapse>
 					<Nav className="me-auto" activeKey={activePage}>
