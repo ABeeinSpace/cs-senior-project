@@ -726,3 +726,49 @@
 [info] i  hosting: ::1 - - [12/Nov/2023:21:33:41 +0000] "GET /_next/static/webpack/da4266ffe84d335f.webpack.hot-update.json HTTP/1.1" 200 42 "http://localhost:5000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36 Edg/119.0.0.0" {"metadata":{"emulator":{"name":"hosting"},"message":"::1 - - [12/Nov/2023:21:33:41 +0000] \"GET /_next/static/webpack/da4266ffe84d335f.webpack.hot-update.json HTTP/1.1\" 200 42 \"http://localhost:5000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36 Edg/119.0.0.0\""}}
 [info] i  hosting: ::1 - - [12/Nov/2023:21:33:41 +0000] "GET /_next/static/webpack/webpack.da4266ffe84d335f.hot-update.js HTTP/1.1" 200 858 "http://localhost:5000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36 Edg/119.0.0.0" {"metadata":{"emulator":{"name":"hosting"},"message":"::1 - - [12/Nov/2023:21:33:41 +0000] \"GET /_next/static/webpack/webpack.da4266ffe84d335f.hot-update.js HTTP/1.1\" 200 858 \"http://localhost:5000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36 Edg/119.0.0.0\""}}
 [info] i  hosting: ::1 - - [12/Nov/2023:21:33:41 +0000] "GET /_next/static/webpack/app/page.da4266ffe84d335f.hot-update.js HTTP/1.1" 200 - "http://localhost:5000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36 Edg/119.0.0.0" {"metadata":{"emulator":{"name":"hosting"},"message":"::1 - - [12/Nov/2023:21:33:41 +0000] \"GET /_next/static/webpack/app/page.da4266ffe84d335f.hot-update.js HTTP/1.1\" 200 - \"http://localhost:5000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36 Edg/119.0.0.0\""}}
+[debug] [2023-11-12T21:38:29.664Z] ----------------------------------------------------------------------
+[debug] [2023-11-12T21:38:29.666Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\18565\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js serve
+[debug] [2023-11-12T21:38:29.667Z] CLI Version:   12.7.0
+[debug] [2023-11-12T21:38:29.667Z] Platform:      win32
+[debug] [2023-11-12T21:38:29.667Z] Node Version:  v20.6.0
+[debug] [2023-11-12T21:38:29.667Z] Time:          Sun Nov 12 2023 16:38:29 GMT-0500 (Eastern Standard Time)
+[debug] [2023-11-12T21:38:29.667Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-11-12T21:38:29.721Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-11-12T21:38:29.721Z] > authorizing via signed-in user (sbg18338@gmail.com)
+[debug] [2023-11-12T21:38:29.722Z] [iam] checking project cs-senior-project-9c0e0 for permissions ["firebase.projects.get"]
+[debug] [2023-11-12T21:38:29.723Z] > refreshing access token with scopes: []
+[debug] [2023-11-12T21:38:29.724Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2023-11-12T21:38:29.724Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-11-12T21:38:29.939Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2023-11-12T21:38:29.939Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-11-12T21:38:29.961Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/cs-senior-project-9c0e0:testIamPermissions [none]
+[debug] [2023-11-12T21:38:29.961Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/cs-senior-project-9c0e0:testIamPermissions x-goog-quota-user=projects/cs-senior-project-9c0e0
+[debug] [2023-11-12T21:38:29.961Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/cs-senior-project-9c0e0:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2023-11-12T21:38:30.254Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/cs-senior-project-9c0e0:testIamPermissions 200
+[debug] [2023-11-12T21:38:30.254Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/cs-senior-project-9c0e0:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2023-11-12T21:38:30.257Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/cs-senior-project-9c0e0 [none]
+[debug] [2023-11-12T21:38:30.845Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/cs-senior-project-9c0e0 200
+[debug] [2023-11-12T21:38:30.846Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/cs-senior-project-9c0e0 {"projectId":"cs-senior-project-9c0e0","projectNumber":"1054365365385","displayName":"ChatGPTuring","name":"projects/cs-senior-project-9c0e0","resources":{"hostingSite":"cs-senior-project-9c0e0","storageBucket":"cs-senior-project-9c0e0.appspot.com","locationId":"us-central"},"state":"ACTIVE","etag":"1_9f8cd085-096f-49cd-8242-1fdc04fca325"}
+[info] 
+[info] === Serving from 'C:\Users\18565\Documents\Computer Science Jawn\cs-senior-project'...
+[info] 
+[debug] [2023-11-12T21:38:30.855Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/cs-senior-project-9c0e0 [none]
+[debug] [2023-11-12T21:38:31.257Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/cs-senior-project-9c0e0 200
+[debug] [2023-11-12T21:38:31.257Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/cs-senior-project-9c0e0 {"projectId":"cs-senior-project-9c0e0","projectNumber":"1054365365385","displayName":"ChatGPTuring","name":"projects/cs-senior-project-9c0e0","resources":{"hostingSite":"cs-senior-project-9c0e0","storageBucket":"cs-senior-project-9c0e0.appspot.com","locationId":"us-central"},"state":"ACTIVE","etag":"1_9f8cd085-096f-49cd-8242-1fdc04fca325"}
+[debug] [2023-11-12T21:38:35.865Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/cs-senior-project-9c0e0/sites pageToken=&pageSize=10
+[debug] [2023-11-12T21:38:36.379Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/cs-senior-project-9c0e0/sites 200
+[debug] [2023-11-12T21:38:36.379Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/cs-senior-project-9c0e0/sites {"sites":[{"name":"projects/cs-senior-project-9c0e0/sites/chatgpturing","defaultUrl":"https://chatgpturing.web.app","appId":"1:1054365365385:web:fdd0bf6ce2f08ee09dc258","type":"USER_SITE"},{"name":"projects/cs-senior-project-9c0e0/sites/cs-senior-project-9c0e0","defaultUrl":"https://cs-senior-project-9c0e0.web.app","type":"DEFAULT_SITE"}]}
+[debug] [2023-11-12T21:38:36.380Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:1054365365385:web:fdd0bf6ce2f08ee09dc258/config [none]
+[debug] [2023-11-12T21:38:37.010Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:1054365365385:web:fdd0bf6ce2f08ee09dc258/config 200
+[debug] [2023-11-12T21:38:37.010Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:1054365365385:web:fdd0bf6ce2f08ee09dc258/config {"projectId":"cs-senior-project-9c0e0","appId":"1:1054365365385:web:fdd0bf6ce2f08ee09dc258","storageBucket":"cs-senior-project-9c0e0.appspot.com","locationId":"us-central","apiKey":"AIzaSyAThWUht-tNf-REso6KxH1tKQ3PXfeCifw","authDomain":"cs-senior-project-9c0e0.firebaseapp.com","messagingSenderId":"1054365365385"}
+[info] 
+   Thank you for trying our early preview of Next.js support on Firebase Hosting.
+   During the preview, support is best-effort and breaking changes can be expected. Proceed with caution.
+
+   Documentation: https://firebase.google.com/docs/hosting/frameworks/nextjs
+   File a bug: https://github.com/firebase/firebase-tools/issues/new?template=bug_report.md
+   Submit a feature request: https://github.com/firebase/firebase-tools/issues/new?template=feature_request.md
+
+   We'd love to learn from you. Express your interest in helping us shape the future of Firebase Hosting: https://goo.gle/41enW5X
+
