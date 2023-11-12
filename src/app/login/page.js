@@ -19,13 +19,16 @@ export default function Login() {
 
 	return (
 		<div>
-			<Navbar bg="dark" data-bs-theme="dark">
+			<Navbar collapseOnSelect bg="dark" data-bs-theme="dark" expand="lg">
 				<Container>
 					<Navbar.Brand href="/">ChatGPTuring</Navbar.Brand>
-					<Nav className="me-auto">
-						<Nav.Link href="./game">Single Prompt</Nav.Link>
-						<Nav.Link href="./gameTwo">Dual Prompt</Nav.Link>
-					</Nav>
+					<Navbar.Toggle aria-controls="responsive-navbar-nav" />
+					<Navbar.Collapse>
+						<Nav className="me-auto">
+							<Nav.Link href="./game">Single Prompt</Nav.Link>
+							<Nav.Link href="./gameTwo">Dual Prompt</Nav.Link>
+						</Nav>
+					</Navbar.Collapse>
 				</Container>
 			</Navbar>
 			<br />
