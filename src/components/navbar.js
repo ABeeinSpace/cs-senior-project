@@ -51,7 +51,7 @@ function RenderLoginUI() {
 		return (
 			<NavDropdown title={user.displayName} className='shadow'>
 				<NavDropdown.Item href='/account-settings'>Account Settings</NavDropdown.Item>
-				<NavDropdown.Item href='/user-data'>Game Data</NavDropdown.Item>
+				<NavDropdown.Item href='/user-dashboard'>Dashboard</NavDropdown.Item>
 				<NavDropdown.Divider />
 				<NavDropdown.Item onClick={() => {
 					firebase.auth().signOut().then(() => {

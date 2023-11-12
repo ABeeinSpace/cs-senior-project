@@ -45,7 +45,7 @@ export default function Home() {
       <br />
       <SignedOutToast />
       <div className="container">
-        <h1>User Data</h1>
+        <h1>User Dasboard</h1>
         {isLoading && <Spinner animation="border" role="status" size='sm'>
           <span className="visually-hidden">Loading... </span>
         </Spinner>}
