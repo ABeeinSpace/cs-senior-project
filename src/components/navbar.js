@@ -4,9 +4,10 @@ import 'src/app/page.module.css';
 import firebase from "firebase/compat/app";
 import { AuthContext } from "../lib/FirebaseContext";
 import React, { useState, useContext, useEffect } from "react";
+// import Logo from "";
 
 
-export default function CGTNavbar({activePage}) {
+export default function CGTNavbar({ activePage }) {
 	const [isLoading, setIsLoading] = useState(true)
 	useEffect(() => {
 		setTimeout(() => { // after some fake time, component will stop with render
