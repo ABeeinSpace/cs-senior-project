@@ -19,14 +19,7 @@ import {
 
 require('dotenv').config()
 
-
-// #####                       #####  ######  #######                               
-// #     # #    #   ##   ##### #     # #     #    #    #    # #####  # #    #  ####  
-// #       #    #  #  #    #   #       #     #    #    #    # #    # # ##   # #    # 
-// #       ###### #    #   #   #  #### ######     #    #    # #    # # # #  # #      
-// #       #    # ######   #   #     # #          #    #    # #####  # #  # # #  ### 
-// #     # #    # #    #   #   #     # #          #    #    # #   #  # #   ## #    # 
-//  #####  #    # #    #   #    #####  #          #     ####  #    # # #    #  ####  
+// "Me and the homies goin to check the dasboard"
 
 export default function Home() {
   const [show, setShow] = useState(false);
