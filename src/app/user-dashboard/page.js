@@ -45,11 +45,11 @@ export default function Home() {
       <br />
       <SignedOutToast />
       <div className="container">
-        <h1>User Dasboard</h1>
+        <h1>User Dashboard</h1>
         {isLoading && <Spinner animation="border" role="status" size='sm'>
           <span className="visually-hidden">Loading... </span>
         </Spinner>}
-        {!isLoading && <RenderTables/>}
+        {!isLoading && <RenderTables />}
       </div>
     </div>
 
@@ -109,6 +109,8 @@ function RenderTables() {
         <div style={{ border: "1px solid black" }}>
           <OverallDataPieChart title="Game Two Score" correct={refGameTwoCorrect} incorrect={refGameTwoGuessed - refGameTwoCorrect}></OverallDataPieChart>
         </div>
+        <br />
+        <br />
       </>
 
     )
