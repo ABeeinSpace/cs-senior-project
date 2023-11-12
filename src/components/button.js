@@ -67,10 +67,12 @@ export default function ButtonGrouping(props) {
       setHumanColor('success')
       setAiColor('danger')
       isHuman = 1
+      props.setBgColor('RGB(144, 238, 144)')
     }else{
       setHumanColor('danger')
       setAiColor('success')
       isAI = 1
+      props.setBgColor('RGB(255, 204, 203)')
     }
   const promptData = {
     guessed: numGuessed +1,
@@ -144,10 +146,12 @@ export default function ButtonGrouping(props) {
       setHumanColor('danger')
       setAiColor('success')
       isAI = 1;
+      props.setBgColor('RGB(144, 238, 144)')
     }else{
       setHumanColor('success')
       setAiColor('danger')
       isHuman = 1
+      props.setBgColor('RGB(255, 204, 203)')
     }
   const promptData = {
     guessed: numGuessed +1,

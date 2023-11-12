@@ -53,9 +53,11 @@ export default function ButtonGrouping(props) {
       correct = 1
       setRightButton('success')
       setLeftButton('danger')
+      props.setBgColor('RGB(144, 238, 144)')
     }else{
       setRightButton('danger')
       setLeftButton('success')
+      props.setBgColor('RGB(255, 204, 203)')
     }
 
 
@@ -116,9 +118,11 @@ export default function ButtonGrouping(props) {
       correct = 1
       setLeftButton('success')
       setRightButton('danger')
+      props.setBgColor('RGB(144, 238, 144)')
     }else{
       setRightButton('success')
       setLeftButton('danger')
+      props.setBgColor('RGB(255, 204, 203)')
     }
 
   const promptData = {

@@ -1,0 +1,120 @@
+'use client'
+
+// import { Container, Spinner } from 'react-bootstrap';
+import CGTNavbar from '../../components/navbar';
+// import firebase from "firebase/compat/app";
+import SignedOutToast from '../../components/SignedOutToast';
+import "firebase/compat/auth";
+import React, { useState, useContext, useEffect, useRef } from "react";
+// import app from "../lib/Firebase";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'src/app/page.module.css';
+import firebase from "firebase/compat/app";
+import OverallDataPieChart from '../../components/overallDataPieChart'
+
+import {
+	getFirestore, collection, getDoc, updateDoc, doc, setDoc
+} from 'firebase/firestore'
+
+require('dotenv').config()
+
+
+// #####                       #####  ######  #######                               
+// #     # #    #   ##   ##### #     # #     #    #    #    # #####  # #    #  ####  
+// #       #    #  #  #    #   #       #     #    #    #    # #    # # ##   # #    # 
+// #       ###### #    #   #   #  #### ######     #    #    # #    # # # #  # #      
+// #       #    # ######   #   #     # #          #    #    # #####  # #  # # #  ### 
+// #     # #    # #    #   #   #     # #          #    #    # #   #  # #   ## #    # 
+//  #####  #    # #    #   #    #####  #          #     ####  #    # # #    #  ####  
+
+export default function Home() {
+  const [show, setShow] = useState(false);
+  const db = getFirestore();
+  
+  const [refOverallGuessed, setOverallGuessed] = useState();
+  const [refOverallCorrect, setOverallCorrect] = useState();
+  const [refAIGameOneGuessed, setAIGameOneGuessed] = useState();
+  const [refHumanGameOneGuessed, setHumanGameOneGuessed] = useState();
+  const [refAIGameOneCorrect, setAIGameOneCorrect] = useState();
+  const [refHumanGameOneCorrect, setHumanGameOneCorrect] = useState();
+  const [refGameTwoGuessed, setGameTwoGuessed] = useState();
+  const [refGameTwoCorrect, setGameTwoCorrect] = useState();
+
+  const [isLoading, setIsLoading] = useState(true)
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false);
+
+
+        const userRef =  doc(db, "users", firebase.auth().currentUser.uid)
+  getDoc(userRef)
+  .then((doc)=>{
+    setOverallCorrect(doc.data().correctness)
+    setOverallGuessed(doc.data().guessed)
+    setAIGameOneGuessed(doc.data().guessedAIGameOne)
+    setHumanGameOneGuessed(doc.data().guessedHumanGameOne)
+    setAIGameOneCorrect(doc.data().correctAIGameOne)
+    setHumanGameOneCorrect(doc.data().correctHumanGameOne)
+    setGameTwoGuessed(doc.data().guessedGameTwo)
+    setGameTwoCorrect(doc.data().correctnessGameTwo)
+  })
+
+    }, 750);
+    
+  }, []);
+
+        
+
+
+
+
+  
+  
+  
+
+  return (
+    <div>
+      <CGTNavbar />
+      <br />
+      <SignedOutToast />
+      <div className="container">
+        <h1>User Data</h1>
+        <div style={{ border: "1px solid black"}}>
+        <OverallDataPieChart title = "Overall Score" correct = {refOverallCorrect} incorrect = {refOverallGuessed-refOverallCorrect}></OverallDataPieChart>
+        </div>
+        <br />
+        <br />
+        <div style={{ border: "1px solid black"}}>
+        <OverallDataPieChart title = "Game One Score" correct = {refHumanGameOneCorrect + refAIGameOneCorrect} incorrect = {(refHumanGameOneGuessed + refAIGameOneGuessed)-(refHumanGameOneCorrect + refAIGameOneCorrect)}></OverallDataPieChart>
+        </div>
+        <br />
+        <br />
+        <div style={{ border: "1px solid black"}}>
+        <OverallDataPieChart title ="Game One Score when AI Shown" correct = {refAIGameOneCorrect} incorrect = {refAIGameOneGuessed-refAIGameOneCorrect}></OverallDataPieChart>
+        </div>
+        <br />
+        <br />
+        <div style={{ border: "1px solid black"}}>
+        <OverallDataPieChart title ="Game One Score when Human Shown" correct = {refHumanGameOneCorrect} incorrect = {refHumanGameOneGuessed-refHumanGameOneCorrect}></OverallDataPieChart>
+        </div>
+        <br />
+        <br />
+        <div style={{ border: "1px solid black"}}>
+        <OverallDataPieChart title = "Game Two Score" correct = {refGameTwoCorrect} incorrect = {refGameTwoGuessed-refGameTwoCorrect}></OverallDataPieChart>
+        </div>
+        </div>
+    </div>
+
+  )
+}
+
+
+// function handleSignOut(setShow) {
+
+//   firebase.auth().signOut().then(() => {
+//     setShow true;
+//     <SignedOutToast />
+//   }, function (error) {
+//     console.error('Sign Out Error', error);
+//   });
+// }
