@@ -58,25 +58,25 @@ export default function SingedIn() {
 				</p> */}
 				<Form>
 					{/* {['checkbox'].map((type) => ( */}
-						<div key={`default-checkbox`} className="mb-3">
-							<Form.Check
-								ref={isFaculty}
-								type={"checkbox"}
-								className='pb-2'
-								label={`I am a faculty member`}
-								id={`default-checkbox-1`}
-								// checked={isStudent.current.checked}
-								onChange={updateIsFaculty}
-							/>
-							<p/>
-							<DropdownButton ref={gradeLevel} id='grade-level-dropdown-button' title='Grade Level' onSelect={updateGradeLevel}>
-								<Dropdown.Item eventKey="Senior">Senior</Dropdown.Item>
-								<Dropdown.Item eventKey="Junior">Junior</Dropdown.Item>
-								<Dropdown.Item eventKey="Sophomore">Sophomore</Dropdown.Item>
-								<Dropdown.Item eventKey="Freshman">Freshman</Dropdown.Item>
-							</DropdownButton>
+					<div key={`default-checkbox`} className="mb-3">
+						<Form.Check
+							ref={isFaculty}
+							type={"checkbox"}
+							className='pb-2'
+							label={`I am a faculty member`}
+							id={`default-checkbox-1`}
+							// checked={isStudent.current.checked}
+							onChange={updateIsFaculty}
+						/>
+						<p />
+						<DropdownButton ref={gradeLevel} id='grade-level-dropdown-button' title='Grade Level' onSelect={updateGradeLevel}>
+							<Dropdown.Item eventKey="Senior">Senior</Dropdown.Item>
+							<Dropdown.Item eventKey="Junior">Junior</Dropdown.Item>
+							<Dropdown.Item eventKey="Sophomore">Sophomore</Dropdown.Item>
+							<Dropdown.Item eventKey="Freshman">Freshman</Dropdown.Item>
+						</DropdownButton>
 
-							{/* <Form.Check
+						{/* <Form.Check
 								ref={termsAgreedTo}
 								type={type}
 								label={`I have read and agree to the terms `}
@@ -85,7 +85,7 @@ export default function SingedIn() {
 								onChange={setTermsAgreedTo}
 
 							/> */}
-						</div>
+					</div>
 					{/* ))} */}
 					<Button variant='primary' onClick={() => { submitForm(user, !isFaculty.checked, gradeLevel) }}>Submit</Button>
 				</Form>
@@ -106,8 +106,8 @@ async function submitForm(user, isFaculty, gradeLevel) {
 	await updateDoc(docReference, {
 		isStudent: isFaculty,
 		gradeLevel: gradeLevel
-	}).then(
+	}).then(() => {
 		location.assign("/single-prompt") // Go to single prompt page after the call to updateDoc returns
-	)
+	})
 
 }
