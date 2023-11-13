@@ -25,8 +25,8 @@ export default function Login() {
 					<Navbar.Toggle aria-controls="responsive-navbar-nav" />
 					<Navbar.Collapse>
 						<Nav className="me-auto">
-							<Nav.Link href="./game">Single Prompt</Nav.Link>
-							<Nav.Link href="./gameTwo">Dual Prompt</Nav.Link>
+							<Nav.Link href="/single-prompt">Single Prompt</Nav.Link>
+							<Nav.Link href="/dual-prompt">Dual Prompt</Nav.Link>
 						</Nav>
 					</Navbar.Collapse>
 				</Container>
