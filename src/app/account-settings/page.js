@@ -28,19 +28,6 @@ export default function SingedIn() {
 
 	const { user } = useContext(AuthContext);
 
-	var isFaculty = React.createRef(false);
-
-	const updateIsFaculty = (e) => {
-		isFaculty = e.target;
-	};
-
-	var gradeLevel = React.createRef('Senior');
-
-	const updateGradeLevel = (e) => {
-		gradeLevel = e;
-		console.log(gradeLevel)
-	}
-
 	var termsAgreedTo = React.createRef(false);
 
 	const setTermsAgreedTo = (e) => {
@@ -72,6 +59,19 @@ export default function SingedIn() {
 
 function SettingsForm() {
 	const { user } = useContext(AuthContext);
+	var isFaculty = React.createRef(false);
+
+	const updateIsFaculty = (e) => {
+		isFaculty = e.target;
+	};
+
+	var gradeLevel = React.createRef('Senior');
+
+	const updateGradeLevel = (e) => {
+		gradeLevel = e;
+		console.log(gradeLevel)
+	}
+
 
 	if (user) {
 		return (

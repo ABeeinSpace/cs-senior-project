@@ -340,6 +340,7 @@ function RenderCards() {
 				<Cards id='cardFive' prompt={ref9.current} code={ref9Code.current} object = {refObjectNine.current} codeSelector = {refCodeSelectorNine.current}
 				code2={ref10Code.current}> </Cards>
 
+				<p><strong>Tip: Refresh the page to get new prompts!</strong></p>
 				
 			</>
 		)

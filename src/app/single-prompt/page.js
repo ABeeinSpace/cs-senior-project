@@ -409,6 +409,8 @@ function RenderCards() {
 				<Cards id='cardEight' prompt={ref8.current} code={ref8Code.current} object = {refObjectEight.current} codeSelector = {refCodeSelectorEight.current}> </Cards>
 				<Cards id='cardNine' prompt={ref9.current} code={ref9Code.current} object = {refObjectNine.current} codeSelector = {refCodeSelectorNine.current}> </Cards>
 				<Cards id='cardTen' prompt={ref10.current} code={ref10Code.current} object = {refObjectTen.current} codeSelector = {refCodeSelectorTen.current}> </Cards>
+
+				<p><strong>Tip: Refresh the page to get new prompts!</strong></p>
 				
 			</>
 		)
