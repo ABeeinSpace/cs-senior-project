@@ -128,8 +128,8 @@ async function submitForm(user, isFaculty, gradeLevel) {
 	await updateDoc(docReference, {
 		isStudent: isFaculty,
 		gradeLevel: gradeLevel
-	}).then(
+	}).then(() => {
 		location.assign("/single-prompt") // Go to single prompt page after the call to updateDoc returns
-	)
+	})
 
 }
