@@ -85,22 +85,22 @@ function RenderTables() {
         <br />
         <br />
         <div style={{ border: "1px solid black" }}>
-          <OverallDataPieChart title="Game One Score" correct={refHumanGameOneCorrect + refAIGameOneCorrect} incorrect={(refHumanGameOneGuessed + refAIGameOneGuessed) - (refHumanGameOneCorrect + refAIGameOneCorrect)}></OverallDataPieChart>
+          <OverallDataPieChart title="Single Prompt Score" correct={refHumanGameOneCorrect + refAIGameOneCorrect} incorrect={(refHumanGameOneGuessed + refAIGameOneGuessed) - (refHumanGameOneCorrect + refAIGameOneCorrect)}></OverallDataPieChart>
         </div>
         <br />
         <br />
         <div style={{ border: "1px solid black" }}>
-          <OverallDataPieChart title="Game One Score when AI Shown" correct={refAIGameOneCorrect} incorrect={refAIGameOneGuessed - refAIGameOneCorrect}></OverallDataPieChart>
+          <OverallDataPieChart title="Single Prompt Score when AI Shown" correct={refAIGameOneCorrect} incorrect={refAIGameOneGuessed - refAIGameOneCorrect}></OverallDataPieChart>
         </div>
         <br />
         <br />
         <div style={{ border: "1px solid black" }}>
-          <OverallDataPieChart title="Game One Score when Human Shown" correct={refHumanGameOneCorrect} incorrect={refHumanGameOneGuessed - refHumanGameOneCorrect}></OverallDataPieChart>
+          <OverallDataPieChart title="Single Prompt Score when Human Shown" correct={refHumanGameOneCorrect} incorrect={refHumanGameOneGuessed - refHumanGameOneCorrect}></OverallDataPieChart>
         </div>
         <br />
         <br />
         <div style={{ border: "1px solid black" }}>
-          <OverallDataPieChart title="Game Two Score" correct={refGameTwoCorrect} incorrect={refGameTwoGuessed - refGameTwoCorrect}></OverallDataPieChart>
+          <OverallDataPieChart title="Dual Prompt Score" correct={refGameTwoCorrect} incorrect={refGameTwoGuessed - refGameTwoCorrect}></OverallDataPieChart>
         </div>
         <br />
         <br />
