@@ -4,15 +4,18 @@ import "firebase/auth";
 import {
 	getFirestore, collection, getDocs
 }from 'firebase/firestore'
+import 'dotenv/config'
+import { configDotenv } from "dotenv";
 
+configDotenv()
 //2. Initialize app with the config vars
 const app = firebase.initializeApp({
-	apiKey: "AIzaSyAThWUht-tNf-REso6KxH1tKQ3PXfeCifw",
-	authDomain: "cs-senior-project-9c0e0.firebaseapp.com",
-	projectId: "cs-senior-project-9c0e0",
-	storageBucket: "cs-senior-project-9c0e0.appspot.com",
-	messagingSenderId: "1054365365385",
-	appId: "1:1054365365385:web:fdd0bf6ce2f08ee09dc258"
+	apiKey: process.env.NEXT_PUBLIC_REACT_APP_API_KEY,
+	authDomain: process.env.NEXT_PUBLIC_REACT_APP_AUTH_DOMAIN,
+	projectId: process.env.NEXT_PUBLIC_REACT_APP_PROJECT_ID,
+	storageBucket: process.env.NEXT_PUBLIC_REACT_APP_STORAGE_BUCKET,
+	messagingSenderId: process.env.NEXT_PUBLIC_REACT_APP_MESSAGING_SENDER_ID,
+	appId: process.env.NEXT_PUBLIC_REACT_APP_APP_ID
 });
 
 // const db = getFirestore()
