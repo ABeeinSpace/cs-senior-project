@@ -59,18 +59,18 @@ export default function SingedIn() {
 
 function SettingsForm() {
 	const { user } = useContext(AuthContext);
-	var isFaculty = React.createRef(false);
+	var isFaculty = React.useRef(false);
 
 	const updateIsFaculty = (e) => {
 		isFaculty = e.target;
 	};
 
-	var gradeLevel = React.createRef('Senior');
+	const [gradeLevel, updateGradeLevel] = useState("Grade Level")
 
-	const updateGradeLevel = (e) => {
-		gradeLevel = e;
-		console.log(gradeLevel)
-	}
+	// const updateGradeLevel = (e) => {
+	// 	gradeLevel = e;
+	// 	console.log(gradeLevel)
+	// }
 
 
 	if (user) {
@@ -88,7 +88,7 @@ function SettingsForm() {
 						onChange={updateIsFaculty}
 					/>
 					<p />
-					<DropdownButton ref={gradeLevel} id='grade-level-dropdown-button' title="Grade Level" onSelect={updateGradeLevel}>
+					<DropdownButton id='grade-level-dropdown-button' title={gradeLevel} onSelect={updateGradeLevel}>
 						<Dropdown.Item eventKey="Faculty">Faculty</Dropdown.Item>
 						<Dropdown.Item eventKey="Senior">Senior</Dropdown.Item>
 						<Dropdown.Item eventKey="Junior">Junior</Dropdown.Item>
