@@ -98,7 +98,7 @@ function SettingsForm() {
 						<Dropdown.Item eventKey="Freshman">Freshman</Dropdown.Item>
 					</DropdownButton>
 
-					<p hidden={shouldShowError} className='text-warning'>Select a grade level (or "Faculty") from the drop-down</p>
+					<p hidden={shouldShowError} className='text-warning'>Select a grade level (or &quot;Faculty&quot;) from the drop-down</p>
 					{/* <Form.Check
 					ref={termsAgreedTo}
 					type={type}
