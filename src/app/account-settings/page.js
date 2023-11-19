@@ -67,6 +67,8 @@ function SettingsForm() {
 
 	const [gradeLevel, updateGradeLevel] = useState("Grade Level")
 
+	const [shouldShowError, toggleShouldShowError] = useState(false)
+
 	// const updateGradeLevel = (e) => {
 	// 	gradeLevel = e;
 	// 	console.log(gradeLevel)
@@ -96,6 +98,7 @@ function SettingsForm() {
 						<Dropdown.Item eventKey="Freshman">Freshman</Dropdown.Item>
 					</DropdownButton>
 
+					<p hidden={shouldShowError} className='text-warning'>Select a grade level (or "Faculty") from the drop-down</p>
 					{/* <Form.Check
 					ref={termsAgreedTo}
 					type={type}
@@ -125,11 +128,18 @@ async function submitForm(user, isFaculty, gradeLevel) {
 	// var docSnapshot = await getDoc(docReference);
 	// var isFaculty = isFaculty.current
 	// console.log(isFaculty)
-	await updateDoc(docReference, {
-		isStudent: isFaculty,
-		gradeLevel: gradeLevel
-	}).then(() => {
-		location.assign("/single-prompt") // Go to single prompt page after the call to updateDoc returns
-	})
+	if (gradeLevel == "Grade Level") {
+		return
+	} else {
+		// if (shouldShowError == true) {
+		// 	toggleShouldShowError
+		// }
+		await updateDoc(docReference, {
+			isStudent: isFaculty,
+			gradeLevel: gradeLevel
+		}).then(() => {
+			location.assign("/single-prompt") // Go to single prompt page after the call to updateDoc returns
+		})
+	}
 
 }
