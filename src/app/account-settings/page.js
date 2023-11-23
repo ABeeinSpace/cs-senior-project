@@ -1,16 +1,14 @@
 'use client'
 
-import { Form, Button, Dropdown, DropdownButton, Spinner } from 'react-bootstrap';
+import {Button, Dropdown, DropdownButton, Form, Spinner} from 'react-bootstrap';
 // import SignedOutToast from 'src/app/SignedOutToast.js';
 import "firebase/compat/auth";
-import React, { useState, useContext, useEffect } from "react";
+import React, {useContext, useEffect, useState} from "react";
 import app from '../../lib/Firebase';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'src/app/page.module.css';
-import { AuthContext } from "../../lib/FirebaseContext";
-import {
-	getFirestore, doc, updateDoc
-} from 'firebase/firestore'
+import {AuthContext} from "@/lib/FirebaseContext";
+import {doc, getFirestore, updateDoc} from 'firebase/firestore'
 import CGTNavbar from 'src/components/navbar';
 // import App from 'next/app';
 // import { auth } from 'firebaseui';
@@ -26,9 +24,9 @@ export default function SingedIn() {
 		}, 750);
 	}, []);
 
-	const { user } = useContext(AuthContext);
+	const {user} = useContext(AuthContext);
 
-	var termsAgreedTo = React.createRef(false);
+	let termsAgreedTo = React.useRef(false);
 
 	const setTermsAgreedTo = (e) => {
 		termsAgreedTo = e.target;
@@ -37,11 +35,11 @@ export default function SingedIn() {
 
 	return (
 		<>
-			<CGTNavbar />
-			<br />
+			<CGTNavbar/>
+			<br/>
 			<div className="container" id='settings1'>
 				<h1>Account Settings</h1>
-				<p />
+				<p/>
 				{/* <p>
 					Enter additional information to complete sign-up:
 				</p> */}
@@ -49,7 +47,7 @@ export default function SingedIn() {
 				{isLoading && <Spinner animation="border" role="status" size='sm'>
 					<span className="visually-hidden">Loading...</span>
 				</Spinner>}
-				{!isLoading && <SettingsForm />}
+				{!isLoading && <SettingsForm/>}
 
 			</div>
 
@@ -58,8 +56,8 @@ export default function SingedIn() {
 }
 
 function SettingsForm() {
-	const { user } = useContext(AuthContext);
-	var isFaculty = React.useRef(false);
+	const {user} = useContext(AuthContext);
+	let isFaculty = React.useRef(false);
 
 	const updateIsFaculty = (e) => {
 		isFaculty = e.target;
@@ -89,7 +87,7 @@ function SettingsForm() {
 						// checked={isStudent.current.checked}
 						onChange={updateIsFaculty}
 					/>
-					<p />
+					<p/>
 					<DropdownButton id='grade-level-dropdown-button' title={gradeLevel} onSelect={updateGradeLevel}>
 						<Dropdown.Item eventKey="Faculty">Faculty</Dropdown.Item>
 						<Dropdown.Item eventKey="Senior">Senior</Dropdown.Item>
@@ -98,7 +96,8 @@ function SettingsForm() {
 						<Dropdown.Item eventKey="Freshman">Freshman</Dropdown.Item>
 					</DropdownButton>
 
-					<p hidden={shouldShowError} className='text-warning'>Select a grade level (or &quot;Faculty&quot;) from the drop-down</p>
+					<p hidden={shouldShowError} className='text-warning'>Select a grade level (or &quot;Faculty&quot;)
+						from the drop-down</p>
 					{/* <Form.Check
 					ref={termsAgreedTo}
 					type={type}
@@ -110,7 +109,9 @@ function SettingsForm() {
 				/> */}
 				</div>
 				{/* ))} */}
-				<Button variant='primary' onClick={() => { submitForm(user, !isFaculty.checked, gradeLevel) }}>Submit</Button>
+				<Button variant='primary' onClick={() => {
+					submitForm(user, !isFaculty.checked, gradeLevel)
+				}}>Submit</Button>
 			</Form>
 		)
 	} else {
@@ -124,12 +125,12 @@ async function submitForm(user, isFaculty, gradeLevel) {
 
 	const db = getFirestore(app);
 	// var doc = collection(db, "users").doc()
-	var docReference = doc(db, "users", user.uid)
+	const docReference = doc(db, "users", user.uid);
 	// var docSnapshot = await getDoc(docReference);
 	// var isFaculty = isFaculty.current
 	// console.log(isFaculty)
-	if (gradeLevel == "Grade Level") {
-		return
+	if (gradeLevel === "Grade Level") {
+
 	} else {
 		// if (shouldShowError == true) {
 		// 	toggleShouldShowError

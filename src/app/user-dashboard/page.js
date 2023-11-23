@@ -5,7 +5,7 @@ import CGTNavbar from '../../components/navbar';
 // import firebase from "firebase/compat/app";
 import SignedOutToast from '../../components/SignedOutToast';
 import "firebase/compat/auth";
-import { AuthContext } from "../../lib/FirebaseContext";
+import { AuthContext } from "@/lib/FirebaseContext";
 import React, { useState, useContext, useEffect, useRef } from "react";
 // import app from "../lib/Firebase";
 import 'bootstrap/dist/css/bootstrap.min.css';

@@ -8,7 +8,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 import Cards from '../../components/cardsTwo';
-import { AuthContext } from "../../lib/FirebaseContext.js";
+import { AuthContext } from "@/lib/FirebaseContext";
 import React, { useContext, useEffect } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'src/app/page.module.css';
@@ -52,7 +52,7 @@ export default function Game() {
 				<h1>Dual Prompt</h1>
 				<p />
 				<p>
-				Two code snippets are provided in response to a given prompt; one was written by a human and the other was written by AI. Your task is to determine whether the AI-generated code is the one on the left or the right. 
+				Two code snippets are provided in response to a given prompt; one was written by a human and the other was written by AI. Your task is to determine whether the AI-generated code is the one on the left or the right.
 				</p>
 				<p>
 					Note: Base your guess on who you believe the generator to be, not based on the functionality of the code itself.
@@ -69,12 +69,12 @@ export default function Game() {
 
 
 const randomNumberInRange = (min, max) => {
-	return Math.floor(Math.random() 
+	return Math.floor(Math.random()
 			* (max - min + 1)) + min;
 };
 
 
-function RenderCards() {	
+function RenderCards() {
 	const ref = useRef('First Prompt');
 	const ref2 = useRef('Second Prompt');
 	const ref3= useRef('Third Prompt');
@@ -121,25 +121,25 @@ function RenderCards() {
 
 	const [toggled, setToggled] = useState(false);
 	const { user } = useContext(AuthContext);
-	
+
 	if (user) {
 		// User is signed in, see docs for a list of available properties
 		// https://firebase.google.com/docs/reference/js/firebase.User
 
-		
+
 
 		if(!toggled){
 	getDocs(colRef)
 	.then((snapshot) => {
-		
+
 		snapshot.docs.forEach((doc) =>{
 			prompts.push({...doc.data(), id: doc.id})
 		})
 
 		var selectPrompt1 = randomNumberInRange(0, prompts.length-1)
 		ref.current = prompts[selectPrompt1].prompt
-		refObjectOne.current = prompts[selectPrompt1];         
-		
+		refObjectOne.current = prompts[selectPrompt1];
+
 		let selectPrompt2 = randomNumberInRange(0, prompts.length-1)
 		while(true){
 			if(selectPrompt2 != selectPrompt1){
@@ -244,7 +244,7 @@ function RenderCards() {
 			let fillerTwo = prompts[selectPrompt1].HumanResponses[selectIndex]
 			ref2Code.current = fillerTwo
 		}else{
-			selectIndex = randomNumberInRange(0, prompts[selectPrompt1].HumanResponses.length-1) 
+			selectIndex = randomNumberInRange(0, prompts[selectPrompt1].HumanResponses.length-1)
 			let filler = prompts[selectPrompt1].HumanResponses[selectIndex]
 			refCode.current = filler
 			refCodeSelectorOne.current = 1
@@ -261,10 +261,10 @@ function RenderCards() {
 			selectIndex = randomNumberInRange(0, prompts[selectPrompt3].HumanResponses.length-1)
 			ref4Code.current =  prompts[selectPrompt3].HumanResponses[selectIndex]
 		}else{
-			selectIndex = randomNumberInRange(0, prompts[selectPrompt3].HumanResponses.length-1) 
+			selectIndex = randomNumberInRange(0, prompts[selectPrompt3].HumanResponses.length-1)
 			ref3Code.current =  prompts[selectPrompt3].HumanResponses[selectIndex]
 			refCodeSelectorThree.current = 1
-			selectIndex = randomNumberInRange(0, prompts[selectPrompt3].AIResponses.length-1) 
+			selectIndex = randomNumberInRange(0, prompts[selectPrompt3].AIResponses.length-1)
 			ref4Code.current =  prompts[selectPrompt3].AIResponses[selectIndex]
 		}
 
@@ -273,26 +273,26 @@ function RenderCards() {
 			selectIndex = randomNumberInRange(0, prompts[selectPrompt5].AIResponses.length-1)
 			ref5Code.current =  prompts[selectPrompt5].AIResponses[selectIndex]
 			refCodeSelectorFive.current = 0
-			selectIndex = randomNumberInRange(0, prompts[selectPrompt5].HumanResponses.length-1) 
+			selectIndex = randomNumberInRange(0, prompts[selectPrompt5].HumanResponses.length-1)
 			ref6Code.current =  prompts[selectPrompt5].HumanResponses[selectIndex]
 		}else{
-			selectIndex = randomNumberInRange(0, prompts[selectPrompt5].HumanResponses.length-1) 
+			selectIndex = randomNumberInRange(0, prompts[selectPrompt5].HumanResponses.length-1)
 			ref5Code.current =  prompts[selectPrompt5].HumanResponses[selectIndex]
 			refCodeSelectorFive.current = 1
 			selectIndex = randomNumberInRange(0, prompts[selectPrompt5].AIResponses.length-1)
 			ref6Code.current =  prompts[selectPrompt5].AIResponses[selectIndex]
 		}
 
-		
+
 		selectArray = randomNumberInRange(0,1)
 		if(selectArray == 0){
 			selectIndex = randomNumberInRange(0, prompts[selectPrompt7].AIResponses.length-1)
 			ref7Code.current =  prompts[selectPrompt7].AIResponses[selectIndex]
 			refCodeSelectorSeven.current = 0
-			selectIndex = randomNumberInRange(0, prompts[selectPrompt7].HumanResponses.length-1) 
+			selectIndex = randomNumberInRange(0, prompts[selectPrompt7].HumanResponses.length-1)
 			ref8Code.current =  prompts[selectPrompt7].HumanResponses[selectIndex]
 		}else{
-			selectIndex = randomNumberInRange(0, prompts[selectPrompt7].HumanResponses.length-1) 
+			selectIndex = randomNumberInRange(0, prompts[selectPrompt7].HumanResponses.length-1)
 			ref7Code.current =  prompts[selectPrompt7].HumanResponses[selectIndex]
 			refCodeSelectorSeven.current = 1
 			selectIndex = randomNumberInRange(0, prompts[selectPrompt7].AIResponses.length-1)
@@ -305,10 +305,10 @@ function RenderCards() {
 			selectIndex = randomNumberInRange(0, prompts[selectPrompt9].AIResponses.length-1)
 			ref9Code.current =  prompts[selectPrompt9].AIResponses[selectIndex]
 			refCodeSelectorNine.current = 0
-			selectIndex = randomNumberInRange(0, prompts[selectPrompt9].HumanResponses.length-1) 
+			selectIndex = randomNumberInRange(0, prompts[selectPrompt9].HumanResponses.length-1)
 			ref10Code.current =  prompts[selectPrompt9].HumanResponses[selectIndex]
 		}else{
-			selectIndex = randomNumberInRange(0, prompts[selectPrompt9].HumanResponses.length-1) 
+			selectIndex = randomNumberInRange(0, prompts[selectPrompt9].HumanResponses.length-1)
 			ref9Code.current =  prompts[selectPrompt9].HumanResponses[selectIndex]
 			refCodeSelectorNine.current = 1
 			selectIndex = randomNumberInRange(0, prompts[selectPrompt9].AIResponses.length-1)
@@ -318,17 +318,17 @@ function RenderCards() {
 
 		setToggled(true)
 
-	
-	
+
+
 	})
 	.catch(err =>{
 		console.log(err.message)
 	})
-		
+
 }
 		return (
 			<>
-				
+
 				<Cards id='cardOne' prompt= {ref.current} code={refCode.current} object = {refObjectOne.current} codeSelector = {refCodeSelectorOne.current}
 				code2= {ref2Code.current}> </Cards>
 				<Cards id='cardTwo' prompt={ref3.current} code={ref3Code.current} object = {refObjectThree.current} codeSelector = {refCodeSelectorThree.current}
@@ -341,10 +341,10 @@ function RenderCards() {
 				code2={ref10Code.current}> </Cards>
 
 				<p><strong>Tip: Refresh the page to get new prompts!</strong></p>
-				
+
 			</>
 		)
-			
+
 	} else {
 		return (
 			<p>Please <Link className="notLoggedInLink" href={"/login"}>log in</Link> to continue.</p>

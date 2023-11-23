@@ -13,15 +13,15 @@ import 'src/app/page.module.css';
 
 export default function FirebaseUI() {
 
-	var uiConfig = {
+	let uiConfig = {
 		signInFlow: 'popup',
 		callbacks: {
-			signInSuccessWithAuthResult: function (authResult, redirectUrl) {
+			signInSuccessWithAuthResult: function (authResult) {
 				const db = getFirestore(); //Get a reference to the Firestore instance, using the Firebase reference we got previously.
-				
+
 				console.log(authResult.user.metadata)
 
-				if (authResult.user.metadata.lastLoginAt <= (authResult.user.metadata.createdAt + 500) ) {
+				if (authResult.user.metadata.lastLoginAt <= (authResult.user.metadata.createdAt + 500)) {
 
 					setDoc(doc(db, "users", authResult.user.uid), {
 						hasGuessed: false,
@@ -34,10 +34,9 @@ export default function FirebaseUI() {
 						correctHumanGameOne: 0,
 						correctnessGameTwo: 0,
 						guessedAIGameOne: 0,
-						guessedAIGameOne: 0,
 						guessedGameTwo: 0,
 						guessedHumanGameOne: 0
-					}, { merge: true }).then(() => {
+					}, {merge: true}).then(() => {
 						location.assign("/account-settings")
 					});
 				} else {

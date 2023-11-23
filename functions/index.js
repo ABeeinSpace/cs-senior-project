@@ -9,7 +9,7 @@
 
 const {onRequest} = require("firebase-functions/v2/https");
 const logger = require("firebase-functions/logger");
-const { initalizeApp } = require("firebase-admin/app");
+const {initalizeApp} = require("firebase-admin/app");
 
 // Create and deploy your first functions
 // https://firebase.google.com/docs/functions/get-started
@@ -19,8 +19,8 @@ const { initalizeApp } = require("firebase-admin/app");
 //   response.send("Hello from Firebase!");
 // });
 
-initalizeApp()
+initalizeApp();
 
 exports.createNewUserDoc = functions.auth.user().onCreate((user) => {
-	user.
-})
+  // user.
+});
