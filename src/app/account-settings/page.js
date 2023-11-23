@@ -97,7 +97,7 @@ function SettingsForm() {
 						<Dropdown.Item eventKey="Sophomore">Sophomore</Dropdown.Item>
 						<Dropdown.Item eventKey="Freshman">Freshman</Dropdown.Item>
 					</DropdownButton>
-
+					<br/>
 					<p hidden={shouldShowError} className='text-warning'>Select a grade level (or &quot;Faculty&quot;) from the drop-down</p>
 					{/* <Form.Check
 					ref={termsAgreedTo}
@@ -122,7 +122,7 @@ function SettingsForm() {
 
 async function submitForm(user, isFaculty, gradeLevel) {
 
-	const db = getFirestore(app);
+	const db = getFirestore();
 	// var doc = collection(db, "users").doc()
 	var docReference = doc(db, "users", user.uid)
 	// var docSnapshot = await getDoc(docReference);
