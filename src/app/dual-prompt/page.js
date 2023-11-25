@@ -8,14 +8,14 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 import Cards from '../../components/cardsTwo';
-import { AuthContext } from "../../lib/FirebaseContext.js";
+import { AuthContext } from "@/lib/FirebaseContext";
 import React, { useContext, useEffect } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'src/app/page.module.css';
 // import app from '../../lib/Firebase';
 import { useState, useRef} from 'react';
 import {
-	getFirestore, collection, getDocs, updateDoc, doc
+	getFirestore, collection, getDocs
 } from 'firebase/firestore'
 import CGTNavbar from '../../components/navbar';
 import Link from 'next/link';
@@ -26,7 +26,7 @@ require('dotenv').config()
 const db = getFirestore()
 
 const colRef = collection(db, 'prompts')
-var prompts = []
+const prompts = [];
 
 let humanOrArtificial = []
 
@@ -74,7 +74,7 @@ const randomNumberInRange = (min, max) => {
 };
 
 
-function RenderCards() {	
+function RenderCards() {
 	const ref = useRef('First Prompt');
 	const ref2 = useRef('Second Prompt');
 	const ref3= useRef('Third Prompt');
@@ -121,7 +121,7 @@ function RenderCards() {
 
 	const [toggled, setToggled] = useState(false);
 	const { user } = useContext(AuthContext);
-	
+
 	if (user) {
 		// User is signed in, see docs for a list of available properties
 		// https://firebase.google.com/docs/reference/js/firebase.User

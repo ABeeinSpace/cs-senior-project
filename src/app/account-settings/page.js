@@ -4,10 +4,9 @@ import { Form, Button, Dropdown, DropdownButton, Spinner } from 'react-bootstrap
 // import SignedOutToast from 'src/app/SignedOutToast.js';
 import "firebase/compat/auth";
 import React, { useState, useContext, useEffect } from "react";
-import app from '../../lib/Firebase';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'src/app/page.module.css';
-import { AuthContext } from "../../lib/FirebaseContext";
+import { AuthContext } from "@/lib/FirebaseContext";
 import {
 	getFirestore, doc, updateDoc
 } from 'firebase/firestore'
