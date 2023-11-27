@@ -21,7 +21,7 @@ export default function FirebaseUI() {
 				
 				console.log(authResult.user.metadata)
 
-				if (authResult.user.metadata.lastLoginAt <= (authResult.user.metadata.createdAt + 500) ) {
+				if (authResult.user.metadata.createdAt <= (authResult.user.metadata.lastLoginAt + 500) ) {
 
 					setDoc(doc(db, "users", authResult.user.uid), {
 						hasGuessed: false,
