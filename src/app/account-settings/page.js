@@ -7,7 +7,7 @@ import React, {useContext, useEffect, useState} from "react";
 import app from '../../lib/Firebase';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'src/app/page.module.css';
-import {AuthContext} from "@/lib/FirebaseContext";
+import {AuthContext} from "../../lib/FirebaseContext";
 import {doc, getFirestore, updateDoc} from 'firebase/firestore'
 import CGTNavbar from 'src/components/navbar';
 // import App from 'next/app';

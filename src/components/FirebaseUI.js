@@ -15,38 +15,6 @@ export default function FirebaseUI() {
 
 	let uiConfig = {
 		signInFlow: 'popup',
-		callbacks: {
-			signInSuccessWithAuthResult: function (authResult) {
-				const db = getFirestore(); //Get a reference to the Firestore instance, using the Firebase reference we got previously.
-
-				console.log(authResult.user.metadata)
-
-				if (authResult.user.metadata.lastLoginAt <= (authResult.user.metadata.createdAt + 500)) {
-
-					setDoc(doc(db, "users", authResult.user.uid), {
-						hasGuessed: false,
-						isStudent: false,
-						guessed: 0,
-						correctness: 0,
-						userID: authResult.user.uid,
-						gradeLevel: "test",
-						correctAIGameOne: 0,
-						correctHumanGameOne: 0,
-						correctnessGameTwo: 0,
-						guessedAIGameOne: 0,
-						guessedGameTwo: 0,
-						guessedHumanGameOne: 0
-					}, {merge: true}).then(() => {
-						location.assign("/account-settings")
-					});
-				} else {
-					location.assign("/")
-				}
-
-				return false
-			}
-		},
-
 		signInSuccessUrl: '/',
 		signInOptions: [
 			{
