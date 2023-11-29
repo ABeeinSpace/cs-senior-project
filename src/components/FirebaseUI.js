@@ -15,7 +15,7 @@ export default function FirebaseUI() {
 
 	let uiConfig = {
 		signInFlow: 'popup',
-		signInSuccessUrl: '/',
+		signInSuccessUrl: '/account-settings',
 		signInOptions: [
 			{
 				provider: firebase.auth.GoogleAuthProvider.PROVIDER_ID,
