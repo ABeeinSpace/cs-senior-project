@@ -5,7 +5,7 @@ import Button from "react-bootstrap/Button";
 import "firebase/compat/auth";
 import firebase from "firebase/compat/app";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import 'src/app/page.module.css';
+import '../app/page.module.css';
 import {
 	getFirestore, collection, getDoc, updateDoc, doc, setDoc
 } from 'firebase/firestore'

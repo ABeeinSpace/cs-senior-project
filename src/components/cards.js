@@ -1,6 +1,6 @@
 import Button from './button';
 import Card from 'react-bootstrap/Card';
-import 'src/app/page.module.css'
+import '../app/page.module.css'
 import { useState, useRef} from 'react';
 
 function Cards(props) {

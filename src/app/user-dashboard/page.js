@@ -9,7 +9,7 @@ import { AuthContext } from "../../lib/FirebaseContext";
 import React, { useState, useContext, useEffect, useRef } from "react";
 // import app from "../lib/Firebase";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import 'src/app/page.module.css';
+import '../page.module.css';
 import firebase from "firebase/compat/app";
 import OverallDataPieChart from '../../components/overallDataPieChart'
 import Link from 'next/link'

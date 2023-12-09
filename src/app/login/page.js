@@ -8,12 +8,12 @@ import "firebase/compat/auth";
 // import app from "../../lib/Firebase";
 import 'firebaseui/dist/firebaseui.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import 'src/app/page.module.css';
+import '../page.module.css';
 
 export default function Login() {
 
 	const FirebaseUI = dynamic(
-		() => import('src/components/FirebaseUI.js'),
+		() => import('../../components/FirebaseUI'),
 		{ ssr: false }
 	)
 

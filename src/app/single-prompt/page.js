@@ -11,7 +11,7 @@ import Cards from '../../components/cards';
 import { AuthContext } from "../../lib/FirebaseContext";
 import React, { useContext, useEffect } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import 'src/app/page.module.css';
+import '../page.module.css';
 // import app from '../../lib/Firebase';
 import { useState, useRef} from 'react';
 import {

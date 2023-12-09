@@ -1,6 +1,6 @@
 import { NavDropdown, Nav, Navbar, Container, Spinner } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import 'src/app/page.module.css';
+import '../app/page.module.css';
 import firebase from "firebase/compat/app";
 import { AuthContext } from "../lib/FirebaseContext";
 import React, { useState, useContext, useEffect } from "react";

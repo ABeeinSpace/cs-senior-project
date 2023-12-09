@@ -8,7 +8,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {
 	getFirestore, doc, setDoc
 } from 'firebase/firestore'
-import 'src/app/page.module.css';
+import '../app/page.module.css';
 
 
 export default function FirebaseUI() {

@@ -1,6 +1,6 @@
 import './globals.css'
 import React from "react";
-import { AuthProvider } from "src/lib/FirebaseContext.js";
+import { AuthProvider } from "../lib/FirebaseContext.js";
 
 export const metadata = {
   title: 'ChatGPTuring'
