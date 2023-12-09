@@ -25,7 +25,6 @@ export const AuthProvider = ({ children }) => {
 	const [user, setUser] = useState(null);
 
 	useEffect(() => {
-		firebase.auth(app).useEmulator("http://127.0.0.1:9099", { disableWarnings: true })
 		firebase.auth(app).onAuthStateChanged(setUser);
 	}, []);
 

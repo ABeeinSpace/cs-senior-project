@@ -8,7 +8,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 import Cards from '../../components/cardsTwo';
-import { AuthContext } from "../page.module.css";
+import { AuthContext } from "../../lib/FirebaseContext";
 import React, { useContext, useEffect } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../page.module.css';
