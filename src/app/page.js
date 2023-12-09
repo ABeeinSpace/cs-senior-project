@@ -22,7 +22,6 @@ import '../app/page.module.css';
 
 export default function Home() {
   const [show, setShow] = useState(false);
-
   const [isLoading, setIsLoading] = useState(true)
   useEffect(() => {
     setTimeout(() => {
@@ -96,13 +95,3 @@ export default function Home() {
   )
 }
 
-
-// function handleSignOut(setShow) {
-
-//   firebase.auth().signOut().then(() => {
-//     setShow true;
-//     <SignedOutToast />
-//   }, function (error) {
-//     console.error('Sign Out Error', error);
-//   });
-// }
